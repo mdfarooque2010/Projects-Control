@@ -6,7 +6,7 @@ You already plan to create a GitHub account for CivilCalc Pro — use the same a
 
 1. **Create a repository**
    - Go to github.com → New repository
-   - Name it exactly `controlforge` (this matches the site URL already set up in Google Analytics)
+   - Name it exactly `Projects-Control` (this matches the site URL already set up in Google Analytics)
    - Keep it **Public** (required for free GitHub Pages) or use Pages with a private repo if you're on GitHub Pro
    - Don't initialize with a README (you already have these files)
 
@@ -21,7 +21,7 @@ You already plan to create a GitHub account for CivilCalc Pro — use the same a
    - Set **Branch** to `main`, folder `/ (root)`
    - Click **Save**
    - GitHub gives you a live URL within a minute or two:
-     `https://mdfarooque2010.github.io/controlforge/`
+     `https://mdfarooque2010.github.io/Projects-Control/`
    - This is already the exact URL entered in your Google Analytics 4 property, so no need to go back and edit it there once you're live
 
 4. **Test it**
@@ -34,7 +34,7 @@ You already plan to create a GitHub account for CivilCalc Pro — use the same a
 - ✅ **Google Analytics 4 is already set up** — Measurement ID `G-45PFV7MNN1` is live in all 6 pages. Once the site is deployed and gets its first visit, check **Realtime** in GA4 to confirm it's tracking.
 - **Microsoft Store links are placeholders.** Both `projectpulse.html` and `baseline-review.html` have two spots each (`REPLACE_WITH_PROJECTPULSE_APP_ID` / `REPLACE_WITH_PBL_APP_ID`) — search-replace these with your real `apps.microsoft.com/detail/...` URLs once you have them, or send them to me and I'll patch the files.
 - **Add real screenshots and a walkthrough video** when ready — see `assets/screenshots/README.md` and the HTML comments above each screenshot grid / video slot in `projectpulse.html` and `baseline-review.html` for the exact swap-in snippet.
-- **Confirm the "was" prices.** The 50%-off display assumes the discount is exactly half (ProjectPulse: was $198, now $99 · Baseline Review: was $158, now $79). If your actual regular price differs, update the `price-was` and `price-now` values in both product pages.
+- **Confirm the "was" prices.** The 50%-off display assumes the discount is exactly half (ProjectPulse: was $99, now $49.50 · Baseline Review: was $79, now $39.50). If your actual regular price differs, update the `price-was` and `price-now` values in both product pages.
 - **Wire up the "notify me" form**: create a free form at formspree.io, then paste the form action URL into `contact.html` where it says `REPLACE_WITH_YOUR_FORM_ID`. Takes about 2 minutes and needs no code.
 - Contact details (email + phone) are already filled in with your real ones.
 - **Custom domain (optional, do before running paid ads)**: GitHub Pages supports this directly.

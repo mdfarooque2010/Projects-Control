@@ -9,7 +9,7 @@ I'm launching a website selling desktop software for Primavera P6 planning and p
 - Current live products: a P6 progress/reporting tool and a P6 baseline-audit tool, both sold as one-time-purchase Windows software ($79–$99) via Gumroad and Microsoft Store.
 - Two more tools are coming: a schedule-recovery/DCMA-scoring tool, and a civil/water-works quantity estimator Android app.
 - Known competitor names in this space: ScheduleReader, Steelray Analyzer, Acumen Fuse, ScheduleLens, SmartPM, P6-QA, Schedule Auditor. I want a name that doesn't sound like a copy of any of these.
-- My working placeholder name right now is "ControlForge" — feel free to validate, improve, or replace it.
+- My working placeholder name right now is "Projects-Control" — feel free to validate, improve, or replace it.
 
 **What I need you to do:**
 1. Search Reddit (r/PrimaveraP6, r/projectmanagement, r/civilengineering), LinkedIn project-controls groups/hashtags, and X/Twitter for how planning engineers talk about scheduling/P6 tools informally — what words, slang, or phrases come up often (e.g. "P6 nerd," "schedule health," "float," "claims").

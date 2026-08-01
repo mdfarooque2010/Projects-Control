@@ -9,7 +9,7 @@ sources than anything we'd rebuild).
 
 ## One-time setup (~5 minutes)
 
-1. Go to [analytics.google.com](https://analytics.google.com) → Admin → Create a property (e.g. "ControlForge").
+1. Go to [analytics.google.com](https://analytics.google.com) → Admin → Create a property (e.g. "Projects-Control").
 2. Add a **Web** data stream, enter your site's URL.
 3. Copy the **Measurement ID** — looks like `G-ABC1234XYZ`.
 4. Open every `.html` file in this site and replace both occurrences of
