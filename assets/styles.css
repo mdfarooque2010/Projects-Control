@@ -1274,3 +1274,321 @@ button:focus-visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ==========================================================================
+   DEPTH LAYER — added 2026-08-08
+   The sheet vernacular stays; this adds the dark/contrast register the flat
+   cream-on-white palette was missing. Dark bands, offer stamps, roadmap.
+   ========================================================================== */
+
+:root {
+  --night:      #101a2e;
+  --night-2:    #1b2b4d;
+  --night-line: rgba(255,255,255,0.09);
+  --on-night:   #eef2f8;
+  --on-night-soft: #a8b6cd;
+  --accent-lit: #f0873f;
+}
+
+/* ------------------------------------------------------------ dark band -- */
+
+.band-dark {
+  background-color: var(--night);
+  background-image:
+    linear-gradient(var(--night-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--night-line) 1px, transparent 1px),
+    linear-gradient(160deg, var(--night) 0%, var(--night-2) 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+  color: var(--on-night);
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  position: relative;
+}
+
+.band-dark h1, .band-dark h2, .band-dark h3 { color: var(--on-night); }
+.band-dark .lede, .band-dark p { color: var(--on-night-soft); }
+.band-dark .eyebrow { color: var(--accent-lit); }
+.band-dark .btn-ghost {
+  background: transparent;
+  color: var(--on-night);
+  border-color: var(--on-night);
+  box-shadow: 2px 2px 0 var(--accent-lit);
+}
+.band-dark .btn-ghost:hover { background: rgba(255,255,255,0.06); box-shadow: 4px 4px 0 var(--accent-lit); }
+.band-dark .btn-primary { border-color: var(--on-night); box-shadow: 2px 2px 0 var(--on-night); }
+.band-dark .btn-primary:hover { box-shadow: 4px 4px 0 var(--on-night); }
+.band-dark .gantt { background: rgba(255,255,255,0.04); border-color: var(--on-night-soft); }
+.band-dark .gantt-track { background: rgba(255,255,255,0.12); }
+.band-dark .gantt-bar { background: var(--on-night); }
+.band-dark .gantt-label { color: var(--on-night-soft); }
+
+/* --------------------------------------------------------- offer block -- */
+
+.offer {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  box-shadow: 6px 6px 0 var(--ink);
+  overflow: hidden;
+  margin: 8px 0 4px;
+}
+
+.offer-head {
+  background: var(--night);
+  color: var(--on-night);
+  padding: 16px 22px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--ink);
+}
+
+.offer-head .offer-title {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.offer-head .offer-until {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent-lit);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+.offer-steps {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+}
+
+@media (max-width: 760px) {
+  .offer-steps { grid-template-columns: 1fr; }
+  .offer-join { display: none; }
+}
+
+.offer-step { padding: 22px 24px; }
+.offer-step + .offer-step { border-left: 1.5px dashed var(--rule); }
+
+@media (max-width: 760px) {
+  .offer-step + .offer-step { border-left: none; border-top: 1.5px dashed var(--rule); }
+}
+
+.offer-step .step-no {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.offer-step .step-pct {
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  display: block;
+}
+
+.offer-step .step-what {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 8px 0 4px;
+}
+
+.offer-step .step-note {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.offer-join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.08em;
+}
+
+.offer-foot {
+  border-top: 1.5px solid var(--rule);
+  background: var(--paper);
+  padding: 14px 24px;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* revision-stamp motif — reads as a drawing-sheet approval stamp */
+.stamp {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 2px solid var(--flag);
+  color: var(--flag);
+  padding: 4px 10px;
+  border-radius: 2px;
+  transform: rotate(-2deg);
+  background: var(--flag-bg);
+  white-space: nowrap;
+}
+
+.stamp.stamp-dev { border-color: var(--dev); color: var(--dev); background: var(--dev-bg); }
+.stamp.stamp-live { border-color: var(--live); color: var(--live); background: var(--live-bg); }
+
+/* ------------------------------------------------------ android teaser -- */
+
+.teaser {
+  border: 2px dashed var(--accent);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(212,96,28,0.07), rgba(212,96,28,0.02));
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  margin-top: 22px;
+}
+
+@media (max-width: 760px) {
+  .teaser { grid-template-columns: 1fr; text-align: left; }
+}
+
+.teaser .teaser-glyph {
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.teaser h3 {
+  font-family: var(--display);
+  font-size: 1.02rem;
+  margin: 0 0 4px;
+}
+
+.teaser p { margin: 0; font-size: 0.9rem; color: var(--ink-soft); }
+
+/* -------------------------------------------------------------- roadmap -- */
+
+.roadmap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--paper-raised);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+@media (max-width: 760px) { .roadmap { grid-template-columns: 1fr; } }
+
+.roadmap-col { padding: 22px 24px 26px; }
+.roadmap-col + .roadmap-col { border-left: 1.5px solid var(--rule); }
+
+@media (max-width: 760px) {
+  .roadmap-col + .roadmap-col { border-left: none; border-top: 1.5px solid var(--rule); }
+}
+
+.roadmap-col header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px dashed var(--rule);
+}
+
+.roadmap-col h3 {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.roadmap-col .ver {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+  margin-left: auto;
+}
+
+.tick-list { list-style: none; margin: 0; padding: 0; }
+
+.tick-list li {
+  position: relative;
+  padding-left: 24px;
+  margin: 9px 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.tick-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--live);
+}
+
+.tick-list.pending li::before { content: "→"; color: var(--accent); }
+
+/* ------------------------------------------------------- card upgrades -- */
+
+.card.is-live  { border-top: 4px solid var(--live); }
+.card.is-dev   { border-top: 4px solid var(--dev); }
+
+.card .card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+/* ------------------------------------------------- offer download button -- */
+
+.download-btn.is-offer {
+  border-color: var(--accent);
+  border-width: 2px;
+  background: linear-gradient(180deg, rgba(212,96,28,0.08), rgba(212,96,28,0.02));
+  box-shadow: 3px 3px 0 var(--accent);
+}
+
+.download-btn.is-offer:hover {
+  background: linear-gradient(180deg, rgba(212,96,28,0.14), rgba(212,96,28,0.04));
+  box-shadow: 5px 5px 0 var(--accent);
+}
+
+.download-btn.is-offer .dl-label { color: var(--accent); }
+
+/* ------------------------------------------------------- redirect page -- */
+
+.redirect-card {
+  max-width: 46ch;
+  margin: 14vh auto 0;
+  text-align: center;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 34px 30px;
+}
+
+.redirect-card h1 { font-size: 1.35rem; margin: 0 0 10px; }
+.redirect-card p  { color: var(--ink-soft); margin: 0 0 18px; }

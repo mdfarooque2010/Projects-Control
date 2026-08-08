@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buying Progress Schedulytics…</title>
+<meta name="robots" content="noindex">
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     EDITABLE — this page does ONE job: send the visitor to the store page
+     where the purchase happens. Change the address on the next line only.
+
+     Why this file exists: the checkout address is baked into copies of the
+     desktop app that are already installed, so it must never change. This
+     page gives the website a stable, clean address that points at it — and
+     lets the destination be changed later without rebuilding the app.
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+  var DESTINATION = "https://mdfarooque2010.gumroad.com/l/ProjectPulse";
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css">
+
+<!-- Google Analytics 4 — Measurement ID G-45PFV7MNN1 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45PFV7MNN1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-45PFV7MNN1');
+  gtag('event', 'begin_checkout', { tool: 'progress_schedulytics', destination: 'gumroad' });
+</script>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="redirect-card">
+    <span class="eyebrow">Progress Schedulytics</span>
+    <h1>Taking you to checkout…</h1>
+    <p>The second-tool offer appears during checkout. If nothing happens in a
+       few seconds, use the button below.</p>
+    <a class="btn btn-primary" id="go" href="#">Continue to checkout →</a>
+    <p style="margin-top:18px; font-size:0.85rem;">
+      <a href="../../progress-schedulytics.html">← Back to the product page</a>
+    </p>
+  </div>
+  <p class="footer-legal" style="text-align:center;max-width:52ch;margin:22px auto 0;">© 2026 Mohammed Farooque. All rights reserved. Independently developed. Not affiliated with, endorsed by, or sponsored by Oracle Corporation or Primavera. "P6" and "Primavera" are trademarks of Oracle Corporation, referenced here only to describe compatibility.</p>
+</div>
+
+<script>
+  document.getElementById('go').href = DESTINATION;
+  setTimeout(function () { window.location.replace(DESTINATION); }, 900);
+</script>
+</body>
+</html>
