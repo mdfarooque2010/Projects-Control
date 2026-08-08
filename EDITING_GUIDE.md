@@ -53,6 +53,8 @@ version is kept.
 | Your bio | `about.html` | — |
 | Email / WhatsApp number | `contact.html` | `mailto:` |
 | Privacy policy | `privacy.html` | — |
+| Terms and licence | `terms.html` | — |
+| Where a Buy button sends people | `buy/progress/index.html` or `buy/baseline/index.html` | `gumroad.com` — change **both** lines: the `meta refresh` and the button `href` |
 | Colours, fonts, spacing | `assets/styles.css` | see section 5 |
 
 Blocks that are safe and expected to be edited are marked in the HTML like this:
