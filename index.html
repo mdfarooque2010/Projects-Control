@@ -119,8 +119,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="offer-head">
         <span class="offer-title">Android pre-launch offer</span>
         <span class="stamp">Limited</span>
-        <!-- EDITABLE — offer deadline -->
-        <span class="offer-until">Ends when the Android app goes live</span>
+        <!-- ═══════════════════════════════════════════════════════════════
+             EDITABLE — OFFER DEADLINE. Change the date in data-deadline only
+             (ISO 8601, with timezone). Everything else updates from it: the
+             countdown, the written date, and the <noscript> fallback.
+             The countdown deliberately counts to the END OF THE OFFER — a date
+             you control — not to the Play Store launch, which depends on
+             Google's review queue and the 14-day closed-test rule.
+             ═══════════════════════════════════════════════════════════ -->
+        <span class="offer-until" id="offer-countdown"
+              data-deadline="2026-09-01T23:59:59+03:00">
+          Ends 1 September 2026
+        </span>
       </div>
 
       <div class="offer-steps">
@@ -161,7 +171,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <span class="stamp stamp-dev">Pre-launch</span>
     </div>
+
+    <!-- EDITABLE — tester call-out. Remove once the closed test is full. -->
+    <div class="teaser" style="margin-top:14px;">
+      <span class="teaser-glyph" aria-hidden="true">&#129302;</span>
+      <div>
+        <h3>Want early access? Join the Android test group</h3>
+        <p>The Android app is in closed testing now. Send the <strong>Google account email
+        used on your phone</strong> and I will add you to the tester list and send the install
+        link. Testers get the app free during the test — and a standing thank-you offer on any
+        Schedulytics tool afterwards. <a href="contact.html">Get in touch &rarr;</a></p>
+      </div>
+      <span class="stamp stamp-live">Testers wanted</span>
+    </div>
   </div>
+
+  <script>
+  /* Pre-launch offer countdown.
+     Reads the deadline from data-deadline so the date lives in ONE place (the
+     markup above). Fails safe: if the attribute is missing or unparseable, or
+     JS is off, the element keeps its server-rendered "Ends 1 September 2026"
+     text — the page never shows a broken or empty counter. */
+  (function () {
+    var el = document.getElementById('offer-countdown');
+    if (!el) return;
+    var end = new Date(el.getAttribute('data-deadline') || '');
+    if (isNaN(end)) return;                       // keep the static fallback
+
+    var written = end.toLocaleDateString('en-GB',
+                  { day: 'numeric', month: 'long', year: 'numeric' });
+
+    function tick() {
+      var ms = end - new Date();
+      if (ms <= 0) { el.textContent = 'Pre-launch offer has ended'; return; }
+      var d = Math.floor(ms / 86400000),
+          h = Math.floor(ms % 86400000 / 3600000),
+          m = Math.floor(ms % 3600000 / 60000);
+      el.textContent = d > 0
+        ? 'Ends in ' + d + (d === 1 ? ' day ' : ' days ') + h + 'h ' + m + 'm · ' + written
+        : 'Ends in ' + h + 'h ' + m + 'm · today';
+      setTimeout(tick, 60000);                    // once a minute is plenty
+    }
+    tick();
+  })();
+  </script>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
