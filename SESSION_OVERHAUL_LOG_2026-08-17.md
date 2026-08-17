@@ -44,8 +44,8 @@ This session executed a comprehensive visual, functional, and search engine opti
 
 ### E. Spacious 4-Product Suite Showcase & 2-Step Buy Flow
 * **Four Dedicated Product Cards:**
-  1. **Progress Schedulytics (PS · 01):** Live on MS Store & Google Play (v3.5.1 Live) · $24.75 USD (75% OFF) · 22-Sheet Excel Pack, Two-Way Cross-Filtering HTML Dashboard, Dual-Device PC + Android activation.
-  2. **Baseline Schedulytics (BS · 02):** Live on MS Store (v4.0.0 Live) · $24.75 USD (75% OFF) · Mode A (22-Point DCMA & Monte Carlo) + Mode B (Multi-Package Project Integration).
+  1. **Progress Schedulytics (PS · 01):** Live on MS Store & Google Play (v3.5.1 Live) · $24.75 USD (75% OFF) · 22-Sheet Excel Pack, Integrated Excel Templates (RFIs, Material Tracking, GIS Lat/Long Alignment Progress), Two-Way Cross-Filtering HTML Dashboard, Dual-Device PC + Android activation.
+  2. **Baseline Schedulytics (BS · 02):** Live on MS Store (v4.0.0 Live) · $24.75 USD (75% OFF) · Single-Package 22-Point DCMA & Monte Carlo Baseline Quality Sentinel (Multi-Package Mode B scheduled for upcoming release).
   3. **Recovery Schedulytics (RS · 03):** In Beta Testing · Saudi Aramco & SABIC spec compliance, CPM simulation, automated logic repair.
   4. **Delay Schedulytics (DS · 04):** In Development · 4 forensic delay methods conforming to AACE 29R-03, FIDIC, and SCL protocol.
 * **Two-Step Transparent Buy Flow:**
