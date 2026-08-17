@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 160" width="100%" height="100%" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="waveSaffron" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E67300"/>
+      <stop offset="25%" stop-color="#FF9933"/>
+      <stop offset="50%" stop-color="#FFB366"/>
+      <stop offset="75%" stop-color="#FF9933"/>
+      <stop offset="100%" stop-color="#D96600"/>
+    </linearGradient>
+    <linearGradient id="waveWhite" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#CBD5E1"/>
+      <stop offset="30%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <linearGradient id="waveGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0E6B05"/>
+      <stop offset="25%" stop-color="#138808"/>
+      <stop offset="50%" stop-color="#22C55E"/>
+      <stop offset="75%" stop-color="#138808"/>
+      <stop offset="100%" stop-color="#0A5004"/>
+    </linearGradient>
+    <linearGradient id="shadowFold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="waveShadow" x="-5%" y="-10%" width="110%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#waveShadow)">
+    <!-- Back Tail Left -->
+    <path d="M40,55 L10,80 L40,105 L85,85 L85,35 Z" fill="#CC5500"/>
+    <path d="M40,75 L10,100 L40,125 L85,105 L85,55 Z" fill="#CBD5E1"/>
+    <path d="M40,95 L10,120 L40,145 L85,125 L85,75 Z" fill="#083F03"/>
+
+    <!-- Back Tail Right -->
+    <path d="M1015,35 L1060,55 L1090,80 L1060,105 L1015,85 Z" fill="#CC5500"/>
+    <path d="M1015,55 L1060,75 L1090,100 L1060,125 L1015,105 Z" fill="#CBD5E1"/>
+    <path d="M1015,75 L1060,95 L1090,120 L1060,145 L1015,125 Z" fill="#083F03"/>
+
+    <!-- Front Flowing Wave Ribbon -->
+    <!-- Saffron Layer -->
+    <path d="M80,35 C250,5 450,80 680,35 C860,0 990,55 1020,35 L1020,62 C990,82 860,27 680,62 C450,107 250,32 80,62 Z" fill="url(#waveSaffron)"/>
+    
+    <!-- White Layer -->
+    <path d="M80,62 C250,32 450,107 680,62 C860,27 990,82 1020,62 L1020,89 C990,109 860,54 680,89 C450,134 250,59 80,89 Z" fill="url(#waveWhite)" stroke="#E2E8F0" stroke-width="0.5"/>
+    
+    <!-- Green Layer -->
+    <path d="M80,89 C250,59 450,134 680,89 C860,54 990,109 1020,89 L1020,116 C990,136 860,81 680,116 C450,161 250,86 80,116 Z" fill="url(#waveGreen)"/>
+
+    <!-- Fold Crease Shadows -->
+    <path d="M80,35 C95,45 95,106 80,116 L98,112 C113,102 113,41 98,31 Z" fill="url(#shadowFold)"/>
+    <path d="M1002,35 C1017,45 1017,106 1002,116 L1020,116 C1035,106 1035,45 1020,35 Z" fill="url(#shadowFold)"/>
+  </g>
+</svg>
