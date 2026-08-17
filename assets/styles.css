@@ -1593,76 +1593,85 @@ button:focus-visible {
 .redirect-card h1 { font-size: 1.35rem; margin: 0 0 10px; }
 .redirect-card p  { color: var(--ink-soft); margin: 0 0 18px; }
 
-/* ------------------------------------------------ 80th Independence Day Promo -- */
+/* ------------------------------------------------ 80th Independence Day Full Band -- */
 
 .promo-banner.promo-independence {
-  background: linear-gradient(135deg, #0e172a 0%, #172554 50%, #0e172a 100%);
-  border-top: 3px solid #ff9933;
-  border-bottom: 3px solid #138808;
-  color: #ffffff;
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(180deg, #FF9933 0%, #FF9933 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #138808 66.66%, #138808 100%);
+  color: #0b132b;
+  border-bottom: 2px solid var(--ink);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  padding: 0;
 }
 
 .promo-banner.promo-independence .wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  padding: 10px 24px;
-  flex-wrap: wrap;
+  gap: 16px;
+  padding: 11px 24px;
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(6px);
   text-align: center;
-}
-
-.flag-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #ffffff;
-  color: #0e172a;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: var(--radius);
-  border-left: 3px solid #ff9933;
-  border-right: 3px solid #138808;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
-}
-
-.tiranga-flag {
-  display: inline-block;
-  vertical-align: middle;
-  border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  flex-shrink: 0;
-}
-
-.offer.offer-independence {
-  border: 2px solid var(--ink);
-  border-top: 4px solid #ff9933;
-  border-bottom: 4px solid #138808;
-  box-shadow: 5px 5px 0 var(--ink);
-}
-
-.offer.offer-independence .offer-head {
-  background: linear-gradient(90deg, #0e172a 0%, #1e293b 100%);
-  color: #ffffff;
-  border-bottom: 2px solid var(--ink);
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  font-weight: 600;
+  color: #0b132b;
   flex-wrap: wrap;
 }
 
-.offer.offer-independence .offer-title {
-  color: #ffffff;
+.promo-banner.promo-independence .independence-headline {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0b132b;
+  letter-spacing: -0.01em;
 }
 
-.offer.offer-independence .offer-until {
-  color: #94a3b8;
+.promo-banner.promo-independence .independence-desc {
+  font-size: 0.92rem;
+  color: #1e293b;
+}
+
+/* ------------------------------------------------ Offer Wave Header (No Chakra) -- */
+
+.offer.offer-wave {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 5px 5px 0 var(--ink);
+  overflow: hidden;
+  background: var(--paper-raised);
+}
+
+.offer-wave-header {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 153, 51, 0.25) 0%, rgba(255, 255, 255, 0.9) 45%, rgba(19, 136, 8, 0.25) 100%);
+  border-bottom: 2px solid var(--ink);
+  padding: 20px 24px;
+  overflow: hidden;
+}
+
+.offer-wave-header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z' fill='%23138808' opacity='0.35'/%3E%3Cpath d='M0,0 C200,60 400,-20 600,40 C800,100 1000,20 1200,60 L1200,0 L0,0 Z' fill='%23FF9933' opacity='0.4'/%3E%3C/svg%3E") no-repeat center center;
+  background-size: cover;
+  pointer-events: none;
+}
+
+.offer-wave-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.offer-wave-title {
+  font-family: var(--display);
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #0b132b;
 }
 
 /* ------------------------------------------------ 1/4th Size Product Thumbnails -- */
@@ -1687,13 +1696,38 @@ button:focus-visible {
   display: block;
 }
 
-/* Hero thumbnail placement for product detail pages */
-.hero-product-preview {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin: 16px 0 20px;
-  flex-wrap: wrap;
+/* ------------------------------------------------ Product Hero Two-Column Grid -- */
+
+.product-hero-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-top: 10px;
+}
+
+@media (max-width: 860px) {
+  .product-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.product-hero-brand {
+  width: 100%;
+  aspect-ratio: 1024 / 500;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  overflow: hidden;
+  background: #0b132b;
+}
+
+.product-hero-brand img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ----------------------------------------------- Product Cards (Clean CAD Style) -- */
@@ -1751,5 +1785,75 @@ button:focus-visible {
   color: var(--ink-soft);
   line-height: 1.45;
 }
+
+/* ----------------------------------------------- Real Desktop Screenshots Grid -- */
+
+.real-screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+
+@media (max-width: 860px) {
+  .real-screenshot-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.screenshot-card {
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  box-shadow: 4px 4px 0 var(--ink);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.screenshot-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.screenshot-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0b132b;
+  overflow: hidden;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.screenshot-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.screenshot-card:hover .screenshot-card-img img {
+  transform: scale(1.02);
+}
+
+.screenshot-card-body {
+  padding: 14px 18px;
+}
+
+.screenshot-card-title {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+
+.screenshot-card-desc {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
 
 
