@@ -25,7 +25,7 @@
   --sans: "IBM Plex Sans", -apple-system, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  --sheet-max: 1280px;
+  --sheet-max: 1400px;
   --radius: 6px;
 }
 
@@ -78,7 +78,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 .wrap {
   max-width: var(--sheet-max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 clamp(20px, 3vw, 40px);
 }
 
 /* -------------------------------------------------------------- header & celebration -- */
@@ -87,7 +87,7 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
 .promo-banner.promo-independence {
   width: 100%;
   margin: 0;
-  padding: 14px 20px;
+  padding: clamp(12px, 1.6vw, 18px) 0;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #FF6F00 0%, #FF9933 22%, #FFFFFF 48%, #FFFFFF 52%, #138808 78%, #0A5C04 100%);
@@ -113,19 +113,20 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1400px;
+  max-width: var(--sheet-max);
   margin: 0 auto;
+  padding: 0 clamp(20px, 3.5vw, 44px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: clamp(16px, 2.5vw, 32px);
   flex-wrap: wrap;
 }
 
 .celebration-left {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: clamp(12px, 2vw, 20px);
 }
 
 .top-flag-emblem {
@@ -1827,27 +1828,33 @@ button:focus-visible {
 
 .product-hero-grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 36px;
-  align-items: start;
-  margin-top: 10px;
+  grid-template-columns: minmax(360px, 480px) 1fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  margin-top: 12px;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 960px) {
   .product-hero-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
 }
 
 .product-hero-brand {
   width: 100%;
-  aspect-ratio: 1024 / 500;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius);
-  border: 1.5px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
   overflow: hidden;
   background: #0b132b;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-hero-brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 8px 8px 0 var(--ink);
 }
 
 .product-hero-brand img {
