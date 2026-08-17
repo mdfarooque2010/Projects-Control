@@ -34,7 +34,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="promo-banner promo-independence">
   <div class="wrap">
-    <span class="flag-badge"><span class="flag-icon" aria-hidden="true"></span> 80th Independence Day Special</span>
+    <span class="flag-badge">
+      <svg class="tiranga-flag" viewBox="0 0 900 600" width="24" height="16" aria-hidden="true">
+        <rect width="900" height="600" fill="#138808"/>
+        <rect width="900" height="400" fill="#FFFFFF"/>
+        <rect width="900" height="200" fill="#FF9933"/>
+        <g transform="translate(450,300)">
+          <circle r="67.5" fill="none" stroke="#000080" stroke-width="6"/>
+          <circle r="15" fill="#000080"/>
+          <path d="M0,0 L0,-67.5 M0,0 L17.47,-65.21 M0,0 L33.75,-58.46 M0,0 L47.73,-47.73 M0,0 L58.46,-33.75 M0,0 L65.21,-17.47 M0,0 L67.5,0 M0,0 L65.21,17.47 M0,0 L58.46,33.75 M0,0 L47.73,47.73 M0,0 L33.75,58.46 M0,0 L17.47,65.21 M0,0 L0,67.5 M0,0 L-17.47,65.21 M0,0 L-33.75,58.46 M0,0 L-47.73,47.73 M0,0 L-58.46,33.75 M0,0 L-65.21,17.47 M0,0 L-67.5,0 M0,0 L-65.21,-17.47 M0,0 L-58.46,-33.75 M0,0 L-47.73,-47.73 M0,0 L-33.75,-58.46 M0,0 L-17.47,-65.21" stroke="#000080" stroke-width="3"/>
+        </g>
+      </svg>
+      80th Independence Day Special
+    </span>
     <span><strong>75% Flat Discount on all live tools</strong> — Now $24.75 USD (Ends 30 Sept 2026).</span>
   </div>
 </div>
@@ -67,87 +79,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="section reveal-on-scroll">
   <div class="wrap">
-    <div class="product-showcase-grid">
+    <div class="card-grid">
 
       <!-- Product 1: Recovery Schedulytics -->
-      <div class="product-showcase-card is-dev">
-        <div class="product-banner-wrapper">
-          <img src="assets/branding/recovery-schedulytics-banner.png" alt="Recovery Schedulytics Logo &amp; Banner" loading="lazy">
+      <div class="card is-dev">
+        <div class="card-head">
+          <span class="num">RS · 03</span>
+          <span class="stamp stamp-dev">In Testing</span>
         </div>
-        <div class="product-showcase-body">
-          <div class="product-badge-row">
-            <span class="num">RS · 03</span>
-            <span class="stamp stamp-dev">In Testing</span>
-          </div>
-          <h3>Recovery Schedulytics</h3>
-          <p class="product-lede">Schedule health scoring against DCMA, Saudi Aramco, and SABIC profiles with a human-approved automated fix engine, custom CPM engine, and recovery simulations.</p>
+        <!-- 1/4th size logo thumbnail -->
+        <div class="product-thumb-quarter">
+          <img src="assets/branding/recovery-schedulytics-banner.png" alt="Recovery Schedulytics Logo &amp; Icon" loading="lazy">
+        </div>
+        <h3>Recovery Schedulytics</h3>
+        <p>Schedule health scoring against DCMA, Saudi Aramco, and SABIC profiles with a human-approved automated fix engine, custom CPM engine, and recovery simulations.</p>
 
-          <div class="product-features-box">
-            <h4>Key Features &amp; Capabilities</h4>
-            <ul>
-              <li><strong>Import Center:</strong> Live P6 database auto-discovery (SQLite, Oracle, SQL Server) or high-speed XER import.</li>
-              <li><strong>Multi-Profile Health Checks:</strong> DCMA 14-Point, Saudi Aramco Schedule Quality, and SABIC Project profiles.</li>
-              <li><strong>Native CPM Engine:</strong> Calendar-exact forward/backward pass calculation supporting all relationship types &amp; lags.</li>
-              <li><strong>Interactive Fix Engine:</strong> Categorized fixes (SAFE / REVIEW / MANUAL_ONLY) with CSV human approval gates.</li>
-              <li><strong>Corrected XER Export:</strong> Generates clean P6 XER files with immutable cryptographic change logs.</li>
-            </ul>
-          </div>
+        <div style="background:var(--paper); border:1px solid var(--rule); border-radius:var(--radius); padding:12px 14px; margin: 12px 0;">
+          <h4 style="font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 8px;">Key Capabilities</h4>
+          <ul style="margin:0; padding-left:18px; font-size:0.86rem; color:var(--ink-soft); line-height:1.5;">
+            <li>Live P6 database auto-discovery (SQLite/Oracle/SQL Server) or XER import</li>
+            <li>DCMA 14-Point + Saudi Aramco &amp; SABIC quality profiles</li>
+            <li>Native CPM engine respecting individual activity working calendars</li>
+            <li>Human-approved fix engine with SAFE / REVIEW / MANUAL_ONLY safety tiers</li>
+            <li>Corrected XER export with immutable audit change log</li>
+          </ul>
+        </div>
 
-          <div class="store-action-box">
-            <div>
-              <span class="store-status-badge testing">⏳ Under Development &amp; Testing — Coming Soon to Microsoft Store</span>
-            </div>
-            <p style="font-size:0.86rem; color:var(--ink-faint); margin: 6px 0 10px;">In final compiling and testing. Register to be notified upon launch.</p>
-            <div class="cta-row">
-              <a class="btn btn-ghost" href="contact.html" data-track="interest_click" data-tool="schedule_recovery">Notify Me at Launch →</a>
-            </div>
-          </div>
+        <div style="margin: 12px 0;">
+          <span class="store-status-badge testing">⏳ Under Development &amp; Testing — Coming Soon to Microsoft Store</span>
+        </div>
+        <p style="font-size:0.84rem; color:var(--ink-faint); margin: 4px 0 12px;">Status: In final compiling and testing. Pricing announced at launch.</p>
+        
+        <div class="cta-row">
+          <a class="btn btn-ghost" href="contact.html" data-track="interest_click" data-tool="schedule_recovery">Notify Me at Launch →</a>
+        </div>
 
-          <div class="enhancement-box">
-            <span class="enhancement-title">🔬 In Active Testing</span>
-            <p>Verifying target-finish recovery simulations, forensic delay attribution, and automated star-schema exports for Power BI and SYNCHRO 4D integration.</p>
-          </div>
+        <div class="enhancement-box">
+          <span class="enhancement-title">🔬 In Active Testing</span>
+          <p>Verifying target-finish recovery simulations, forensic delay attribution, and automated star-schema exports for Power BI and SYNCHRO 4D integration.</p>
         </div>
       </div>
 
       <!-- Product 2: Delay Schedulytics -->
-      <div class="product-showcase-card is-dev">
-        <div class="product-banner-wrapper">
-          <img src="assets/branding/delay-schedulytics-banner.png" alt="Delay Schedulytics Logo &amp; Banner" loading="lazy">
+      <div class="card is-dev">
+        <div class="card-head">
+          <span class="num">DS · 04</span>
+          <span class="stamp stamp-dev">In Development</span>
         </div>
-        <div class="product-showcase-body">
-          <div class="product-badge-row">
-            <span class="num">DS · 04</span>
-            <span class="stamp stamp-dev">In Development</span>
-          </div>
-          <h3>Delay Schedulytics</h3>
-          <p class="product-lede">Perform rigorous forensic schedule delay analysis across 4 international methodologies to generate dispute-ready delay assessment reports for claims and arbitration.</p>
+        <!-- 1/4th size logo thumbnail -->
+        <div class="product-thumb-quarter">
+          <img src="assets/branding/delay-schedulytics-banner.png" alt="Delay Schedulytics Logo &amp; Icon" loading="lazy">
+        </div>
+        <h3>Delay Schedulytics</h3>
+        <p>Perform rigorous forensic schedule delay analysis across 4 international methodologies to generate dispute-ready delay assessment reports for claims and arbitration.</p>
 
-          <div class="product-features-box">
-            <h4>Key Features &amp; Capabilities</h4>
-            <ul>
-              <li><strong>4 Forensic Methodologies:</strong> Impacted As-Planned, Time Impact Analysis (TIA), As-Planned vs As-Built, Window Analysis.</li>
-              <li><strong>Contractual Compliance:</strong> Built to conform to AACE 29R-03, AACE 52R-06, FIDIC, NEC3/NEC4, and PMI standards.</li>
-              <li><strong>Contemporaneous Analysis:</strong> Stepped delay insertion, critical path evolution tracking, and concurrency analysis.</li>
-              <li><strong>Formal Delay Reports:</strong> Dispute-ready Word &amp; PDF delay assessments with executive narratives and event logs.</li>
-              <li><strong>100% Confidential:</strong> Runs fully offline on your workstation — confidential claims data never leaves your device.</li>
-            </ul>
-          </div>
+        <div style="background:var(--paper); border:1px solid var(--rule); border-radius:var(--radius); padding:12px 14px; margin: 12px 0;">
+          <h4 style="font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 8px;">Key Capabilities</h4>
+          <ul style="margin:0; padding-left:18px; font-size:0.86rem; color:var(--ink-soft); line-height:1.5;">
+            <li>4 Methodologies: Impacted As-Planned, TIA, As-Planned vs As-Built, Window Analysis</li>
+            <li>Conforms to AACE 29R-03, AACE 52R-06, FIDIC, NEC3/NEC4, and PMI standards</li>
+            <li>Stepped delay insertion, critical path evolution &amp; concurrency analysis</li>
+            <li>Dispute-ready narrative Delay Assessment &amp; Notification reports (Word &amp; PDF)</li>
+            <li>100% offline — sensitive contractual claims data never leaves your workstation</li>
+          </ul>
+        </div>
 
-          <div class="store-action-box">
-            <div>
-              <span class="store-status-badge testing">⏳ Under Development &amp; Testing — Coming Soon to Microsoft Store</span>
-            </div>
-            <p style="font-size:0.86rem; color:var(--ink-faint); margin: 6px 0 10px;">In active development in collaboration with planning and claims experts.</p>
-            <div class="cta-row">
-              <a class="btn btn-ghost" href="contact.html" data-track="interest_click" data-tool="forensic_delay_analysis">Notify Me at Launch →</a>
-            </div>
-          </div>
+        <div style="margin: 12px 0;">
+          <span class="store-status-badge testing">⏳ Under Development &amp; Testing — Coming Soon to Microsoft Store</span>
+        </div>
+        <p style="font-size:0.84rem; color:var(--ink-faint); margin: 4px 0 12px;">Status: In active development in collaboration with planning and claims experts.</p>
+        
+        <div class="cta-row">
+          <a class="btn btn-ghost" href="contact.html" data-track="interest_click" data-tool="forensic_delay_analysis">Notify Me at Launch →</a>
+        </div>
 
-          <div class="enhancement-box">
-            <span class="enhancement-title">🤝 Collaborative Build</span>
-            <p>Developed with senior claims practitioners to guarantee full evidentiary compliance with international construction arbitration standards.</p>
-          </div>
+        <div class="enhancement-box">
+          <span class="enhancement-title">🤝 Collaborative Build</span>
+          <p>Developed with senior claims practitioners to guarantee full evidentiary compliance with international construction arbitration standards.</p>
         </div>
       </div>
 

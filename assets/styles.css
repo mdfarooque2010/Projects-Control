@@ -1596,7 +1596,7 @@ button:focus-visible {
 /* ------------------------------------------------ 80th Independence Day Promo -- */
 
 .promo-banner.promo-independence {
-  background: linear-gradient(135deg, #101a2e 0%, #16223e 50%, #1b2b4d 100%);
+  background: linear-gradient(135deg, #0e172a 0%, #172554 50%, #0e172a 100%);
   border-top: 3px solid #ff9933;
   border-bottom: 3px solid #138808;
   color: #ffffff;
@@ -1604,212 +1604,113 @@ button:focus-visible {
   overflow: hidden;
 }
 
-.promo-banner.promo-independence::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #ff9933 0%, #ff9933 33.3%, #ffffff 33.3%, #ffffff 66.6%, #138808 66.6%, #138808 100%);
-  opacity: 0.8;
+.promo-banner.promo-independence .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 24px;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .flag-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: #ffffff;
-  color: #101a2e;
+  color: #0e172a;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: var(--radius);
   border-left: 3px solid #ff9933;
   border-right: 3px solid #138808;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
 }
 
-.flag-icon {
+.tiranga-flag {
   display: inline-block;
-  width: 16px;
-  height: 11px;
-  background: linear-gradient(180deg, #ff9933 0%, #ff9933 33.33%, #ffffff 33.33%, #ffffff 66.66%, #138808 66.66%, #138808 100%);
-  border: 0.5px solid rgba(0,0,0,0.2);
-  border-radius: 1px;
   vertical-align: middle;
-  position: relative;
-}
-
-.flag-icon::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  border: 0.5px solid #000080;
-  background: #000080;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  flex-shrink: 0;
 }
 
 .offer.offer-independence {
-  border-top: 3px solid #ff9933;
-  border-bottom: 3px solid #138808;
+  border: 2px solid var(--ink);
+  border-top: 4px solid #ff9933;
+  border-bottom: 4px solid #138808;
+  box-shadow: 5px 5px 0 var(--ink);
 }
 
 .offer.offer-independence .offer-head {
-  background: linear-gradient(90deg, #101a2e 0%, #17264a 100%);
+  background: linear-gradient(90deg, #0e172a 0%, #1e293b 100%);
+  color: #ffffff;
   border-bottom: 2px solid var(--ink);
-}
-
-/* ----------------------------------------------- 4-Product Showcase Cards -- */
-
-.product-showcase-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-  margin-top: 24px;
-}
-
-@media (max-width: 960px) {
-  .product-showcase-grid { grid-template-columns: 1fr; }
-}
-
-.product-showcase-card {
-  border: 1.5px solid var(--ink);
-  background: var(--paper-raised);
-  border-radius: var(--radius);
-  padding: 0;
   display: flex;
-  flex-direction: column;
-  box-shadow: 4px 4px 0 var(--ink);
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.product-showcase-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 6px 6px 0 var(--ink);
-  border-color: var(--accent);
+.offer.offer-independence .offer-title {
+  color: #ffffff;
 }
 
-.product-showcase-card.is-live { border-top: 4px solid var(--live); }
-.product-showcase-card.is-dev  { border-top: 4px solid var(--dev); }
+.offer.offer-independence .offer-until {
+  color: #94a3b8;
+}
 
-.product-banner-wrapper {
-  width: 100%;
+/* ------------------------------------------------ 1/4th Size Product Thumbnails -- */
+
+.product-thumb-quarter {
+  width: 240px;
+  max-width: 100%;
   aspect-ratio: 1024 / 500;
-  background: #0b132b;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
   overflow: hidden;
-  border-bottom: 1.5px solid var(--ink);
-  position: relative;
+  background: #0b132b;
+  display: block;
+  margin-bottom: 14px;
 }
 
-.product-banner-wrapper img {
+.product-thumb-quarter img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
 }
 
-.product-showcase-card:hover .product-banner-wrapper img {
-  transform: scale(1.02);
-}
-
-.product-showcase-body {
-  padding: 24px 24px 20px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.product-badge-row {
+/* Hero thumbnail placement for product detail pages */
+.hero-product-preview {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 18px;
+  margin: 16px 0 20px;
+  flex-wrap: wrap;
 }
 
-.product-showcase-card h3 {
-  font-size: 1.3rem;
-  margin: 0 0 8px;
-  color: var(--ink);
-}
+/* ----------------------------------------------- Product Cards (Clean CAD Style) -- */
 
-.product-lede {
-  font-size: 0.94rem;
-  color: var(--ink-soft);
-  margin-bottom: 16px;
-  line-height: 1.5;
-}
-
-.product-features-box {
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  margin-bottom: 18px;
-}
-
-.product-features-box h4 {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin: 0 0 10px;
-}
-
-.product-features-box ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.product-features-box li {
-  font-size: 0.88rem;
-  color: var(--ink-soft);
-  padding-left: 18px;
-  position: relative;
-  margin: 6px 0;
-}
-
-.product-features-box li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--live);
-  font-weight: bold;
-}
-
-.product-showcase-card.is-dev .product-features-box li::before {
-  content: "→";
-  color: var(--accent);
-}
-
-.store-action-box {
-  margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid var(--grid-line);
-}
+.card.is-live { border-top: 4px solid var(--live); }
+.card.is-dev  { border-top: 4px solid var(--dev); }
 
 .store-status-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-family: var(--mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   letter-spacing: 0.04em;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: var(--radius);
   font-weight: 600;
-  margin-bottom: 12px;
 }
 
 .store-status-badge.live {
@@ -1829,7 +1730,7 @@ button:focus-visible {
   border: 1px dashed var(--accent);
   border-radius: var(--radius);
   padding: 12px 14px;
-  margin-top: 16px;
+  margin-top: 14px;
   font-size: 0.86rem;
 }
 
@@ -1850,4 +1751,5 @@ button:focus-visible {
   color: var(--ink-soft);
   line-height: 1.45;
 }
+
 
