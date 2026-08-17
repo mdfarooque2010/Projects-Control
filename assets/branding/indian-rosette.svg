@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <filter id="rosetteDrop" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-opacity="0.3"/>
+    </filter>
+    <linearGradient id="rosSaffron" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9933"/>
+      <stop offset="50%" stop-color="#FFB366"/>
+      <stop offset="100%" stop-color="#E67300"/>
+    </linearGradient>
+    <linearGradient id="rosGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#138808"/>
+      <stop offset="50%" stop-color="#22C55E"/>
+      <stop offset="100%" stop-color="#0E6B05"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(80, 80)" filter="url(#rosetteDrop)">
+    <!-- Outer Saffron Pleated Circle -->
+    <circle r="72" fill="url(#rosSaffron)"/>
+    <!-- Pleat Points -->
+    <g fill="#E67300">
+      <polygon points="0,-78 10,-68 -10,-68"/>
+      <polygon points="55,-55 55,-41 41,-55"/>
+      <polygon points="78,0 68,10 68,-10"/>
+      <polygon points="55,55 41,55 55,41"/>
+      <polygon points="0,78 -10,68 10,68"/>
+      <polygon points="-55,55 -55,41 -41,55"/>
+      <polygon points="-78,0 -68,-10 -68,10"/>
+      <polygon points="-55,-55 -41,-55 -55,-41"/>
+      <polygon points="30,-72 37,-59 21,-65"/>
+      <polygon points="72,-30 65,-21 59,-37"/>
+      <polygon points="72,30 59,37 65,21"/>
+      <polygon points="30,72 21,65 37,59"/>
+      <polygon points="-30,72 -37,59 -21,65"/>
+      <polygon points="-72,30 -65,21 -59,37"/>
+      <polygon points="-72,-30 -59,-37 -65,-21"/>
+      <polygon points="-30,-72 -21,-65 -37,-59"/>
+    </g>
+    
+    <!-- Middle White Ring -->
+    <circle r="50" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+    <!-- Inner Green Ring -->
+    <circle r="32" fill="url(#rosGreen)"/>
+    
+    <!-- Central Ashoka Chakra Disk -->
+    <circle r="18" fill="#FFFFFF" stroke="#000080" stroke-width="2"/>
+    <circle r="3.5" fill="#000080"/>
+    
+    <!-- Ashoka Chakra 24 Spokes -->
+    <g stroke="#000080" stroke-width="1.2">
+      <line x1="0" y1="-18" x2="0" y2="18"/>
+      <line x1="-18" y1="0" x2="18" y2="0"/>
+      <line x1="-12.7" y1="-12.7" x2="12.7" y2="12.7"/>
+      <line x1="-12.7" y1="12.7" x2="12.7" y2="-12.7"/>
+      <line x1="-16.6" y1="-6.8" x2="16.6" y2="6.8"/>
+      <line x1="-16.6" y1="6.8" x2="16.6" y2="-6.8"/>
+      <line x1="-6.8" y1="-16.6" x2="6.8" y2="16.6"/>
+      <line x1="-6.8" y1="16.6" x2="6.8" y2="-16.6"/>
+      <line x1="-17.6" y1="-3.5" x2="17.6" y2="3.5"/>
+      <line x1="-17.6" y1="3.5" x2="17.6" y2="-3.5"/>
+      <line x1="-3.5" y1="-17.6" x2="3.5" y2="17.6"/>
+      <line x1="-3.5" y1="17.6" x2="3.5" y2="-17.6"/>
+    </g>
+  </g>
+</svg>
