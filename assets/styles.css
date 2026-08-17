@@ -1597,9 +1597,8 @@ button:focus-visible {
 
 .promo-banner.promo-independence {
   background: linear-gradient(180deg, #FF9933 0%, #FF9933 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #138808 66.66%, #138808 100%);
-  color: #0b132b;
   border-bottom: 2px solid var(--ink);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   padding: 0;
 }
 
@@ -1607,27 +1606,46 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding: 11px 24px;
-  background: rgba(255, 255, 255, 0.90);
+  gap: 14px;
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(6px);
   text-align: center;
-  font-weight: 600;
-  color: #0b132b;
-  flex-wrap: wrap;
 }
 
-.promo-banner.promo-independence .independence-headline {
+.top-greeting-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.top-greeting-rosette {
+  height: 38px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.independence-greeting-bold {
   font-family: var(--display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0b132b;
-  letter-spacing: -0.01em;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #E65100 0%, #E67E22 25%, #000080 50%, #27AE60 75%, #1B5E20 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
-.promo-banner.promo-independence .independence-desc {
-  font-size: 0.92rem;
-  color: #1e293b;
+@media (max-width: 600px) {
+  .independence-greeting-bold {
+    font-size: 1.02rem;
+  }
+  .top-greeting-rosette {
+    height: 28px;
+  }
 }
 
 /* ------------------------------------------------ Offer Wave Header (No Chakra) -- */
