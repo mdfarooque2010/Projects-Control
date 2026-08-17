@@ -21,7 +21,7 @@ This session executed a comprehensive visual, functional, and search engine opti
   * Embedded vector **Ashoka Chakra Rosette Medallion** (`assets/branding/indian-rosette.svg`) with golden pleats and pulse glow.
   * Grand Celebration Title: **`Celebrating India's 80th Independence Day 🇮🇳`** in deep navy lettering.
   * Subtitle: **`Special Independence Festival Offer · Flat 75% OFF All Schedulytics Tools`**.
-  * Badges: **`⭐ 75% OFF SPECIAL`** and countdown timer tag **`Ends 30 September 2026`**.
+  * Badges: **`⭐ 75% OFF SPECIAL`** and countdown timer tag **`Ends 20 September 2026`**.
 
 ### B. Real-Time Champagne Sparkle & Particle Fountain
 * Built a GPU-accelerated 60 FPS HTML5 Canvas particle system (`#celebration-canvas`) overlaid on the celebration banner.
@@ -54,7 +54,7 @@ This session executed a comprehensive visual, functional, and search engine opti
 
 ### F. Search Engine Supremacy (Google & Microsoft Bing SEO)
 * **High-Intent Semantic Keywords:** Targeted high-volume planning engineer queries (`Primavera P6 Reporting Tools`, `P6 Automated Excel Dashboard`, `DCMA 14 Point Assessment`, `P6 Baseline Audit`, `Forensic Delay Analysis Software`, `Time Impact Analysis TIA`).
-* **Schema.org JSON-LD Structured Data:** Embedded rich snippet graphs for `SoftwareApplication`, `Product`, `Offer` ($24.75 USD · Valid until 2026-09-30), `AggregateRating` (4.9/5 stars across 240+ reviews), and `FAQPage`.
+* **Schema.org JSON-LD Structured Data:** Embedded rich snippet graphs for `SoftwareApplication`, `Product`, `Offer` ($24.75 USD · Valid until 2026-09-20), `AggregateRating` (4.9/5 stars across 240+ reviews), and `FAQPage`.
 * **Social Sharing Cards:** Full OpenGraph and Twitter Card metadata for rich link previews across LinkedIn, WhatsApp, and Microsoft Teams.
 * **Interactive SEO FAQ Accordion:** Expandable accordion addressing offline security, P6 compatibility, Excel deliverables, and licensing.
 

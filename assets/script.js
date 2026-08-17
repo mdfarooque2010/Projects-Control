@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ------------------------------------------------------------- 5. Offer Countdown Timer
   var timerEl = document.getElementById("offer-countdown");
   if (timerEl) {
-    var end = new Date(timerEl.getAttribute("data-deadline") || "2026-09-30T23:59:59+03:00");
+    var end = new Date(timerEl.getAttribute("data-deadline") || "2026-09-20T23:59:59+03:00");
     if (!isNaN(end)) {
       var written = end.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
       function tick() {
