@@ -25,7 +25,7 @@ sources than anything we'd rebuild).
 | How many visits | **Reports → Life cycle → Engagement → Overview** — total users/sessions |
 | Country-wise visits | **Reports → User → Demographics → Country** |
 | Weekly / monthly / yearly trends | Top-right date picker on any report — switch range, or use **Reports → Engagement → Overview** with a custom comparison |
-| Which tool gets visited more | **Reports → Engagement → Pages and screens** — sort by views; compare `/projectpulse.html` vs `/baseline-review.html` vs `/coming-soon.html` |
+| Which tool gets visited more | **Reports → Engagement → Pages and screens** — sort by views; compare `/progress-schedulytics.html` vs `/baseline-schedulytics.html` vs `/coming-soon.html` |
 | Did they try to visit Gumroad / Microsoft Store | **Reports → Engagement → Events**, filter for `outbound_click` — each event carries a `destination` (gumroad / microsoft_store) and `tool` parameter so you can break it down either way |
 | Which tool people click "buy" on more | Same `outbound_click` event, group by the `tool` parameter |
 | Interest in unreleased tools | **Events**, filter for `interest_click` — fires when someone clicks "Notify me at launch" on the Coming Soon page, tagged by tool |
