@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M5MRZWPH');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Fix Negative Total Float in Primavera P6 (Step-by-Step) | Schedulytics</title>
+<meta name="description" content="Why negative total float appears in Primavera P6 and a step-by-step method to diagnose and remove it — constraints, broken logic, and out-of-sequence progress.">
+<meta name="keywords" content="negative total float P6, fix negative float Primavera, why is my float negative, P6 negative float causes, critical path negative float, total float troubleshooting">
+<link rel="canonical" href="https://schedulytics.app/guide-fix-negative-total-float-p6.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Schedulytics">
+<meta property="og:title" content="How to Fix Negative Total Float in Primavera P6">
+<meta property="og:description" content="Why negative total float appears in Primavera P6 and a step-by-step method to diagnose and remove it — constraints, broken logic, and out-of-sequence progress.">
+<meta property="og:url" content="https://schedulytics.app/guide-fix-negative-total-float-p6.html">
+<meta property="og:image" content="https://schedulytics.app/assets/screenshots/progress/html_dashboard.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Fix Negative Total Float in Primavera P6">
+<meta name="twitter:description" content="Why negative total float appears in Primavera P6 and a step-by-step method to diagnose and remove it — constraints, broken logic, and out-of-sequence progress.">
+<meta name="twitter:image" content="https://schedulytics.app/assets/screenshots/progress/html_dashboard.png">
+
+<!-- Fonts & Stylesheet -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45PFV7MNN1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-45PFV7MNN1');
+</script>
+
+<!-- Structured Data / JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://schedulytics.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Fix Negative Total Float",
+          "item": "https://schedulytics.app/guide-fix-negative-total-float-p6.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "How to Fix Negative Total Float in Primavera P6",
+      "description": "Why negative total float appears in Primavera P6 and a step-by-step method to diagnose and remove it — constraints, broken logic, and out-of-sequence progress.",
+      "author": {
+        "@type": "Person",
+        "name": "Mohammed Farooque"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Schedulytics",
+        "url": "https://schedulytics.app/"
+      },
+      "mainEntityOfPage": "https://schedulytics.app/guide-fix-negative-total-float-p6.html",
+      "datePublished": "2026-08-19",
+      "dateModified": "2026-08-19"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is negative float always bad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Negative float can be an honest signal that the project is forecasting past its deadline. The problem is that it is often caused instead by a hard constraint or a logic error, so you must rule those out before treating it as real delay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the most common cause of negative float in P6?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A hard date constraint — such as Must Finish By or Finish On or Before — set earlier than the logic can deliver. P6 propagates the shortfall as negative float up the driving chain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I remove negative float without changing the deadline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You cannot make genuine negative float disappear without either changing logic/durations (acceleration) or moving the deadline. What you can remove is artificial negative float caused by unnecessary constraints or out-of-sequence progress."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5MRZWPH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- FULL-BLEED CELEBRATION HEADER -->
+<div class="promo-banner promo-independence">
+  <canvas id="celebration-canvas"></canvas>
+  <div class="celebration-banner-inner">
+    <div class="celebration-left">
+      <img src="assets/branding/indian-flag-emblem.svg" alt="Indian National Flag" class="top-flag-emblem">
+      <div class="celebration-title-group">
+        <span class="celebration-main-title">Celebrating India's 80th Independence Day</span>
+        <span class="celebration-sub-title">Special Independence Festival Offer &middot; Flat 75% OFF All Schedulytics Tools</span>
+      </div>
+    </div>
+    <div class="celebration-right">
+      <img src="assets/branding/indian-rosette.svg" alt="Ashoka Chakra Rosette Emblem" class="top-greeting-rosette-img">
+      <span class="celebration-badge-pill">&#11088; 75% OFF SPECIAL</span>
+      <span class="celebration-timer-tag" id="offer-countdown" data-deadline="2026-09-20T23:59:59+03:00">
+        Ends 20 September 2026
+      </span>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <a href="index.html" class="wordmark">Schedulytics</a>
+      <span class="tagline">Schedule Analytics for Primavera P6</span>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">MENU</button>
+    <nav class="nav">
+      <a href="index.html" class="nav-home">Home</a>
+      <a href="progress-schedulytics.html" class="nav-progress">Progress Schedulytics</a>
+      <a href="baseline-schedulytics.html" class="nav-baseline">Baseline Schedulytics</a>
+      <a href="coming-soon.html" class="nav-soon">Coming Soon</a>
+      <a href="about.html" class="nav-about">About</a>
+      <a href="contact.html" class="nav-contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding: 48px 0 24px;">
+  <div class="wrap">
+    <span class="eyebrow">Primavera P6 Troubleshooting</span>
+    <h1 style="font-size: clamp(2rem, 3.6vw, 3rem); max-width: 26ch; line-height: 1.15; margin: 8px 0 14px;">How to Fix Negative Total Float in Primavera P6</h1>
+    <p style="max-width: 64ch; color: var(--ink-faint); font-size: 1.05rem;">Negative float means your schedule can no longer meet a deadline as logically built. Here is what actually causes it in P6, and a repeatable step-by-step method to find and remove the root cause.</p>
+  </div>
+</section>
+
+<section class="section reveal-on-scroll" style="border-top:none; padding-top:0;">
+  <div class="wrap">
+    <article class="panel" style="max-width:74ch;">
+
+      <h2>What negative total float actually means</h2>
+      <p><strong>Total float</strong> is the amount of time an activity can slip without delaying the project finish (or a deadline constraint). When float goes <strong>negative</strong>, Primavera P6 is telling you the opposite: as the logic and constraints are currently built, the activity is already <em>behind</em> the date it must hit to protect the deadline. A total float of -18 means you are 18 days short.</p>
+      <p>Negative float is not automatically wrong — sometimes it is a true, honest signal that you are late. The problem is that it is very often an <em>artefact</em> of a constraint or a logic error, and until you rule those out you can't trust it.</p>
+
+      <h2>The four causes, in order of likelihood</h2>
+      <h3>1. A hard constraint fighting the logic</h3>
+      <p>By far the most common cause. A <em>Must Finish By</em> or <em>Finish On or Before</em> constraint sets a deadline earlier than the logic can deliver, so P6 back-propagates negative float up the driving chain. Check the affected activities and their predecessors for constraints first.</p>
+      <h3>2. Out-of-sequence progress</h3>
+      <p>When work is reported on an activity before its predecessor finished, the retained-logic calculation can throw negative float. Look for activities with actual starts that violate their relationships.</p>
+      <h3>3. Deadline (project Must Finish By) date passed</h3>
+      <p>If the project-level Must Finish By date is earlier than the calculated finish, every activity on the critical path shows negative float. This is the honest kind — you are genuinely forecasting late.</p>
+      <h3>4. Broken or missing logic</h3>
+      <p>Open ends and dangling activities can interact with constraints to produce misleading float values.</p>
+
+      <h2>Step-by-step: diagnose and fix</h2>
+      <ol>
+        <li><strong>Isolate it.</strong> Add a filter for <code>Total Float &lt; 0</code> and sort ascending, so the most negative (the driving activity) is at the top.</li>
+        <li><strong>Trace the driving chain.</strong> From the most negative activity, walk the predecessor logic backwards (Ctrl-click Goto Predecessor) to find where the negative float originates.</li>
+        <li><strong>Check for constraints on that chain.</strong> Add the Primary/Secondary Constraint columns. Remove or relax any constraint that is not contractually required.</li>
+        <li><strong>Check the data date and out-of-sequence progress.</strong> Re-schedule (F9) with Retained Logic and review the scheduling log for out-of-sequence relationships.</li>
+        <li><strong>Re-run F9 and re-measure.</strong> If float returns to positive, the constraint or logic was the culprit. If it stays negative after constraints are clean, the delay is real — now it is a recovery / acceleration problem, not a schedule-hygiene one.</li>
+      </ol>
+
+      <h2>Doing this across many files</h2>
+      <p>Tracing float by hand is fine for one schedule. Across a portfolio of contractor submittals it is slow and inconsistent. <a href="baseline-schedulytics.html">Baseline Schedulytics</a> reads each .xer, lists every negative-float activity with its driving chain and any offending constraints, and scores the schedule against DCMA criteria — so you can separate genuine delay from constraint artefacts in seconds. See the full <a href="guide-dcma-14-point-assessment-checklist.html">DCMA 14-point checklist</a> for the related checks.</p>
+
+      <div class="panel" style="background: var(--wash, #f1f5f9); margin: 28px 0; padding: 22px;">
+        <h3 style="margin-top:0;">Find float leaks automatically</h3>
+        <p style="margin-bottom:16px;">Baseline Schedulytics flags negative-float chains, hard constraints and out-of-sequence logic in a single audit report — offline, straight from your .xer file.</p>
+        <a class="btn btn-primary" href="baseline-schedulytics.html" data-track="cta_click" data-tool="guide-fix-negative-total-float-p6">See Baseline Schedulytics →</a>
+      </div>
+
+
+      <h2 style="margin-top:34px;">Related planning guides</h2>
+      <ul>
+        <li><a href="guide-convert-p6-xer-to-excel.html">How to Convert a P6 XER File to Excel</a></li>
+        <li><a href="guide-dcma-14-point-assessment-checklist.html">The DCMA 14-Point Assessment Checklist</a></li>
+        <li><a href="guide-fidic-extension-of-time-claim.html">How to Prepare a FIDIC EOT Claim</a></li>
+        <li><a href="guide-p6-s-curve-excel.html">How to Build an S-Curve in Excel from P6</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-legal">&copy; 2026 Mohammed Farooque. All rights reserved. Independently developed. Not affiliated with, endorsed by, or sponsored by Oracle Corporation or Primavera. "P6" and "Primavera" are trademarks of Oracle Corporation, referenced here only to describe compatibility.</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M5MRZWPH');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Build an S-Curve in Excel from Primavera P6 | Schedulytics</title>
+<meta name="description" content="Step-by-step: export planned and actual progress from Primavera P6 and build a cumulative planned vs. actual S-curve in Excel — or generate it automatically.">
+<meta name="keywords" content="P6 S-curve Excel, how to make an S-curve in Excel, planned vs actual S-curve, cumulative progress curve P6, primavera S-curve, project progress S curve">
+<link rel="canonical" href="https://schedulytics.app/guide-p6-s-curve-excel.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Schedulytics">
+<meta property="og:title" content="How to Build an S-Curve in Excel from Primavera P6">
+<meta property="og:description" content="Step-by-step: export planned and actual progress from Primavera P6 and build a cumulative planned vs. actual S-curve in Excel — or generate it automatically.">
+<meta property="og:url" content="https://schedulytics.app/guide-p6-s-curve-excel.html">
+<meta property="og:image" content="https://schedulytics.app/assets/screenshots/progress/html_dashboard.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Build an S-Curve in Excel from Primavera P6">
+<meta name="twitter:description" content="Step-by-step: export planned and actual progress from Primavera P6 and build a cumulative planned vs. actual S-curve in Excel — or generate it automatically.">
+<meta name="twitter:image" content="https://schedulytics.app/assets/screenshots/progress/html_dashboard.png">
+
+<!-- Fonts & Stylesheet -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45PFV7MNN1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-45PFV7MNN1');
+</script>
+
+<!-- Structured Data / JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://schedulytics.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Build a P6 S-Curve in Excel",
+          "item": "https://schedulytics.app/guide-p6-s-curve-excel.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "How to Build an S-Curve in Excel from Primavera P6",
+      "description": "Step-by-step: export planned and actual progress from Primavera P6 and build a cumulative planned vs. actual S-curve in Excel — or generate it automatically.",
+      "author": {
+        "@type": "Person",
+        "name": "Mohammed Farooque"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Schedulytics",
+        "url": "https://schedulytics.app/"
+      },
+      "mainEntityOfPage": "https://schedulytics.app/guide-p6-s-curve-excel.html",
+      "datePublished": "2026-08-19",
+      "dateModified": "2026-08-19"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What data do I need from P6 to build an S-curve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At minimum: each activity's weighting value (budgeted cost, hours or count), its planned (baseline) start and finish for the planned curve, and its actual dates and percent complete for the actual/earned curve. An XER or XML export contains all of this."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should an S-curve be based on cost or on progress percentage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cost-weighted (or hours-weighted) S-curves are the most meaningful because they reflect where the real effort and value sit. A simple activity-count curve treats a one-day task the same as a three-month one, which distorts the picture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I generate a P6 S-curve without building it manually in Excel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Tools such as Progress Schedulytics read the P6 export and generate the cumulative planned-vs-actual S-curve automatically as part of a multi-sheet Excel analytics workbook, removing the manual pivot-table work each cycle."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5MRZWPH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- FULL-BLEED CELEBRATION HEADER -->
+<div class="promo-banner promo-independence">
+  <canvas id="celebration-canvas"></canvas>
+  <div class="celebration-banner-inner">
+    <div class="celebration-left">
+      <img src="assets/branding/indian-flag-emblem.svg" alt="Indian National Flag" class="top-flag-emblem">
+      <div class="celebration-title-group">
+        <span class="celebration-main-title">Celebrating India's 80th Independence Day</span>
+        <span class="celebration-sub-title">Special Independence Festival Offer &middot; Flat 75% OFF All Schedulytics Tools</span>
+      </div>
+    </div>
+    <div class="celebration-right">
+      <img src="assets/branding/indian-rosette.svg" alt="Ashoka Chakra Rosette Emblem" class="top-greeting-rosette-img">
+      <span class="celebration-badge-pill">&#11088; 75% OFF SPECIAL</span>
+      <span class="celebration-timer-tag" id="offer-countdown" data-deadline="2026-09-20T23:59:59+03:00">
+        Ends 20 September 2026
+      </span>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <a href="index.html" class="wordmark">Schedulytics</a>
+      <span class="tagline">Schedule Analytics for Primavera P6</span>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">MENU</button>
+    <nav class="nav">
+      <a href="index.html" class="nav-home">Home</a>
+      <a href="progress-schedulytics.html" class="nav-progress">Progress Schedulytics</a>
+      <a href="baseline-schedulytics.html" class="nav-baseline">Baseline Schedulytics</a>
+      <a href="coming-soon.html" class="nav-soon">Coming Soon</a>
+      <a href="about.html" class="nav-about">About</a>
+      <a href="contact.html" class="nav-contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding: 48px 0 24px;">
+  <div class="wrap">
+    <span class="eyebrow">Reporting How-To</span>
+    <h1 style="font-size: clamp(2rem, 3.6vw, 3rem); max-width: 26ch; line-height: 1.15; margin: 8px 0 14px;">How to Build an S-Curve in Excel from Primavera P6</h1>
+    <p style="max-width: 64ch; color: var(--ink-faint); font-size: 1.05rem;">The planned-vs-actual S-curve is the single most-requested progress chart on any project. Here is how to build one properly from P6 data in Excel — and how to skip the manual work entirely.</p>
+  </div>
+</section>
+
+<section class="section reveal-on-scroll" style="border-top:none; padding-top:0;">
+  <div class="wrap">
+    <article class="panel" style="max-width:74ch;">
+
+      <h2>What an S-curve shows</h2>
+      <p>An <strong>S-curve</strong> plots <em>cumulative</em> progress over time — typically planned value against actual (earned) value. It gets its name from its shape: slow at the start (mobilisation), steep through the middle (peak execution), and flattening at the end (commissioning and close-out). The gap between the planned and actual curves is your schedule performance at a glance.</p>
+
+      <h2>Step-by-step in Excel</h2>
+      <ol>
+        <li><strong>Decide the measure.</strong> Progress can be weighted by cost (budgeted total cost), by labour hours, or by activity count. Cost-weighted is the most common and the most meaningful.</li>
+        <li><strong>Export from P6.</strong> Export the activity list with Budgeted Total Cost, Baseline Start/Finish (for planned) and Actual/Remaining dates and % complete (for actual). An XML or XER export carries all of this.</li>
+        <li><strong>Spread the value over time.</strong> For each activity, distribute its value across the periods (weeks or months) between its start and finish. A simple linear spread is fine for most reporting; front/back-loaded spreads are more accurate but more work.</li>
+        <li><strong>Build a period table.</strong> Create a column of month-ending dates. For each period, sum the planned value that falls in it, and separately the earned value.</li>
+        <li><strong>Make it cumulative.</strong> Add running-total columns for both planned and earned — these are your two curves.</li>
+        <li><strong>Chart it.</strong> Insert a 2-D line chart with the period dates on the X axis and cumulative planned and cumulative earned as two series. Add data labels and a data-date marker.</li>
+      </ol>
+
+      <h2>The catch</h2>
+      <p>Doing this by hand is a few hours of pivot tables every reporting cycle, and it breaks the moment the schedule is re-baselined or activities are added. Every planner has rebuilt the same S-curve a hundred times.</p>
+
+      <h2>The automated route</h2>
+      <p><a href="progress-schedulytics.html">Progress Schedulytics</a> reads the P6 XML export and produces the cumulative planned-vs-actual S-curve automatically, inside a 22-sheet Excel workbook that also includes WBS breakdowns, SPI/CPI trends and float analysis — 100% offline. If you also need the underlying data in Excel first, see our guide on <a href="guide-convert-p6-xer-to-excel.html">converting a P6 XER file to Excel</a>.</p>
+
+      <div class="panel" style="background: var(--wash, #f1f5f9); margin: 28px 0; padding: 22px;">
+        <h3 style="margin-top:0;">Get S-curves generated for you</h3>
+        <p style="margin-bottom:16px;">Progress Schedulytics builds cumulative planned-vs-actual S-curves (and 21 other analytics sheets) straight from a P6 XML export — no manual pivot tables.</p>
+        <a class="btn btn-primary" href="progress-schedulytics.html" data-track="cta_click" data-tool="guide-p6-s-curve-excel">See Progress Schedulytics →</a>
+      </div>
+
+
+      <h2 style="margin-top:34px;">Related planning guides</h2>
+      <ul>
+        <li><a href="guide-convert-p6-xer-to-excel.html">How to Convert a P6 XER File to Excel</a></li>
+        <li><a href="guide-dcma-14-point-assessment-checklist.html">The DCMA 14-Point Assessment Checklist</a></li>
+        <li><a href="guide-fix-negative-total-float-p6.html">How to Fix Negative Total Float in P6</a></li>
+        <li><a href="guide-fidic-extension-of-time-claim.html">How to Prepare a FIDIC EOT Claim</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-legal">&copy; 2026 Mohammed Farooque. All rights reserved. Independently developed. Not affiliated with, endorsed by, or sponsored by Oracle Corporation or Primavera. "P6" and "Primavera" are trademarks of Oracle Corporation, referenced here only to describe compatibility.</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M5MRZWPH');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DCMA 14-Point Assessment Checklist Explained (2026 Guide) | Schedulytics</title>
+<meta name="description" content="A plain-English breakdown of all 14 DCMA schedule checks, their pass/fail thresholds, and how to run the full assessment on a Primavera P6 schedule offline.">
+<meta name="keywords" content="DCMA 14-point assessment, DCMA 14 point checklist, DCMA schedule metrics thresholds, P6 schedule health check, baseline schedule audit, schedule quality analysis">
+<link rel="canonical" href="https://schedulytics.app/guide-dcma-14-point-assessment-checklist.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Schedulytics">
+<meta property="og:title" content="DCMA 14-Point Assessment Checklist Explained">
+<meta property="og:description" content="A plain-English breakdown of all 14 DCMA schedule checks, their pass/fail thresholds, and how to run the full assessment on a Primavera P6 schedule offline.">
+<meta property="og:url" content="https://schedulytics.app/guide-dcma-14-point-assessment-checklist.html">
+<meta property="og:image" content="https://schedulytics.app/assets/screenshots/progress/html_dashboard.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DCMA 14-Point Assessment Checklist Explained">
+<meta name="twitter:description" content="A plain-English breakdown of all 14 DCMA schedule checks, their pass/fail thresholds, and how to run the full assessment on a Primavera P6 schedule offline.">
+<meta name="twitter:image" content="https://schedulytics.app/assets/screenshots/progress/html_dashboard.png">
+
+<!-- Fonts & Stylesheet -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45PFV7MNN1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-45PFV7MNN1');
+</script>
+
+<!-- Structured Data / JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://schedulytics.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "DCMA 14-Point Checklist",
+          "item": "https://schedulytics.app/guide-dcma-14-point-assessment-checklist.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "DCMA 14-Point Assessment Checklist Explained",
+      "description": "A plain-English breakdown of all 14 DCMA schedule checks, their pass/fail thresholds, and how to run the full assessment on a Primavera P6 schedule offline.",
+      "author": {
+        "@type": "Person",
+        "name": "Mohammed Farooque"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Schedulytics",
+        "url": "https://schedulytics.app/"
+      },
+      "mainEntityOfPage": "https://schedulytics.app/guide-dcma-14-point-assessment-checklist.html",
+      "datePublished": "2026-08-19",
+      "dateModified": "2026-08-19"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a good DCMA 14-point score?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no single score — the assessment is 14 separate pass/fail checks against thresholds (most at under 5%, with Leads and Negative Float at 0%, and CPLI and BEI at 0.95 or above). A healthy baseline passes all or nearly all of them; failures in Logic, Constraints and Negative Float together are the most serious."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Primavera P6 run the DCMA check natively?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "P6 Professional includes a Check Schedule report that covers most, but not all, DCMA metrics — it omits Missed Tasks, the Critical Path Test, CPLI and BEI. A dedicated tool is needed for the complete 14-point assessment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the DCMA 14-point assessment only for defence projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Although it originated with the U.S. Defense Contract Management Agency, it is now used as a general schedule-quality standard across EPC, oil & gas, construction and infrastructure projects globally."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5MRZWPH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- FULL-BLEED CELEBRATION HEADER -->
+<div class="promo-banner promo-independence">
+  <canvas id="celebration-canvas"></canvas>
+  <div class="celebration-banner-inner">
+    <div class="celebration-left">
+      <img src="assets/branding/indian-flag-emblem.svg" alt="Indian National Flag" class="top-flag-emblem">
+      <div class="celebration-title-group">
+        <span class="celebration-main-title">Celebrating India's 80th Independence Day</span>
+        <span class="celebration-sub-title">Special Independence Festival Offer &middot; Flat 75% OFF All Schedulytics Tools</span>
+      </div>
+    </div>
+    <div class="celebration-right">
+      <img src="assets/branding/indian-rosette.svg" alt="Ashoka Chakra Rosette Emblem" class="top-greeting-rosette-img">
+      <span class="celebration-badge-pill">&#11088; 75% OFF SPECIAL</span>
+      <span class="celebration-timer-tag" id="offer-countdown" data-deadline="2026-09-20T23:59:59+03:00">
+        Ends 20 September 2026
+      </span>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <a href="index.html" class="wordmark">Schedulytics</a>
+      <span class="tagline">Schedule Analytics for Primavera P6</span>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">MENU</button>
+    <nav class="nav">
+      <a href="index.html" class="nav-home">Home</a>
+      <a href="progress-schedulytics.html" class="nav-progress">Progress Schedulytics</a>
+      <a href="baseline-schedulytics.html" class="nav-baseline">Baseline Schedulytics</a>
+      <a href="coming-soon.html" class="nav-soon">Coming Soon</a>
+      <a href="about.html" class="nav-about">About</a>
+      <a href="contact.html" class="nav-contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding: 48px 0 24px;">
+  <div class="wrap">
+    <span class="eyebrow">Schedule Quality Guide</span>
+    <h1 style="font-size: clamp(2rem, 3.6vw, 3rem); max-width: 26ch; line-height: 1.15; margin: 8px 0 14px;">The DCMA 14-Point Assessment Checklist, Explained</h1>
+    <p style="max-width: 64ch; color: var(--ink-faint); font-size: 1.05rem;">The 14 checks the U.S. Defense Contract Management Agency uses to judge whether a schedule is trustworthy — each metric, its threshold, what a failure really means, and how to run the whole assessment on a P6 file in seconds.</p>
+  </div>
+</section>
+
+<section class="section reveal-on-scroll" style="border-top:none; padding-top:0;">
+  <div class="wrap">
+    <article class="panel" style="max-width:74ch;">
+
+      <h2>What is the DCMA 14-Point Assessment?</h2>
+      <p>The <strong>DCMA 14-Point Assessment</strong> is a set of 14 objective checks developed by the U.S. Defense Contract Management Agency to measure the structural quality of a project schedule. It does not judge whether the dates are <em>realistic</em> — it judges whether the schedule is <em>built correctly</em> enough to be believed. A schedule that fails these checks cannot reliably calculate a critical path, so its forecast dates and any delay analysis built on it are suspect.</p>
+      <p>It is the de-facto industry standard for baseline acceptance on EPC, oil &amp; gas, defence and infrastructure projects worldwide.</p>
+
+      <h2>The 14 checks and their thresholds</h2>
+      <ol>
+        <li><strong>Logic</strong> — activities missing a predecessor or successor should be under <strong>5%</strong>. Open ends break the critical path.</li>
+        <li><strong>Leads (negative lag)</strong> — target <strong>0%</strong>. Negative lag distorts the forward pass and hides float.</li>
+        <li><strong>Lags</strong> — relationships with positive lag should be under <strong>5%</strong>. Excessive lag hides missing activities.</li>
+        <li><strong>Relationship Types</strong> — at least <strong>90%</strong> should be Finish-to-Start. Too many SS/FF pairs signal manipulated logic.</li>
+        <li><strong>Hard Constraints</strong> — under <strong>5%</strong>. Mandatory dates override logic and freeze the critical path.</li>
+        <li><strong>High Float</strong> — activities with total float over 44 working days should be under <strong>5%</strong>. Usually a symptom of missing logic.</li>
+        <li><strong>Negative Float</strong> — target <strong>0%</strong>. Any negative float means the schedule cannot meet a deadline as logically built.</li>
+        <li><strong>High Duration</strong> — activities longer than 44 working days should be under <strong>5%</strong>. Long tasks hide progress and risk.</li>
+        <li><strong>Invalid Dates</strong> — no actual dates in the future, no forecast dates in the past relative to the data date.</li>
+        <li><strong>Resources</strong> — every activity with duration should carry cost or resource loading (where the schedule is resource-loaded).</li>
+        <li><strong>Missed Tasks</strong> — under <strong>5%</strong> of baseline tasks should have slipped past their baseline finish.</li>
+        <li><strong>Critical Path Test</strong> — inserting a large deliberate delay on a critical activity must push the project finish. If it doesn't, the critical path is broken.</li>
+        <li><strong>Critical Path Length Index (CPLI)</strong> — should be <strong>&ge; 0.95</strong>. Measures how efficiently the critical path uses remaining time.</li>
+        <li><strong>Baseline Execution Index (BEI)</strong> — should be <strong>&ge; 0.95</strong>. The ratio of tasks completed to tasks that should have been completed.</li>
+      </ol>
+
+      <h2>How to read the results</h2>
+      <p>Any single failure is a conversation, not a rejection — but a cluster of failures in <em>Logic, Leads, Constraints and Negative Float</em> together means the critical path is not trustworthy, and every downstream forecast is built on sand. That is exactly the pattern reviewers look for when they reject a baseline submittal.</p>
+
+      <h2>Running the assessment on a P6 schedule</h2>
+      <p>You can compute each metric by hand with P6 layouts and filters, but on a 2,000-activity schedule that is hours of work and easy to get wrong. <a href="baseline-schedulytics.html">Baseline Schedulytics</a> reads the .xer or .xml directly and produces the full 14-point (and extended 22-point) scorecard with pass/fail status, calculated percentages, a Monte Carlo confidence band, and a clean Word narrative — offline, in seconds.</p>
+
+      <div class="panel" style="background: var(--wash, #f1f5f9); margin: 28px 0; padding: 22px;">
+        <h3 style="margin-top:0;">Run all 14 checks automatically</h3>
+        <p style="margin-bottom:16px;">Baseline Schedulytics audits a P6 .xer against the DCMA 14-point and 22-point criteria and exports a pass/fail scorecard with a Word narrative — 100% offline.</p>
+        <a class="btn btn-primary" href="baseline-schedulytics.html" data-track="cta_click" data-tool="guide-dcma-14-point-assessment-checklist">See Baseline Schedulytics →</a>
+      </div>
+
+
+      <h2 style="margin-top:34px;">Related planning guides</h2>
+      <ul>
+        <li><a href="guide-convert-p6-xer-to-excel.html">How to Convert a P6 XER File to Excel</a></li>
+        <li><a href="guide-fix-negative-total-float-p6.html">How to Fix Negative Total Float in P6</a></li>
+        <li><a href="guide-fidic-extension-of-time-claim.html">How to Prepare a FIDIC EOT Claim</a></li>
+        <li><a href="guide-p6-s-curve-excel.html">How to Build an S-Curve in Excel from P6</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-legal">&copy; 2026 Mohammed Farooque. All rights reserved. Independently developed. Not affiliated with, endorsed by, or sponsored by Oracle Corporation or Primavera. "P6" and "Primavera" are trademarks of Oracle Corporation, referenced here only to describe compatibility.</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
