@@ -32,7 +32,7 @@ You already plan to create a GitHub account for CivilCalc Pro — use the same a
 ## Current Deployment State & Checklist
 
 - ✅ **Live Custom Domain:** Deployed at `https://schedulytics.app/` via GitHub Pages with CNAME and HTTPS enforcement.
-- ✅ **Google Analytics 4 & Tag Manager:** Measurement ID `G-45PFV7MNN1` and GTM container `GTM-M5MRZWPH` are active across all pages.
+- ✅ **Google Analytics 4 & Tag Manager:** Measurement ID `G-45PFV7MNN1` and GTM container `GTM-NNQ28P5P` are active across all pages.
 - ✅ **Microsoft Store Links are LIVE:**
   - Progress Schedulytics: `https://apps.microsoft.com/detail/9PJR22LWZFJ0` (App ID: `9PJR22LWZFJ0`)
   - Baseline Schedulytics: `https://apps.microsoft.com/detail/9PHV1LFVJ70J` (App ID: `9PHV1LFVJ70J`)
