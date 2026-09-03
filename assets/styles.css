@@ -348,6 +348,18 @@ p { margin: 0 0 1em; color: var(--ink-soft); }
   box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
 }
 
+.nav a.nav-services {
+  color: #6D28D9;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1.5px solid #8B5CF6;
+}
+.nav a.nav-services:hover {
+  background: #7C3AED;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+}
+
 .nav a.nav-soon {
   color: #B45309;
   background: rgba(245, 158, 11, 0.1);
