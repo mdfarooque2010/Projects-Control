@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NNQ28P5P');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Primavera P6 XER File Format & Table Schema (Complete Reference) | Schedulytics</title>
+<meta name="description" content="Technical reference guide to the Primavera P6 XER file format. Learn how %T tables, %F field definitions, %R data records, and relationships work inside XER files.">
+<meta name="keywords" content="xer format, p6 xer file format, what is an xer file, xer table structure, xer schema, %t task, %t projwbs, p6 xer parser, open xer in excel">
+<link rel="canonical" href="https://schedulytics.app/guide-p6-xer-file-format-structure.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Schedulytics">
+<meta property="og:title" content="Primavera P6 XER File Format & Table Schema (Complete Reference)">
+<meta property="og:description" content="Technical reference guide to the Primavera P6 XER file format. Learn how %T tables, %F field definitions, %R data records, and relationships work inside XER files.">
+<meta property="og:url" content="https://schedulytics.app/guide-p6-xer-file-format-structure.html">
+<meta property="og:image" content="https://schedulytics.app/assets/screenshots/progress/html_dashboard.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Primavera P6 XER File Format & Table Schema (Complete Reference)">
+<meta name="twitter:description" content="Technical reference guide to the Primavera P6 XER file format. Learn how %T tables, %F field definitions, %R data records, and relationships work inside XER files.">
+<meta name="twitter:image" content="https://schedulytics.app/assets/screenshots/progress/html_dashboard.png">
+
+<!-- Fonts & Stylesheet -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45PFV7MNN1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-45PFV7MNN1');
+</script>
+
+<!-- Structured Data / JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://schedulytics.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides",
+          "item": "https://schedulytics.app/guides.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "P6 XER File Format Structure",
+          "item": "https://schedulytics.app/guide-p6-xer-file-format-structure.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Primavera P6 XER File Format & Table Schema (Complete Reference)",
+      "description": "Technical reference guide to the Primavera P6 XER file format. Learn how %T tables, %F field definitions, %R data records, and relationships work inside XER files.",
+      "author": {
+        "@type": "Person",
+        "name": "Mohammed Farooque"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Schedulytics",
+        "url": "https://schedulytics.app/"
+      },
+      "mainEntityOfPage": "https://schedulytics.app/guide-p6-xer-file-format-structure.html",
+      "datePublished": "2026-09-13",
+      "dateModified": "2026-09-13"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an XER file in Primavera P6?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An XER file is a proprietary, tab-delimited ASCII text file exported by Oracle Primavera P6. It contains an entire project schedule or multiple projects structured as relational database tables, complete with activities, logic relationships, calendars, resources, and WBS nodes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do %T, %F, and %R mean in an XER file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "%T defines the Table Name (e.g., %T TASK). %F lists the Field names or column headers for that table. %R marks each Record or row of data corresponding to those field columns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't Excel open an XER file cleanly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because an XER file is not a single spreadsheet; it is an entire relational database export containing dozens of normalized tables linked by foreign key IDs (such as task_id, wbs_id, clndr_id). Opening it in Excel dumps raw unlinked tables without CPM logic calculations."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNQ28P5P"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- FULL-BLEED CELEBRATION HEADER -->
+<div class="promo-banner promo-independence">
+  <canvas id="celebration-canvas"></canvas>
+  <div class="celebration-banner-inner">
+    <div class="celebration-left">
+      <img src="assets/branding/indian-flag-emblem.svg" alt="Indian National Flag" class="top-flag-emblem">
+      <div class="celebration-title-group">
+        <span class="celebration-main-title">Celebrating India's 80th Independence Day</span>
+        <span class="celebration-sub-title">Special Independence Festival Offer &middot; Flat 75% OFF All Schedulytics Tools</span>
+      </div>
+    </div>
+    <div class="celebration-right">
+      <img src="assets/branding/indian-rosette.svg" alt="Ashoka Chakra Rosette Emblem" class="top-greeting-rosette-img">
+      <span class="celebration-badge-pill">&#11088; 75% OFF SPECIAL</span>
+      <span class="celebration-timer-tag" id="offer-countdown" data-deadline="2026-09-20T23:59:59+03:00">
+        Ends 20 September 2026
+      </span>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <a href="index.html" class="wordmark">Schedulytics</a>
+      <span class="tagline">Schedule Analytics for Primavera P6</span>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">MENU</button>
+        <nav class="nav">
+      <a href="index.html" class="nav-home">Home</a>
+      <a href="primavera-p6-viewer.html" class="nav-viewer">P6 Viewer</a>
+      <a href="progress-schedulytics.html" class="nav-progress">Progress Schedulytics</a>
+      <a href="baseline-schedulytics.html" class="nav-baseline">Baseline Schedulytics</a>
+      <a href="services.html" class="nav-services">Services &amp; Training</a>
+      <a href="guides.html" class="nav-guides" aria-current="page">Guides &amp; Hub</a>
+      <a href="coming-soon.html" class="nav-soon">Coming Soon</a>
+      <a href="about.html" class="nav-about">About</a>
+      <a href="contact.html" class="nav-contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding: 48px 0 24px;">
+  <div class="wrap">
+    <span class="eyebrow">Technical Architecture &amp; Data Reference</span>
+    <h1 style="font-size: clamp(2rem, 3.6vw, 3rem); max-width: 26ch; line-height: 1.15; margin: 8px 0 14px;">Primavera P6 XER File Format &amp; Table Structure</h1>
+    <p style="max-width: 64ch; color: var(--ink-faint); font-size: 1.05rem;">An engineer's deep dive into the internal relational architecture of Oracle Primavera P6 .xer files: understanding %T tables, %F fields, %R records, and foreign key relationships.</p>
+  </div>
+</section>
+
+<section class="section reveal-on-scroll" style="border-top:none; padding-top:0;">
+  <div class="wrap">
+    <article class="panel" style="max-width:74ch;">
+      <h2>What is an XER File?</h2>
+      <p>An <strong>XER file</strong> is a proprietary ASCII text file exported by Oracle Primavera P6 (Project Management). Despite ending in <code>.xer</code>, it is actually a serialized dump of relational database tables separated by tab delimiters (<code>\t</code>).</p>
+      <p>Inside an XER file, a project schedule is not stored as a flat list of dates. It is stored as normalized database entities connected by primary and foreign keys—just like in Oracle Database or Microsoft SQL Server.</p>
+
+      <h2>The Three Core Syntax Tokens: %T, %F, and %R</h2>
+      <p>If you open an uncompressed XER file in a text editor (such as VS Code or Notepad++), you will immediately notice three repeating prefix markers:</p>
+      
+      <ul>
+        <li><code>%T [TABLE_NAME]</code> &mdash; <strong>Table Header:</strong> Declares the start of a database table (e.g. <code>%T TASK</code>).</li>
+        <li><code>%F [field1] [field2] ...</code> &mdash; <strong>Field List:</strong> Lists the tab-separated column names for that table.</li>
+        <li><code>%R [val1] [val2] ...</code> &mdash; <strong>Record Row:</strong> Represents a single row of data matching the fields above.</li>
+      </ul>
+
+      <div class="panel" style="background: #1e293b; color: #f8fafc; font-family: var(--mono); font-size: 0.82rem; padding: 18px; border-radius: 6px; overflow-x:auto;">
+<pre style="margin:0; color:#38bdf8;">ERMHDR  22.12  2026-09-13  PROJECT
+%T  PROJECT
+%F  proj_id  proj_short_name  plan_start_date  plan_end_date
+%R  1042     EXP-2026-01      2026-01-15       2027-08-30
+%T  TASK
+%F  task_id  proj_id  wbs_id  task_code  task_name  total_float_hr_cnt
+%R  85912    1042     502     A1000      Mobilization  0.0
+%R  85913    1042     502     A1010      Site Clearing 0.0</pre>
+      </div>
+
+      <h2>The Most Critical Tables in an XER File</h2>
+      <p>A full P6 XER export often contains between 40 and 90 tables. The most important tables that govern schedule calculations and reporting are:</p>
+
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Table Token</th>
+              <th>Table Name</th>
+              <th>Description &amp; Key Columns</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>%T PROJECT</code></td>
+              <td>Project Header</td>
+              <td>Stores project metadata, calendar assignments, planned start, scheduled finish, and data date (<code>last_recalc_date</code>).</td>
+            </tr>
+            <tr>
+              <td><code>%T PROJWBS</code></td>
+              <td>WBS Tree</td>
+              <td>Hierarchical Work Breakdown Structure tree nodes linked by <code>parent_wbs_id</code> and <code>wbs_short_name</code>.</td>
+            </tr>
+            <tr>
+              <td><code>%T TASK</code></td>
+              <td>Activity Master</td>
+              <td>All activities: <code>task_code</code> (Activity ID), <code>task_name</code>, early start, early finish, late start, total float, and status.</td>
+            </tr>
+            <tr>
+              <td><code>%T TASKPRED</code></td>
+              <td>Logic Relationships</td>
+              <td>Predecessor/successor links (<code>pred_task_id</code>, <code>task_id</code>), relationship type (<code>PR_FS</code>, <code>PR_SS</code>, <code>PR_FF</code>), and lag (<code>lag_hr_cnt</code>).</td>
+            </tr>
+            <tr>
+              <td><code>%T CALENDAR</code></td>
+              <td>Work Calendars</td>
+              <td>Working days per week, standard shift hours (<code>day_hr_cnt</code>), and holiday exception strings.</td>
+            </tr>
+            <tr>
+              <td><code>%T TASKRSRC</code></td>
+              <td>Resource Assignments</td>
+              <td>Budgeted units, remaining units, actual units, cost accounts, and rate tables assigned to activities.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Why Can't Excel or Python Parse XER Files Out-of-the-Box?</h2>
+      <p>Many engineers attempt to rename an <code>.xer</code> file to <code>.csv</code> and open it in Excel. The result is unreadable because Excel attempts to treat all 60+ tables as a single continuous flat sheet, mixing project parameters with activity rows and calendar definitions.</p>
+      <p>Furthermore, calculating the Critical Path and float requires evaluating every relationship in <code>TASKPRED</code> against the specific work calendar shift hours defined in <code>CALENDAR</code>.</p>
+
+      <h2>How Schedulytics Solves XER Parsing Offline</h2>
+      <p><strong>Schedulytics</strong> was built specifically to solve this challenge. It features a standalone, in-memory C++/Python parser that:</p>
+      <ul>
+        <li>Reads the entire XER table schema in seconds without an external database.</li>
+        <li>Resolves relational foreign keys into human-readable WBS hierarchies and activity codes.</li>
+        <li>Executes independent Critical Path forward and backward pass calculations.</li>
+        <li>Outputs clean, ready-to-use 22-sheet Excel workbooks and interactive single-file HTML dashboards.</li>
+      </ul>
+
+      <div class="panel" style="background: var(--wash, #f1f5f9); margin: 28px 0; padding: 22px;">
+        <h3 style="margin-top:0;">Audit and Report on P6 XER Files in Seconds</h3>
+        <p style="margin-bottom:16px;">Download Baseline Schedulytics or Progress Schedulytics from the Microsoft Store for instant, 100% offline schedule analysis.</p>
+        <a class="btn btn-primary" href="baseline-schedulytics.html" data-track="cta_click" data-tool="guide-schema">Audit P6 Baseline XER &rarr;</a>
+      </div>
+
+      <h2 style="margin-top:34px;">Related Reference Guides</h2>
+      <ul>
+        <li><a href="guide-convert-p6-xer-to-excel.html">How to Convert a Primavera P6 XER File to Excel</a></li>
+        <li><a href="guide-convert-p6-xer-to-xml.html">How to Convert Primavera P6 XER to XML</a></li>
+        <li><a href="primavera-p6-viewer.html">Primavera P6 Viewer: Free &amp; Offline XER Reader</a></li>
+        <li><a href="guide-dcma-14-point-assessment-checklist.html">The DCMA 14-Point Assessment Checklist</a></li>
+        <li><a href="guide-fix-negative-total-float-p6.html">How to Fix Negative Total Float in P6</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>About Schedulytics</h4>
+        <p class="footer-legal" style="margin-bottom:12px;">Independent, 100% offline project controls software built for Primavera P6 planning and cost engineers. No cloud uploads, no monthly subscription lock-in.</p>
+        <p class="footer-legal">&copy; 2026 Mohammed Farooque. All rights reserved. Independently developed. Not affiliated with, endorsed by, or sponsored by Oracle Corporation or Primavera. "P6" and "Primavera" are trademarks of Oracle Corporation.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Planning Guides &amp; Tools</h4>
+        <ul>
+          <li><a href="primavera-p6-viewer.html">Primavera P6 Viewer (Offline)</a></li>
+          <li><a href="guide-convert-p6-xer-to-excel.html">How to Convert P6 XER to Excel</a></li>
+          <li><a href="guide-convert-p6-xer-to-xml.html">How to Convert P6 XER to XML</a></li>
+          <li><a href="guide-p6-xer-file-format-structure.html">P6 XER File Format &amp; Schema</a></li>
+          <li><a href="guide-dcma-14-point-assessment-checklist.html">DCMA 14-Point Checklist</a></li>
+          <li><a href="guide-fix-negative-total-float-p6.html">Fix Negative Float in P6</a></li>
+          <li><a href="guide-p6-s-curve-excel.html">Build P6 S-Curves in Excel</a></li>
+          <li><a href="guide-fidic-extension-of-time-claim.html">FIDIC EOT Claims Guide</a></li>
+          <li><a href="guides.html">All Guides &amp; Knowledge Hub &rarr;</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Products &amp; Company</h4>
+        <ul>
+          <li><a href="progress-schedulytics.html">Progress Schedulytics</a></li>
+          <li><a href="baseline-schedulytics.html">Baseline Schedulytics</a></li>
+          <li><a href="services.html">Services &amp; Custom Automation</a></li>
+          <li><a href="buy/progress/">Buy Progress Licence ($24.75)</a></li>
+          <li><a href="buy/baseline/">Buy Baseline Licence ($24.75)</a></li>
+          <li><a href="coming-soon.html">Roadmap (Recovery &amp; Delay)</a></li>
+          <li><a href="about.html">About Developer</a></li>
+          <li><a href="contact.html">Contact &amp; Support</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

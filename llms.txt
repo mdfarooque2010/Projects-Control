@@ -1,0 +1,31 @@
+# Schedulytics
+
+> Standalone, 100% offline desktop tools for Primavera P6 planning engineers, project controls managers, and EPC contractors. Converts raw P6 XER and XML files into 22-sheet executive Excel workbooks, interactive single-file HTML dashboards, and DCMA 14-point schedule health audits in seconds—without requiring an Oracle Primavera P6 license.
+
+## Software Products
+
+- [Progress Schedulytics](https://schedulytics.app/progress-schedulytics.html): Automated Primavera P6 XML and XER reporting tool that produces a 22-sheet executive Excel analytics workbook, single-file interactive HTML dashboard with two-way cross-filtering, PowerPoint executive deck, and automated Word/PDF Delay Report. Includes dual-device activation (1 PC + 1 Android phone).
+- [Baseline Schedulytics](https://schedulytics.app/baseline-schedulytics.html): Comprehensive P6 baseline schedule audit tool that evaluates .xer submittals against 22-point DCMA 14-point quality standards, detects missing logic and constraints, runs Monte Carlo risk simulations (P10/P50/P90 confidence), and generates formal client submittal audit reports.
+- [Services & Bespoke Automation](https://schedulytics.app/services.html): Custom project controls automation, bespoke Excel/Power BI macros, RFI automation, and 1-on-1 advanced Primavera P6 training.
+- [Primavera P6 Viewer & XER Reader](https://schedulytics.app/primavera-p6-viewer.html): 100% offline Primavera P6 viewer and ScheduleReader alternative. Read and explore P6 XER and XML schedules without cloud uploads or expensive recurring subscriptions.
+- [Future Roadmap (Recovery & Delay)](https://schedulytics.app/coming-soon.html): Recovery Schedulytics (automated CPM logic repair conforming to Saudi Aramco & SABIC specs) and Delay Schedulytics (forensic delay analysis conforming to AACE 29R-03 and FIDIC).
+
+## Step-by-Step Engineering Guides
+
+- [How to Convert Primavera P6 XER to Excel](https://schedulytics.app/guide-convert-p6-xer-to-excel.html): Complete guide explaining manual copy-paste limitations vs automated 22-sheet analytics generation directly from XER files.
+- [How to Convert Primavera P6 XER to XML](https://schedulytics.app/guide-convert-p6-xer-to-xml.html): Detailed technical tutorial on converting between P6 XER and PMXML formats for database migrations, corruption fixes, and API integrations.
+- [The DCMA 14-Point Assessment Checklist](https://schedulytics.app/guide-dcma-14-point-assessment-checklist.html): In-depth guide explaining all 14 DCMA schedule health metrics, industry pass/fail thresholds, and how to resolve common schedule defects.
+- [Primavera P6 XER File Format & Table Structure](https://schedulytics.app/guide-p6-xer-file-format-structure.html): Technical reference guide breaking down the internal relational table schema (%T TASK, %T PROJWBS, %T TASKPRED, %T CALENDAR) of Primavera P6 exports.
+- [How to Fix Negative Total Float in Primavera P6](https://schedulytics.app/guide-fix-negative-total-float-p6.html): Diagnosis of the four main causes of negative total float (hard constraints, calendar mismatches, out-of-sequence logic, external milestones) and how to resolve them.
+- [How to Prepare a FIDIC Extension of Time (EOT) Claim](https://schedulytics.app/guide-fidic-extension-of-time-claim.html): Step-by-step guidance for planning engineers preparing delay claims under FIDIC Red and Yellow Books (Sub-Clause 8.4/8.5) and SCL Delay Protocol.
+- [How to Build an S-Curve in Excel from Primavera P6](https://schedulytics.app/guide-p6-s-curve-excel.html): Practical tutorial on extracting planned vs actual cumulative progress curves from P6 into Excel.
+
+## Key Architectural Differentiators
+
+- **100% Offline & Private by Design:** All schedule parsing, CPM calculations, and report rendering run locally in-memory on the user's computer. Zero schedule data, cost numbers, or WBS structures are ever uploaded to any cloud server.
+- **No Oracle P6 License Required:** Standalone high-speed CPM calculation engine parses raw .xer and .xml files independently.
+- **Transparent Pricing:** Available on Microsoft Store with a free 30-day evaluation trial, followed by a perpetual lifetime license via Gumroad (.75 USD) with dual-device Windows PC and Android phone activation.
+
+## Full Context & Technical Specifications
+
+- [Complete Documentation Digest](https://schedulytics.app/llms-full.txt): Complete technical specification and full-text reference guide for LLM crawlers.

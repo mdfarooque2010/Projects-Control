@@ -1,0 +1,95 @@
+# Schedulytics — Complete Technical Documentation & Product Digest
+
+## 1. Brand & Architectural Overview
+- Brand: Schedulytics ("Schedule Analytics for Primavera P6")
+- Production Website: https://schedulytics.app/
+- Developer: Mohammed Farooque (Planning & Cost Control Engineer, Civil Engineer, MBA Project Management)
+- Contact: md.farooque@gmail.com | LinkedIn: https://www.linkedin.com/in/mohammed-farooque-jawaid-planning-cost-control-51052216
+- Target Audience: Planning engineers, PMO directors, project controls managers, schedulers, and claims consultants in EPC, oil & gas, infrastructure, and commercial construction.
+
+### Core Architectural Guarantees
+1. 100% Offline & In-Memory Execution:
+   - Schedulytics parses raw exported Oracle Primavera P6 files (.xer and .xml) completely within local system memory.
+   - Zero project schedule data, activity details, costs, resource rates, or contractor information is transmitted to cloud servers.
+   - Ideal for defense, nuclear, oil & gas (Saudi Aramco, ADNOC, SABIC), and EPC projects operating under strict Non-Disclosure Agreements (NDAs).
+2. Standalone CPM Engine:
+   - Does NOT require Oracle Primavera P6 desktop software or database connection to run.
+   - Performs Critical Path Method (CPM) forward/backward pass calculations and float determination independently.
+3. Transparent Perpetual Licensing:
+   - Microsoft Store install provides a 30-day evaluation trial with active calculation engines.
+   - Perpetual lifetime license ($24.75 USD on festival promo / $49.50-$99 regular) via Gumroad with dual-device Windows PC + Android mobile activation. No monthly recurring subscriptions.
+
+---
+
+## 2. Product Suite Details
+
+### Product 1: Progress Schedulytics (PS · 01)
+- Platform: Windows 10/11 Desktop + Android Mobile Companion
+- Microsoft Store App ID: 9PJR22LWZFJ0
+- Primary Function: Turn Primavera P6 XML and XER schedules into an executive reporting pack in seconds.
+- Deliverables Produced in Single Run:
+  1. 22-Sheet Executive Excel Workbook:
+     - Automated Planned vs Actual S-Curves.
+     - Earned Value Management (EVM) summary (BCWS/PV, BCWP/EV, ACWP/AC, SPI, CPI, EAC, VAC).
+     - WBS level-by-level progress matrices and milestone variance tracking.
+     - Built-in Excel templates for Engineering Deliverables (MDR), RFIs, Material Procurement, and GIS Lat/Long alignment progress.
+  2. Single-File Interactive HTML Dashboard:
+     - Standalone, zero-dependency HTML file easily shared via email or SharePoint.
+     - Two-way interactive cross-filtering by WBS, discipline, contractor, and milestone status.
+  3. Executive PowerPoint Presentation Deck:
+     - Formatted summary slides ready for C-suite and project board presentations.
+  4. Automated Delay Report (Word & PDF):
+     - Period-by-period variance analysis and schedule comparison narrative ready for formal submittal.
+
+### Product 2: Baseline Schedulytics (BS · 02)
+- Platform: Windows 10/11 Desktop
+- Microsoft Store App ID: 9PHV1LFVJ70J
+- Primary Function: Automated baseline schedule quality auditing against DCMA 14-Point standards and Monte Carlo risk modeling.
+- Audit Capabilities:
+  - 22-Point Schedule Quality Sentinel: Checks open ends (missing predecessors/successors), leads/negative lags, positive lags, relationship types (SS/FF/SF), hard constraints, high float (>44 days), negative float, invalid durations, resource allocation, and Critical Path test.
+  - Remove-Progress Clean Audit: Validates that baseline submittals are 100% clean and un-progressed before contractual approval.
+  - Monte Carlo Risk Engine: P10, P50, and P90 completion date distribution curves and sensitivity tornado charts.
+  - Submittal Deliverables: Instant formal Word audit report narrative and Excel compliance scorecards.
+
+### Product 3: Recovery Schedulytics (RS · 03 - Upcoming)
+- Specialized schedule health scoring conforming to Saudi Aramco Schedule Assessment Guidelines and SABIC specifications.
+- Human-approved automated logic repair engine to fix broken relationships and out-of-sequence activities without corrupting schedule integrity.
+
+### Product 4: Delay Schedulytics (DS · 04 - Upcoming)
+- Forensic delay analysis software conforming to AACE International Recommended Practice 29R-03, SCL Delay Protocol, and FIDIC.
+- Implements four standard forensic delay methodologies: Impacted As-Planned (IAP), Time Impact Analysis (TIA), As-Planned vs As-Built, and Window Analysis.
+
+---
+
+## 3. Step-by-Step Engineering Guides
+
+### How to Convert Primavera P6 XER to Excel
+1. Why manual copy-paste fails: Opening raw .xer files in Excel displays undecoded relational database tables (%T PROJ, %T TASK). Copying from the P6 UI strips out logic relationships, calendars, and hierarchical WBS structures.
+2. The Schedulytics solution: Drag and drop the .xer or .xml file into Progress Schedulytics to generate a fully calculated 22-sheet formatted Excel workbook with formulas, S-curves, and EVM calculations.
+
+### How to Convert Primavera P6 XER to XML
+1. Reasons for conversion: PMXML compatibility, corruption recovery, web integration, and standardized database migrations.
+2. Technical process: Schedulytics parses both formats with full data fidelity, extracting CPM logic, activity codes, and resource curves.
+
+### The DCMA 14-Point Schedule Assessment Checklist
+1. Missing Logic (Max 5%): Activities without predecessors or successors.
+2. Leads / Negative Lags (0% allowed): Artificial schedule acceleration that obscures real critical paths.
+3. Positive Lags (Max 5%): Hidden activity durations.
+4. Relationship Types (Min 90% Finish-to-Start): Minimizes complex SF/SS/FF dependencies.
+5. Hard Constraints (Max 5%): Mandatory start/finish dates violating CPM logic.
+6. High Float (Max 5%): Activities with Total Float > 44 working days.
+7. Negative Float (0 allowed): Indicates contractual completion is delayed.
+8. High Duration (0%): Activities exceeding 44 working days without interim breakdown.
+9. Invalid Dates (0): Actual dates in the future beyond the Data Date.
+10. Resource Loading (100% target): All work activities have assigned labor/equipment/cost.
+11. Missed Tasks: Tasks scheduled to finish before Data Date but still active.
+12. Critical Path Test: Introducing artificial delay on critical path must delay project finish.
+13. Critical Path Float Index (CAPI): Ratio evaluating critical path stability (target > 0.95).
+14. Total Float Index (TFI): Ratio evaluating schedule flexibility.
+
+### Primavera P6 XER File Format & Table Structure
+An XER file is an ASCII tab-delimited file structured with:
+- %T indicates Table name (e.g. %T TASK, %T PROJWBS, %T TASKPRED, %T CALENDAR).
+- %F indicates Field names (column headers).
+- %R indicates Records (rows of data corresponding to field columns).
+- Key tables: PROJECT (project level parameters), PROJWBS (Work Breakdown Structure tree), TASK (activities, durations, status), TASKPRED (predecessor/successor logic and lag), CALENDAR (working days and shift hours).

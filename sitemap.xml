@@ -2,109 +2,133 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://schedulytics.app/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://schedulytics.app/primavera-p6-viewer.html</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://schedulytics.app/progress-schedulytics.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/baseline-schedulytics.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/services.html</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://schedulytics.app/coming-soon.html</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://schedulytics.app/guides.html</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/guide-convert-p6-xer-to-excel.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://schedulytics.app/guide-convert-p6-xer-to-xml.html</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://schedulytics.app/guide-p6-xer-file-format-structure.html</loc>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/guide-dcma-14-point-assessment-checklist.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/guide-fix-negative-total-float-p6.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/guide-fidic-extension-of-time-claim.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/guide-p6-s-curve-excel.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://schedulytics.app/coming-soon.html</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://schedulytics.app/buy/progress/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/buy/baseline/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/about.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/contact.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/privacy.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/terms.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/data-deletion.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://schedulytics.app/civilcalc-privacy.html</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

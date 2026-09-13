@@ -199,4 +199,30 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
+
+  // ------------------------------------------------------------- 6. Custom GA4 Key Events Tracking
+  document.querySelectorAll("a[href*='apps.microsoft.com']").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (typeof gtag === "function") {
+        gtag("event", "ms_store_click", {
+          event_category: "outbound_install",
+          event_label: btn.getAttribute("href"),
+          tool: btn.getAttribute("data-tool") || "general"
+        });
+      }
+    });
+  });
+
+  document.querySelectorAll("a[href*='gumroad.com'], a[href*='buy/']").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (typeof gtag === "function") {
+        gtag("event", "gumroad_checkout_click", {
+          event_category: "purchase_intent",
+          event_label: btn.getAttribute("href"),
+          tool: btn.getAttribute("data-tool") || "general"
+        });
+      }
+    });
+  });
+
 });
