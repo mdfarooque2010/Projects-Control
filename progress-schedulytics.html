@@ -353,12 +353,88 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- Video walkthrough -->
-    <div class="video-slot" style="border-style:solid; padding:0; margin-bottom:24px;">
-      <video controls style="width: 100%; display: block; border-radius: 4px;" preload="metadata">
-        <source src="assets/p6-progress-dashboard.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+    <!-- Video walkthrough Desktop Window Mockup -->
+    <div class="desktop-mockup-window" style="margin-bottom:32px;">
+      <div class="mockup-titlebar">
+        <div class="mockup-traffic-lights">
+          <span class="traffic-dot red"></span>
+          <span class="traffic-dot yellow"></span>
+          <span class="traffic-dot green"></span>
+          <span class="mockup-title">Progress Schedulytics — Video Demonstration</span>
+        </div>
+        <span class="mockup-status-tag">FULL HD WALKTHROUGH</span>
+      </div>
+      <div class="mockup-video-wrap">
+        <video controls preload="metadata" poster="assets/screenshots/progress/html_dashboard.png">
+          <source src="assets/p6-progress-dashboard.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="mockup-feature-tags">
+        <div class="feature-tag-pill"><strong>0:00</strong> Load P6 Schedule</div>
+        <div class="feature-tag-pill"><strong>0:14</strong> DCMA 14 Audit Check</div>
+        <div class="feature-tag-pill"><strong>0:28</strong> Interactive S-Curve</div>
+        <div class="feature-tag-pill"><strong>0:45</strong> Export 22-Sheet Excel</div>
+      </div>
+    </div>
+
+    <!-- WBS Progress Variance Breakdown Bars -->
+    <div class="wbs-breakdown-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:18px;">
+        <div>
+          <span style="font-family:var(--mono); font-size:0.75rem; font-weight:700; color:#c026d3; background:rgba(192, 38, 211, 0.1); padding:3px 10px; border-radius:4px;">DISCIPLINE PERFORMANCE BARS</span>
+          <h3 style="font-size:1.25rem; margin:6px 0 2px;">WBS Progress vs Baseline Target Breakdown</h3>
+          <p style="font-size:0.88rem; color:var(--ink-soft); margin:0;">Real-time progress bars with baseline target line pins and variance indicators.</p>
+        </div>
+        <div style="display:flex; gap:14px; font-family:var(--mono); font-size:0.76rem;">
+          <span style="display:inline-flex; align-items:center; gap:6px;"><span style="width:12px; height:8px; background:#059669; border-radius:2px; display:inline-block;"></span> Actual Progress</span>
+          <span style="display:inline-flex; align-items:center; gap:6px;"><span style="width:3px; height:12px; background:#0f172a; display:inline-block;"></span> Planned Target</span>
+        </div>
+      </div>
+
+      <div class="wbs-row">
+        <div class="wbs-row-head">
+          <span>WBS 1.01 · Civil Engineering &amp; Foundations</span>
+          <span style="font-family:var(--mono); color:#059669;">92% / 90% (Ahead +2.0%)</span>
+        </div>
+        <div class="wbs-track">
+          <div class="wbs-fill" style="width:92%; background:#059669;"></div>
+          <div class="wbs-target-pin" style="left:90%;" title="Target: 90%"></div>
+        </div>
+      </div>
+
+      <div class="wbs-row">
+        <div class="wbs-row-head">
+          <span>WBS 1.02 · Structural Steel &amp; Superstructure</span>
+          <span style="font-family:var(--mono); color:#0284c7;">74% / 75% (On Track -1.0%)</span>
+        </div>
+        <div class="wbs-track">
+          <div class="wbs-fill" style="width:74%; background:#0284c7;"></div>
+          <div class="wbs-target-pin" style="left:75%;" title="Target: 75%"></div>
+        </div>
+      </div>
+
+      <div class="wbs-row">
+        <div class="wbs-row-head">
+          <span>WBS 1.03 · Piping, Electrical &amp; MEP Integration</span>
+          <span style="font-family:var(--mono); color:#d97706;">48% / 62% (Delayed -14.0%)</span>
+        </div>
+        <div class="wbs-track">
+          <div class="wbs-fill" style="width:48%; background:#d97706;"></div>
+          <div class="wbs-target-pin" style="left:62%;" title="Target: 62%"></div>
+        </div>
+      </div>
+
+      <div class="wbs-row" style="margin-bottom:0;">
+        <div class="wbs-row-head">
+          <span>WBS 1.04 · Testing, Pre-Commissioning &amp; Handover</span>
+          <span style="font-family:var(--mono); color:#dc2626;">12% / 28% (Critical Path -16.0%)</span>
+        </div>
+        <div class="wbs-track">
+          <div class="wbs-fill" style="width:12%; background:#dc2626;"></div>
+          <div class="wbs-target-pin" style="left:28%;" title="Target: 28%"></div>
+        </div>
+      </div>
     </div>
 
     <!-- Real Desktop Screenshots Grid -->

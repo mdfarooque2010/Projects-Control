@@ -220,10 +220,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- Software Live Preview Card -->
-    <div class="hero-mockup-card">
-      <img src="assets/screenshots/progress/html_dashboard.png" alt="Interactive Primavera P6 HTML dashboard generated from XER file by Schedulytics" loading="eager">
-      <span class="hero-mockup-badge">✨ Live Single-File HTML Dashboard</span>
+    <!-- Desktop Window Mockup with Looping Video Demonstration -->
+    <div class="desktop-mockup-window">
+      <div class="mockup-titlebar">
+        <div class="mockup-traffic-lights">
+          <span class="traffic-dot red"></span>
+          <span class="traffic-dot yellow"></span>
+          <span class="traffic-dot green"></span>
+          <span class="mockup-title">Schedulytics — Live P6 Analytics Engine</span>
+        </div>
+        <span class="mockup-status-tag">100% AIR-GAPPED</span>
+      </div>
+      <div class="mockup-video-wrap">
+        <video autoplay muted loop playsinline poster="assets/screenshots/progress/html_dashboard.png">
+          <source src="assets/p6-progress-dashboard.mp4" type="video/mp4">
+          <img src="assets/screenshots/progress/html_dashboard.png" alt="Interactive Primavera P6 HTML dashboard">
+        </video>
+      </div>
+      <div class="mockup-feature-tags">
+        <div class="feature-tag-pill"><strong>01 ·</strong> 1-Click P6 Ingest</div>
+        <div class="feature-tag-pill"><strong>02 ·</strong> DCMA 14 Audit</div>
+        <div class="feature-tag-pill"><strong>03 ·</strong> S-Curve Slippage</div>
+        <div class="feature-tag-pill"><strong>04 ·</strong> 22-Sheet Excel</div>
+      </div>
     </div>
   </div>
 </section>
@@ -272,6 +291,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         New to XER exports? Read the step-by-step guide:
         <a href="guide-convert-p6-xer-to-excel.html"><strong>How to Convert a Primavera P6 XER File to Excel →</strong></a>
       </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     VISUAL COMPARATIVE MATRIX: MANUAL PROCESS VS SCHEDULYTICS ENGINE
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section reveal-on-scroll" style="background:#ffffff; border-top:1.5px solid var(--rule); padding:50px 0;">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center; margin-bottom:24px;">
+      <div>
+        <span class="eyebrow" style="color:var(--accent); font-weight:700;">Workflow Comparison</span>
+        <h2>The Painful Manual Process vs. Schedulytics 1-Click Engine</h2>
+        <p class="lede" style="margin:0 auto; max-width:65ch;">See why planning engineers and PMO teams switch from fragile manual spreadsheets to automated offline analytics.</p>
+      </div>
+    </div>
+
+    <div class="comp-matrix-grid">
+      <!-- Old Way -->
+      <div class="comp-card is-pain">
+        <div>
+          <div class="comp-card-badge-row">
+            <span class="comp-badge">❌ TRADITIONAL MANUAL WORKFLOW</span>
+            <span class="comp-time-meter">⏱ 18 – 48 Hours Per Cycle</span>
+          </div>
+          <h3 style="color:#991b1b; font-size:1.3rem; margin-bottom:8px;">Fragile, Slow &amp; High Risk</h3>
+          <ul class="comp-feature-list">
+            <li><span class="icon-fail">✕</span> <span>Exporting giant XER/XML files into CSV &rarr; manual VLOOKUPs that break on row changes.</span></li>
+            <li><span class="icon-fail">✕</span> <span>15+ hours spent copy-pasting tables and taking screenshots for executive PowerPoint decks.</span></li>
+            <li><span class="icon-fail">✕</span> <span>Confidential mega-project schedules uploaded to cloud SaaS tools, risking corporate NDA breaches.</span></li>
+            <li><span class="icon-fail">✕</span> <span>Subcontractors waiting 3–5 days to receive basic schedule feedback and milestone variance reports.</span></li>
+          </ul>
+        </div>
+        <div class="comp-bottom-pill">
+          Planners waste weekends on manual data entry instead of high-value delay claim defense.
+        </div>
+      </div>
+
+      <!-- Schedulytics Way -->
+      <div class="comp-card is-gain">
+        <div>
+          <div class="comp-card-badge-row">
+            <span class="comp-badge">🚀 THE SCHEDULYTICS ENGINE</span>
+            <span class="comp-time-meter">⚡ Under 15 Seconds</span>
+          </div>
+          <h3 style="color:#065f46; font-size:1.3rem; margin-bottom:8px;">1-Click Automated &amp; 100% Air-Gapped</h3>
+          <ul class="comp-feature-list">
+            <li><span class="icon-pass">✓</span> <span>Instant 22-sheet structured Excel workbook generated directly from raw P6 XML/XER files.</span></li>
+            <li><span class="icon-pass">✓</span> <span>Interactive single-file HTML dashboards ready to share via email with zero software installation.</span></li>
+            <li><span class="icon-pass">✓</span> <span>100% offline desktop processing — zero cloud uploads, zero internet dependencies, complete NDA security.</span></li>
+            <li><span class="icon-pass">✓</span> <span>Instant DCMA 14-point audit scorecards, EVM SPI/CPI dials, and delay slippage heatmaps.</span></li>
+          </ul>
+        </div>
+        <div class="comp-bottom-pill">
+          Planners gain back 15–20 hours every reporting cycle to focus on schedule recovery and contract claims.
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -512,6 +588,226 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
+     LIVE VISUAL ANALYTICS: INTERACTIVE S-CURVE & EVM RADIAL DIALS
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section reveal-on-scroll" id="live-visuals" style="background:#ffffff; border-top:1.5px solid var(--rule); padding:50px 0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow" style="color:var(--accent); font-weight:700;">Live Engine Deliverables</span>
+        <h2>Dynamic P6 S-Curve Forecaster &amp; Earned Value Speedometer Dials</h2>
+        <p class="lede">Schedulytics extracts planned baseline dates, actual progress cut-offs, and late finish projections directly from your schedule logic to generate interactive curves and EVM metrics.</p>
+      </div>
+    </div>
+
+    <div class="scurve-dashboard-grid">
+      <!-- SVG S-Curve Chart -->
+      <div class="scurve-chart-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+          <div>
+            <span style="font-family:var(--mono); font-size:0.75rem; font-weight:700; color:#0284c7; background:#e0f2fe; padding:3px 10px; border-radius:4px;">INTERACTIVE S-CURVE</span>
+            <h3 style="font-size:1.15rem; margin:6px 0 0;">Physical Progress vs Baseline Planned</h3>
+          </div>
+          <div style="display:flex; gap:14px; font-family:var(--mono); font-size:0.76rem; flex-wrap:wrap;">
+            <span style="color:#0284c7;">● Planned Baseline</span>
+            <span style="color:#059669;">● Actual Progress</span>
+            <span style="color:#d97706;">-- Forecast Delay Envelope</span>
+          </div>
+        </div>
+
+        <div style="background:#0f172a; border-radius:8px; padding:16px; border:1px solid #334155;">
+          <svg viewBox="0 0 500 210" style="width:100%; height:auto; display:block;">
+            <line x1="40" y1="20" x2="480" y2="20" stroke="#334155" stroke-dasharray="2,2"/>
+            <line x1="40" y1="65" x2="480" y2="65" stroke="#334155" stroke-dasharray="2,2"/>
+            <line x1="40" y1="110" x2="480" y2="110" stroke="#334155" stroke-dasharray="2,2"/>
+            <line x1="40" y1="155" x2="480" y2="155" stroke="#334155" stroke-dasharray="2,2"/>
+            <line x1="40" y1="195" x2="480" y2="195" stroke="#475569"/>
+            <line x1="40" y1="20" x2="40" y2="195" stroke="#475569"/>
+
+            <text x="10" y="24" fill="#94a3b8" font-size="9" font-family="monospace">100%</text>
+            <text x="15" y="69" fill="#94a3b8" font-size="9" font-family="monospace">75%</text>
+            <text x="15" y="114" fill="#94a3b8" font-size="9" font-family="monospace">50%</text>
+            <text x="15" y="159" fill="#94a3b8" font-size="9" font-family="monospace">25%</text>
+            <text x="20" y="197" fill="#94a3b8" font-size="9" font-family="monospace">0%</text>
+
+            <!-- Data date line -->
+            <line x1="280" y1="20" x2="280" y2="195" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <text x="285" y="32" fill="#ef4444" font-size="9" font-family="monospace" font-weight="bold">DATA DATE (MONTH 07)</text>
+
+            <!-- Planned Baseline S-Curve -->
+            <path d="M 40 195 C 140 190, 200 125, 280 85 C 360 45, 420 22, 480 20" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+
+            <!-- Actual Progress Curve -->
+            <path d="M 40 195 C 140 192, 200 140, 280 110" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round"/>
+
+            <!-- Delay Variance Polygon -->
+            <polygon points="280,85 280,110 260,118 260,97" fill="rgba(239, 68, 68, 0.25)"/>
+
+            <!-- Late Forecast Curve -->
+            <path d="M 280 110 C 350 85, 420 45, 480 35" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="5,4"/>
+
+            <circle cx="280" cy="85" r="4.5" fill="#38bdf8"/>
+            <circle cx="280" cy="110" r="4.5" fill="#10b981"/>
+
+            <text x="290" y="100" fill="#f87171" font-size="9" font-family="monospace" font-weight="bold">Δ -6.4% SLIPPAGE</text>
+          </svg>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:0.75rem; color:var(--ink-soft); margin-top:10px;">
+          <span>Month 01 (Notice to Proceed)</span>
+          <span>Month 07 (Current Cut-off)</span>
+          <span>Month 14 (Contractual Handover)</span>
+        </div>
+      </div>
+
+      <!-- EVM Speedometer Dials -->
+      <div class="evm-dials-card">
+        <div>
+          <span style="font-family:var(--mono); font-size:0.75rem; font-weight:700; color:#059669; background:#d1fae5; padding:3px 10px; border-radius:4px;">EARNED VALUE MANAGEMENT</span>
+          <h3 style="font-size:1.15rem; margin:6px 0 14px;">Instant EVM Performance Dials</h3>
+
+          <!-- SPI -->
+          <div class="dial-item-box">
+            <div>
+              <div style="font-family:var(--mono); font-size:0.75rem; color:var(--ink-soft);">Schedule Performance Index (SPI)</div>
+              <div class="dial-val-large" style="color:#d97706;">SPI 0.94</div>
+              <span style="font-family:var(--mono); font-size:0.72rem; padding:2px 8px; border-radius:4px; background:#fef3c7; color:#92400e;">Critical Path Lag</span>
+            </div>
+            <div style="width:60px; height:60px; position:relative; display:flex; align-items:center; justify-content:center;">
+              <svg viewBox="0 0 36 36" style="width:60px; height:60px; transform:rotate(-90deg);">
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e2e8f0" stroke-width="4"/>
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="94, 100" fill="none" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+              <span style="position:absolute; font-family:var(--mono); font-size:0.74rem; font-weight:700;">94%</span>
+            </div>
+          </div>
+
+          <!-- CPI -->
+          <div class="dial-item-box">
+            <div>
+              <div style="font-family:var(--mono); font-size:0.75rem; color:var(--ink-soft);">Cost Performance Index (CPI)</div>
+              <div class="dial-val-large" style="color:#059669;">CPI 1.05</div>
+              <span style="font-family:var(--mono); font-size:0.72rem; padding:2px 8px; border-radius:4px; background:#d1fae5; color:#065f46;">Under Budget</span>
+            </div>
+            <div style="width:60px; height:60px; position:relative; display:flex; align-items:center; justify-content:center;">
+              <svg viewBox="0 0 36 36" style="width:60px; height:60px; transform:rotate(-90deg);">
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e2e8f0" stroke-width="4"/>
+                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke-dasharray="100, 100" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+              <span style="position:absolute; font-family:var(--mono); font-size:0.74rem; font-weight:700;">105%</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:14px; text-align:center; font-family:var(--mono); font-size:0.76rem; color:var(--ink-soft);">
+          Exportable to Boardroom PowerPoint in 30 Seconds
+        </div>
+      </div>
+    </div>
+
+    <!-- DCMA 14 SCHEDULE HEALTH HEATMAP -->
+    <div class="dcma-heatmap-wrap">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:18px;">
+        <div>
+          <span style="font-family:var(--mono); font-size:0.75rem; font-weight:700; color:#d97706; background:#fef3c7; padding:3px 10px; border-radius:4px;">SCHEDULE INTEGRITY HEATMAP</span>
+          <h3 style="font-size:1.25rem; margin:6px 0 2px;">DCMA 14-Point Baseline Quality &amp; Compliance Scorecard</h3>
+          <p style="font-size:0.88rem; color:var(--ink-soft); margin:0;">Visual pass/warning/breach heatmap generated automatically from P6 activity logic and relationships.</p>
+        </div>
+        <div style="display:flex; gap:12px; font-family:var(--mono); font-size:0.74rem;">
+          <span style="display:inline-flex; align-items:center; gap:5px;"><span class="heatmap-cell pass" style="padding:2px 6px; min-width:auto;">Pass</span> &lt; 5%</span>
+          <span style="display:inline-flex; align-items:center; gap:5px;"><span class="heatmap-cell warn" style="padding:2px 6px; min-width:auto;">Warning</span> 5–10%</span>
+          <span style="display:inline-flex; align-items:center; gap:5px;"><span class="heatmap-cell crit" style="padding:2px 6px; min-width:auto;">Critical</span> &gt; 10%</span>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="heatmap-table">
+          <thead>
+            <tr>
+              <th>DCMA 14 Audit Metric</th>
+              <th>Standard</th>
+              <th>Civil Works (Pkg 1)</th>
+              <th>Structural Steel (Pkg 2)</th>
+              <th>MEP Integration (Pkg 3)</th>
+              <th>Commissioning</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>#01 Missing Logic (Pred/Succ)</strong></td>
+              <td>&lt; 5.0%</td>
+              <td><span class="heatmap-cell pass">1.2%</span></td>
+              <td><span class="heatmap-cell pass">3.4%</span></td>
+              <td><span class="heatmap-cell warn">8.1%</span></td>
+              <td><span class="heatmap-cell pass">0.5%</span></td>
+              <td><span class="heatmap-cell warn">WARNING</span></td>
+            </tr>
+            <tr>
+              <td><strong>#02 Leads (Negative Lag)</strong></td>
+              <td>0.0%</td>
+              <td><span class="heatmap-cell pass">0.0%</span></td>
+              <td><span class="heatmap-cell pass">0.0%</span></td>
+              <td><span class="heatmap-cell pass">0.0%</span></td>
+              <td><span class="heatmap-cell pass">0.0%</span></td>
+              <td><span class="heatmap-cell pass">PASSED</span></td>
+            </tr>
+            <tr>
+              <td><strong>#03 Lags (Start/Finish Offsets)</strong></td>
+              <td>&lt; 5.0%</td>
+              <td><span class="heatmap-cell pass">2.1%</span></td>
+              <td><span class="heatmap-cell pass">4.8%</span></td>
+              <td><span class="heatmap-cell crit">14.2%</span></td>
+              <td><span class="heatmap-cell pass">3.1%</span></td>
+              <td><span class="heatmap-cell crit">BREACH</span></td>
+            </tr>
+            <tr>
+              <td><strong>#05 Hard Constraints (Mandatory)</strong></td>
+              <td>&lt; 5.0%</td>
+              <td><span class="heatmap-cell pass">0.8%</span></td>
+              <td><span class="heatmap-cell pass">1.5%</span></td>
+              <td><span class="heatmap-cell warn">6.4%</span></td>
+              <td><span class="heatmap-cell pass">1.0%</span></td>
+              <td><span class="heatmap-cell warn">WARNING</span></td>
+            </tr>
+            <tr>
+              <td><strong>#06 High Total Float (&gt;44 Days)</strong></td>
+              <td>&lt; 5.0%</td>
+              <td><span class="heatmap-cell pass">3.2%</span></td>
+              <td><span class="heatmap-cell pass">4.1%</span></td>
+              <td><span class="heatmap-cell crit">11.8%</span></td>
+              <td><span class="heatmap-cell pass">2.5%</span></td>
+              <td><span class="heatmap-cell crit">BREACH</span></td>
+            </tr>
+            <tr>
+              <td><strong>#07 Negative Total Float</strong></td>
+              <td>0.0%</td>
+              <td><span class="heatmap-cell pass">0.0%</span></td>
+              <td><span class="heatmap-cell pass">0.0%</span></td>
+              <td><span class="heatmap-cell crit">-14 Days</span></td>
+              <td><span class="heatmap-cell pass">0.0%</span></td>
+              <td><span class="heatmap-cell crit">BREACH</span></td>
+            </tr>
+            <tr>
+              <td><strong>#10 Critical Path Continuity</strong></td>
+              <td>Pass</td>
+              <td><span class="heatmap-cell pass">Passed</span></td>
+              <td><span class="heatmap-cell pass">Passed</span></td>
+              <td><span class="heatmap-cell crit">Broken</span></td>
+              <td><span class="heatmap-cell pass">Passed</span></td>
+              <td><span class="heatmap-cell crit">BREACH</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:14px; font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <span>💡 <em>Schedulytics flags broken relationships and automatically highlights missing logic in the exported Excel workbook.</em></span>
+        <a href="baseline-schedulytics.html" style="color:#000080; font-weight:700; text-decoration:none;">Explore Baseline Quality Audit Tool &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
      CUSTOM AUTOMATION & TRAINING CROSS-SELL
      ═══════════════════════════════════════════════════════════════════ -->
 <section class="section reveal-on-scroll" id="custom-automation">
@@ -524,21 +820,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <div class="card-grid">
-      <div class="card">
-        <span class="num">S · 01</span>
-        <h3 style="font-size:1.05rem;">Bespoke Software &amp; Custom Tool Development</h3>
-        <p style="font-size:0.92rem; color:var(--ink-soft);">Single-file offline web apps, custom desktop tools, RFI and inspection-request PDF extractors, and automated Excel engines tailored to your exact contract specifications (FIDIC, Saudi Aramco, SABIC, NEC).</p>
+    <div class="bento-grid">
+      <!-- Bento Tile 1: Fast Excel (Span 8) -->
+      <div class="bento-card bento-col-8" style="background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%); border-color: #93c5fd;">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+            <span class="celebration-badge-pill" style="font-size:0.75rem; padding:4px 12px; background:#000080; color:#FFD700;">⚡ 15 SEC GENERATION</span>
+            <span style="font-family:var(--mono); font-size:0.8rem; color:#0284c7; font-weight:700;">S · 01 BESPOKE ENGINE</span>
+          </div>
+          <h3 style="font-size:1.35rem; margin-bottom:8px;">Bespoke Software &amp; Custom 22-Sheet Excel Generators</h3>
+          <p style="font-size:0.95rem; color:var(--ink-soft); line-height:1.6; margin-bottom:14px;">
+            Extract and transform multi-thousand activity Primavera schedules into fully formatted, automated 22-sheet Excel workbooks with pre-calculated S-curves, milestone variance, and contractor scorecards—tailored to your exact corporate template.
+          </p>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; font-family:var(--mono); font-size:0.76rem; color:var(--ink-soft);">
+          <span>✓ FIDIC &amp; Aramco Specs</span>
+          <span>✓ Multi-Package Consolidation</span>
+          <span>✓ 100% Offline VBA</span>
+        </div>
       </div>
-      <div class="card">
-        <span class="num">S · 02 / 03</span>
-        <h3 style="font-size:1.05rem;">PowerPoint &amp; P6 Audit Engines</h3>
-        <p style="font-size:0.92rem; color:var(--ink-soft);">One-click executive decks in your corporate template, and standalone Primavera P6 calculation engines enforcing your organisation's own schedule quality and compliance criteria.</p>
+
+      <!-- Bento Tile 2: Air-Gapped Security (Span 4) -->
+      <div class="bento-card bento-col-4" style="background: #0f172a; color:#ffffff; border-color:#334155;">
+        <div>
+          <span style="font-family:var(--mono); font-size:0.74rem; font-weight:700; color:#38bdf8;">SECURITY &amp; PRIVACY</span>
+          <div class="bento-big-stat" style="color:#38bdf8;">100%</div>
+          <h4 style="color:#ffffff; font-size:1.05rem; margin-bottom:6px;">Air-Gapped &amp; Private</h4>
+          <p style="font-size:0.86rem; color:#94a3b8; line-height:1.5;">Zero cloud uploads. Runs on your standalone workstation behind EPC enterprise firewalls.</p>
+        </div>
+        <span style="font-family:var(--mono); font-size:0.72rem; color:#64748b;">NDA Compliant by Design</span>
       </div>
-      <div class="card">
-        <span class="num">S · 04</span>
-        <h3 style="font-size:1.05rem;">AI Training for Project Controls</h3>
-        <p style="font-size:0.92rem; color:var(--ink-soft);">Hands-on half-day or full-day workshops for planning engineers, cost controllers and PMO staff — taught with real P6 exports and real construction documents, on-site or over Teams.</p>
+
+      <!-- Bento Tile 3: DCMA 14 Audit Rigor (Span 4) -->
+      <div class="bento-card bento-col-4" style="background: #ffffff; border-color:#cbd5e1;">
+        <div>
+          <span style="font-family:var(--mono); font-size:0.74rem; font-weight:700; color:#d97706;">AUDIT RIGOR</span>
+          <div class="bento-big-stat" style="color:#d97706;">14 / 14</div>
+          <h4 style="font-size:1.05rem; margin-bottom:6px;">DCMA Compliance Checks</h4>
+          <p style="font-size:0.86rem; color:var(--ink-soft); line-height:1.5;">Automated logic, lead/lag, float leakage, and critical path continuity checks in seconds.</p>
+        </div>
+        <span style="font-family:var(--mono); font-size:0.72rem; color:var(--ink-soft);">Instant Pass/Fail Scorecards</span>
+      </div>
+
+      <!-- Bento Tile 4: Dual Platform Access (Span 8) -->
+      <div class="bento-card bento-col-8" style="background: linear-gradient(135deg, #ffffff 0%, #ecfdf5 100%); border-color: #86efac;">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+            <span class="stamp stamp-live" style="font-size:0.75rem;">DUAL PLATFORM LICENCE</span>
+            <span style="font-family:var(--mono); font-size:0.8rem; color:#047857; font-weight:700;">PC + ANDROID</span>
+          </div>
+          <h3 style="font-size:1.35rem; margin-bottom:8px;">Single-File HTML Dashboards on Desktop &amp; Jobsite Mobile</h3>
+          <p style="font-size:0.95rem; color:var(--ink-soft); line-height:1.6; margin-bottom:14px;">
+            Every perpetual license includes activation on 1 Windows PC and 1 Android smartphone. Generate self-contained HTML dashboards that open offline on any browser without recipient software installation.
+          </p>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; font-family:var(--mono); font-size:0.76rem; color:var(--ink-soft);">
+          <span>✓ Interactive Filter Dials</span>
+          <span>✓ Jobsite Progress Review</span>
+          <span>✓ Zero Monthly Subscriptions</span>
+        </div>
       </div>
     </div>
 
