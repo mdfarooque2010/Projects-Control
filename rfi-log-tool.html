@@ -347,7 +347,7 @@
         </button>
       </div>
     </div>
-    <p class="hint">These are the same workbooks everyone has already agreed on. New rows are appended underneath your existing data - nothing is renamed, reformatted, or removed. <strong>Add as many packages as you like</strong>: each file you add joins the list rather than replacing it, so you can pick them up from different folders one at a time. The tool reads each file's package code (C1, B1, B2, C2 &hellip;) from the RFI numbers inside it, so the packages never overlap.</p>
+    <p class="hint">These are the same workbooks everyone has already agreed on. New rows are appended underneath your existing data - nothing is renamed, reformatted, or removed. <strong>Add as many packages as you like</strong>: each file you add joins the list rather than replacing it, so you can pick them up from different folders one at a time. The tool reads each file's package code (e.g. PKG1, PKG2, PKG3, PKG4 &hellip;) from the RFI numbers inside it, so the packages never overlap.</p>
     <div class="row" style="margin-bottom:12px">
       <button class="secondary" id="openTemplateBtn">Add log(s) from a folder&hellip;</button>
       <span class="footnote">or drag them below &mdash; you can drop several at once, and repeat from another folder</span>
@@ -655,10 +655,10 @@
       <tbody>
         <tr>
           <td><strong>5-Segment</strong> (Standard)</td>
-          <td><code>RFI-C1-PS1-C-0001</code><br><code>RFI-C1-PS2-Elec-0023</code><br><code>RFI-P1-KM14-Mech-0104</code></td>
+          <td><code>RFI-PKG1-SEC1-C-0001</code><br><code>RFI-PKG1-SEC2-Elec-0023</code><br><code>RFI-P1-KM14-Mech-0104</code></td>
           <td>
-            &bull; <strong>Package:</strong> <code>C1</code> / <code>P1</code><br>
-            &bull; <strong>Location / Site:</strong> <code>PS1</code>, <code>PS2</code>, <code>KM14</code><br>
+            &bull; <strong>Package:</strong> <code>PKG1</code> / <code>P1</code><br>
+            &bull; <strong>Location / Site:</strong> <code>SEC1</code>, <code>SEC2</code>, <code>KM14</code><br>
             &bull; <strong>Discipline:</strong> <code>C</code>, <code>Elec</code>, <code>Mech</code><br>
             &bull; <strong>Sequence:</strong> <code>0001</code>, <code>0023</code>, <code>0104</code>
           </td>
@@ -666,9 +666,9 @@
         </tr>
         <tr>
           <td><strong>4-Segment</strong> (No Location)</td>
-          <td><code>RFI-C1-E-0001</code><br><code>RFI-B1-Mech-0042</code></td>
+          <td><code>RFI-PKG1-E-0001</code><br><code>RFI-PKG2-Mech-0042</code></td>
           <td>
-            &bull; <strong>Package:</strong> <code>C1</code> / <code>B1</code><br>
+            &bull; <strong>Package:</strong> <code>PKG1</code> / <code>PKG2</code><br>
             &bull; <strong>Discipline:</strong> <code>E</code> / <code>Mech</code><br>
             &bull; <strong>Sequence:</strong> <code>0001</code> / <code>0042</code>
           </td>
@@ -697,7 +697,7 @@
     <div style="margin-top:16px;padding:12px 16px;background:var(--surface-1);border-left:4px solid var(--series-3);border-radius:4px">
       <h3 style="margin:0 0 6px;color:var(--text-primary);font-size:14px">Single-Project &amp; Custom Package Auto-Routing</h3>
       <p style="margin:0 0 8px;font-size:12.5px;color:var(--text-secondary);line-height:1.5">
-        &bull; <strong>Multi-Package Mode:</strong> If multiple workbooks are loaded (e.g. C1, B1, B2, C2), the tool matches the package token in the RFI number (e.g. <code>C1</code> in <code>RFI-C1-PS1-C-0001</code>) to route the RFI to the correct workbook.<br>
+        &bull; <strong>Multi-Package Mode:</strong> If multiple workbooks are loaded (e.g. PKG1, PKG2, PKG3, PKG4), the tool matches the package token in the RFI number (e.g. <code>PKG1</code> in <code>RFI-PKG1-SEC1-C-0001</code>) to route the RFI to the correct workbook.<br>
         &bull; <strong>Single-Project Mode (Zero Setup):</strong> If you load a single Excel workbook, the tool automatically routes all RFIs to that loaded workbook regardless of whether the RFI number contains custom package codes (e.g. <code>PKG1</code>, <code>P1</code>, <code>LOT2</code>) or completely omits the package token (e.g. <code>RFI-MECH-0001</code>). You will never encounter "no matching log" errors.
       </p>
     </div>
@@ -953,13 +953,11 @@ const EXTRA_HEADERS = [
   "Contact Person", "Mobile", "Days Open", "Breached SLA", "State",
   "Response Time (days)", "Source File", "Needs Review"
 ];
-// The core columns are NOT at fixed letters across the four packages. C1, B1
-// (Civil/Mech/Elec) and C2 run Site=G, Location=H, Approval=I, Status=J - but
-// B2 has no Site column at all (Location=G, Approval=H, Status=I), and B1's own
-// ICT sheet follows B2's layout rather than B1's. Writing to hard-coded letters
-// would put approval dates into the Location column on those sheets. So the
-// layout is detected per SHEET from its row-2 header text, and every read and
-// write goes through the detected map.
+// The core columns are NOT at fixed letters across multiple packages. Some sheets
+// run Site=G, Location=H, Approval=I, Status=J - but other sheets have no Site
+// column at all (Location=G, Approval=H, Status=I), and some discipline sheets
+// vary within the same workbook. Writing to hard-coded letters would corrupt data.
+// So the layout is detected per SHEET from its row-2 header text.
 //
 // Keys are the roles the tool cares about; values are column letters or null.
 const DEFAULT_LAYOUT = { sr: "A", rfi: "B", rev: "C", date: "D", time: "E", desc: "F", site: "G", location: "H", approval: "I", status: "J", signedBy: "K" };
@@ -1430,8 +1428,8 @@ function parseContractorTime(s) {
 // Two number shapes are in use across the four packages, and both must be
 // understood or a whole log becomes unreadable:
 //
-//   5 segments, with an AREA:   RFI-C1-PS1-C-01192      (package C1)
-//   4 segments, no area:        RFI-B1-C-0001           (packages B1, B2, C2)
+//   5 segments, with an AREA:   RFI-PKG1-SEC1-C-01192   (5-part shape)
+//   4 segments, no area:        RFI-PKG2-C-0001         (4-part shape)
 //
 // The 5-segment pattern is tried first. It cannot false-match a 4-segment
 // number (after "RFI-B1-C-" it needs another letter group before the digits,
@@ -6670,8 +6668,8 @@ function fmtDate(d) {
 /* ---------------------------- Template loading --------------------------- */
 
 // Work out which package a workbook belongs to, from the RFI numbers inside it
-// rather than from its filename (filenames vary: "RRWTS -B1- (RFI) Request…",
-// "C1- (RFI) Request…"). The dominant code wins; anything else is reported, so
+// rather than from its filename (filenames vary: "PROJECT -PKG1- (RFI) Request…",
+// "PKG2- (RFI) Request…"). The dominant code wins; anything else is reported, so
 // a stray row from another package cannot silently join the wrong log.
 function detectPackageKey(records) {
   const tally = {};

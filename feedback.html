@@ -210,10 +210,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Community Rating Summary -->
     <div class="reviews-summary-card">
       <div class="rating-score-box">
-        <div class="big-score">4.9</div>
+        <div class="big-score" id="avgRatingScore">—</div>
         <div>
-          <div style="color:#f59e0b; font-size:22px; line-height:1;">★★★★★</div>
-          <div style="font-size:0.86rem; color:var(--ink-soft); margin-top:4px;">Average rating based on <strong id="totalReviewsCount">24</strong> engineer reviews</div>
+          <div style="color:#f59e0b; font-size:22px; line-height:1;" id="avgRatingStars">☆☆☆☆☆</div>
+          <div style="font-size:0.86rem; color:var(--ink-soft); margin-top:4px;"><span id="ratingSummaryText">No reviews submitted yet — be the first to share feedback!</span> (<strong id="totalReviewsCount">0</strong> reviews)</div>
         </div>
       </div>
       <div>
@@ -374,66 +374,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   (function() {
     const STORAGE_KEY = "schedulytics_feedback_log";
 
-    // Verified seed community reviews so the public directory is rich and authoritative from day one
-    const SEED_REVIEWS = [
-      {
-        id: "REV-101",
-        timestamp: "2026-09-12T10:30:00Z",
-        tool: "RFI Log Automation Tool (v8.0)",
-        rating: 5,
-        category: "Review / Experience",
-        name: "Fahad A.",
-        role: "Project Controls Lead, Infrastructure",
-        feedback: "The multi-package Ras Al Khair parser saved our team hours of manual entry every week. What impressed us most was that it did not corrupt any of our existing 10,000+ conditional formatting rules or formulas in Excel!"
-      },
-      {
-        id: "REV-102",
-        timestamp: "2026-09-10T14:15:00Z",
-        tool: "Progress Schedulytics",
-        rating: 5,
-        category: "Review / Experience",
-        name: "Rajesh M.",
-        role: "Senior Planning Engineer (EPC)",
-        feedback: "Generated a 22-sheet executive Excel reporting pack from a 4,500-activity P6 schedule in under 20 seconds. The interactive HTML dashboard was shared directly with our client without needing any software install."
-      },
-      {
-        id: "REV-103",
-        timestamp: "2026-09-08T09:45:00Z",
-        tool: "RFI Log Automation Tool (v8.0)",
-        rating: 5,
-        category: "Review / Experience",
-        name: "Tariq K.",
-        role: "Site QA/QC Engineer",
-        feedback: "The new Reviewer and Signatory KPI tracking in v8.0 is a game changer. We can now pinpoint exactly which sub-consultant is delaying inspection approvals against our contractual FIDIC 7-day SLA."
-      },
-      {
-        id: "REV-104",
-        timestamp: "2026-09-05T16:20:00Z",
-        tool: "Baseline Schedulytics",
-        rating: 5,
-        category: "Review / Experience",
-        name: "David H.",
-        role: "Claims & Forensic Delay Consultant",
-        feedback: "The DCMA 14-point baseline sentinel and Monte Carlo risk curves are as fast as Deltek Acumen Fuse, but completely standalone and 100% offline. Truly essential for submittal auditing."
-      },
-      {
-        id: "REV-105",
-        timestamp: "2026-09-02T11:00:00Z",
-        tool: "Custom Tool Development",
-        rating: 5,
-        category: "Review / Experience",
-        name: "Mohannad S.",
-        role: "PMO Director, Water Works",
-        feedback: "Mohammed Farooque developed a bespoke document extraction engine for our 4 pipeline packages. Delivered on time, fully documented, and preserved our exact corporate layouts."
-      }
-    ];
-
     function getAllReviews() {
       let userReviews = [];
       try {
         userReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
       } catch(e) {}
-      return [...userReviews, ...SEED_REVIEWS];
+      return userReviews;
     }
 
     function renderReviews(filter = "all") {
@@ -441,16 +387,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (!container) return;
 
       const reviews = getAllReviews();
-      document.getElementById("totalReviewsCount").textContent = reviews.length;
+      const totalCountEl = document.getElementById("totalReviewsCount");
+      const avgScoreEl = document.getElementById("avgRatingScore");
+      const avgStarsEl = document.getElementById("avgRatingStars");
+      const summaryTextEl = document.getElementById("ratingSummaryText");
+
+      if (totalCountEl) totalCountEl.textContent = reviews.length;
+
+      if (reviews.length > 0) {
+        const sum = reviews.reduce((acc, r) => acc + (parseInt(r.rating, 10) || 5), 0);
+        const avg = (sum / reviews.length).toFixed(1);
+        if (avgScoreEl) avgScoreEl.textContent = avg;
+        const starCount = Math.round(parseFloat(avg));
+        if (avgStarsEl) avgStarsEl.textContent = "★".repeat(starCount) + "☆".repeat(5 - starCount);
+        if (summaryTextEl) summaryTextEl.textContent = "Average rating based on real user feedback";
+      } else {
+        if (avgScoreEl) avgScoreEl.textContent = "—";
+        if (avgStarsEl) avgStarsEl.textContent = "☆☆☆☆☆";
+        if (summaryTextEl) summaryTextEl.textContent = "No reviews submitted yet — be the first to share feedback!";
+      }
 
       const filtered = reviews.filter(r => {
         if (filter === "all") return true;
-        if (filter === "rfi" && r.tool.includes("RFI")) return true;
-        if (filter === "progress" && r.tool.includes("Progress")) return true;
-        if (filter === "baseline" && r.tool.includes("Baseline")) return true;
-        if (filter === "custom" && r.tool.includes("Custom")) return true;
+        if (filter === "rfi" && r.tool && r.tool.includes("RFI")) return true;
+        if (filter === "progress" && r.tool && r.tool.includes("Progress")) return true;
+        if (filter === "baseline" && r.tool && r.tool.includes("Baseline")) return true;
+        if (filter === "custom" && r.tool && r.tool.includes("Custom")) return true;
         return false;
       });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align:center; padding:48px 20px; background:var(--paper-raised); border:1.5px dashed var(--rule); border-radius:10px;">
+            <div style="font-size:36px; margin-bottom:10px;">💬</div>
+            <h4 style="font-size:1.15rem; margin-bottom:6px; color:var(--ink);">No reviews yet</h4>
+            <p style="font-size:0.92rem; color:var(--ink-soft); max-width:50ch; margin:0 auto 18px; line-height:1.5;">
+              Be the first engineer to share your feedback, feature request, or experience using Schedulytics tools.
+            </p>
+            <a href="#leave-feedback" class="btn btn-primary" style="background:#000080; border-color:#000080; display:inline-flex; padding:10px 18px; font-size:0.88rem;">
+              + Write the First Review &rarr;
+            </a>
+          </div>
+        `;
+        return;
+      }
 
       container.innerHTML = filtered.map(item => {
         const stars = "★".repeat(item.rating || 5) + "☆".repeat(5 - (item.rating || 5));

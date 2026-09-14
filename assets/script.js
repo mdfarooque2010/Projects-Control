@@ -384,35 +384,35 @@ window.jumpTo = function(seconds) {
 
 // ------------------------------------------------------------- 11. Interactive Contractor Package Switcher
 var pkgData = {
-  c1: {
-    num: "5 parts with sub-area code (e.g. C1-PS1-CIV-0042)",
+  pkg1: {
+    num: "5 parts with sub-area code (e.g. PKG1-SEC1-CIV-0042)",
     sep: "Space / Underscore format",
     col: "Column J (Approval Decision)",
-    loc: "4-5 Facility Process Areas",
+    loc: "Facility & Foundation Areas",
     sla: "94.2%",
     sub: "Average Turnaround: 4.2 Days (FIDIC Target: 7 Days)"
   },
-  b1: {
-    num: "4 parts with chainage KP code (e.g. B1-PIPE-0118)",
+  pkg2: {
+    num: "4 parts with zone code (e.g. PKG2-STR-0118)",
     sep: "Mixed format (all three handled)",
     col: "Column J (Engineer Sign-off)",
-    loc: "Pipeline Chainage KP 00 to KP 140",
+    loc: "Structural Superstructure Zones",
     sla: "89.6%",
     sub: "Average Turnaround: 5.1 Days (FIDIC Target: 7 Days)"
   },
-  b2: {
-    num: "4 parts with sectional tag (e.g. B2-SEC4-0089)",
+  pkg3: {
+    num: "4 parts with discipline tag (e.g. PKG3-MEP-0089)",
     sep: "Space / Underscore format",
     col: "Column I (Inspection Status)",
-    loc: "Pipeline Chainage KP 140 to KP 280",
+    loc: "Underground & Riser Utilities",
     sla: "91.8%",
     sub: "Average Turnaround: 4.8 Days (FIDIC Target: 7 Days)"
   },
-  c2: {
-    num: "4 parts standard (e.g. C2-TNK-0205)",
+  pkg4: {
+    num: "4 parts standard (e.g. PKG4-PROC-0205)",
     sep: "Underscore / Hyphen format",
     col: "Column J (Decision Stamped)",
-    loc: "Terminal Reservoir Single Site",
+    loc: "Plant Equipment & Handover",
     sla: "96.4%",
     sub: "Average Turnaround: 3.8 Days (FIDIC Target: 7 Days)"
   }
