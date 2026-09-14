@@ -35,7 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=20260914c">
 
 <!-- Google Analytics 4 — Measurement ID G-45PFV7MNN1 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45PFV7MNN1"></script>
@@ -163,7 +163,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="coming-soon.html" class="nav-soon">Coming Soon</a>
       <a href="about.html" class="nav-about">About</a>
       <a href="contact.html" class="nav-contact">Contact</a>
-      <a href="feedback.html" class="nav-feedback">Feedback</a>
     </nav>
   </div>
 </header>
@@ -264,7 +263,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="stamp stamp-live">5 – 10 business days</span>
             </div>
           </div>
-          <h3>Bespoke Excel Analytics, RFI &amp; MDR Submittal Trackers</h3>
+          <h3>Bespoke Excel Analytics, Submittal &amp; Progress Trackers</h3>
           <p class="showcase-desc">Fully automated, dynamic Excel workbooks built to your exact company SOPs and your client's submittal requirements — writing into the workbook your team already uses, not a replacement for it.</p>
           <ul class="showcase-features-list">
             <li><strong>One-click ingestion</strong> from Primavera P6 XML/XER, CSV, or PDF document sets.</li>
@@ -405,193 +404,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="section reveal-on-scroll" id="case-study">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow" style="color:var(--accent); font-weight:700;">Recent Build · Anonymised</span>
-        <h2>Case Study: RFI PDF Data Extraction &amp; Log Automation Across Four Packages</h2>
-        <p class="lede">A live multi-package infrastructure programme across four different contractors, four different Request-for-Inspection forms, and four Excel registers that had grown to <strong>19,326 RFI rows across 13 sheets</strong>. Client, project and contractor identities are withheld; generic package labels are used for illustration.</p>
-      </div>
-    </div>
 
-    <!-- 1. BIG IMPACT STAT COUNTERS -->
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-number">19,326</div>
-        <div class="stat-label">Total RFIs Processed</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">13</div>
-        <div class="stat-label">Live Excel Sheets Synced</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">10,190</div>
-        <div class="stat-label">Formulas &amp; Rules Intact</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">100%</div>
-        <div class="stat-label">Offline Air-Gapped</div>
-      </div>
-    </div>
-
-    <!-- 2. VISUAL WORKFLOW PIPELINE -->
-    <div class="pipeline-container">
-      <div class="pipeline-head">
-        <h3>⚡ The Automated 5-Step Extraction Pipeline</h3>
-        <span style="font-family:var(--mono); font-size:0.75rem; color:#94a3b8;">Zero Cloud Uploads &middot; In-Memory Execution</span>
-      </div>
-
-      <div class="pipeline-steps">
-        <div class="step-box">
-          <span class="step-num">STEP 01</span>
-          <span class="step-icon">📁</span>
-          <div class="step-title">Drop PDF Folder</div>
-          <div class="step-desc">Point to folder of contractor RFI approval PDFs.</div>
-        </div>
-
-        <div class="step-box">
-          <span class="step-num">STEP 02</span>
-          <span class="step-icon">⚙️</span>
-          <div class="step-title">Local OCR &amp; Regex</div>
-          <div class="step-desc">Extracts RFI#, Rev, Discipline, Dates, and Stamped Status.</div>
-        </div>
-
-        <div class="step-box">
-          <span class="step-num">STEP 03</span>
-          <span class="step-icon">🔀</span>
-          <div class="step-title">Revision Matcher</div>
-          <div class="step-desc">Inserts under parent or updates existing row cleanly.</div>
-        </div>
-
-        <div class="step-box">
-          <span class="step-num">STEP 04</span>
-          <span class="step-icon">📊</span>
-          <div class="step-title">Existing Workbook</div>
-          <div class="step-desc">Edits target rows only. Byte-for-byte formulas preserved.</div>
-        </div>
-
-        <div class="step-box">
-          <span class="step-num">STEP 05</span>
-          <span class="step-icon">📈</span>
-          <div class="step-title">Live KPI Dials</div>
-          <div class="step-desc">Reviewer turnaround &amp; FIDIC SLA compliance dashboard.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. PROBLEM VS SOLUTION CARDS -->
-    <div class="two-col-compare">
-      <div class="comp-box pain">
-        <h3>❌ The Traditional Manual Nightmare</h3>
-        <ul class="comp-list">
-          <li><strong>Hand-Typing 500+ PDFs/Month:</strong> Engineers copying RFI numbers, chainages, and dates line-by-line.</li>
-          <li><strong>Fragile Formatting:</strong> One careless copy-paste broke conditional formatting across 15,000 rows.</li>
-          <li><strong>Blind Management:</strong> Zero visibility into reviewer turnaround times or overdue FIDIC SLAs.</li>
-          <li><strong>Duplicate Entries:</strong> Resubmissions created duplicate rows instead of tracking revisions.</li>
-        </ul>
-      </div>
-
-      <div class="comp-box gain">
-        <h3>🚀 The Schedulytics Engine Solution</h3>
-        <ul class="comp-list">
-          <li><strong>Batch Extraction in Seconds:</strong> Hundreds of PDFs classified and written automatically in one click.</li>
-          <li><strong>100% Archive Preservation:</strong> 10,190 formatting rules, dropdowns, and formulas left byte-intact.</li>
-          <li><strong>Instant Executive Dashboard:</strong> Reviewer turnaround times and SLA compliance % generated on the fly.</li>
-          <li><strong>Parent-Child Linking:</strong> Revisions automatically inserted directly under parent RFI numbers.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 4. INTERACTIVE CONTRACTOR PACKAGE TABS (REPLACES STATIC TEXT TABLE) -->
-    <div class="package-interactive-section">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
-        <div>
-          <span style="font-family:var(--mono); font-size:0.75rem; font-weight:700; color:#000080; background:#e0f2fe; padding:3px 10px; border-radius:4px;">INTERACTIVE CONTRACTOR MATCHER</span>
-          <h3 style="font-size:1.25rem; margin-top:4px;">Adapting to Four Different Contractors Without Hard-Coding</h3>
-        </div>
-        <span style="font-size:0.8rem; color:var(--ink-soft); font-family:var(--mono);">Click a package tab below:</span>
-      </div>
-
-      <!-- Tab Buttons -->
-      <div class="tab-bar">
-        <button type="button" class="pkg-tab-btn active" onclick="switchPkg('pkg1', this)">Package 1 (Civil Works)</button>
-        <button type="button" class="pkg-tab-btn" onclick="switchPkg('pkg2', this)">Package 2 (Structural &amp; Buildings)</button>
-        <button type="button" class="pkg-tab-btn" onclick="switchPkg('pkg3', this)">Package 3 (MEP &amp; Utilities)</button>
-        <button type="button" class="pkg-tab-btn" onclick="switchPkg('pkg4', this)">Package 4 (Process &amp; Commissioning)</button>
-      </div>
-
-      <!-- Interactive Tab Content Display -->
-      <div class="pkg-content-box" id="pkgContent">
-        <div class="pkg-details">
-          <div class="detail-row">
-            <span class="detail-label">RFI Number Structure</span>
-            <span class="detail-val" id="dNum">5 parts with sub-area code (e.g. PKG1-SEC1-CIV-0042)</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Revision Separator</span>
-            <span class="detail-val" id="dSep">Space / Underscore format</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Auto-Detected Status Column</span>
-            <span class="detail-val" id="dCol">Column J (Approval Decision)</span>
-          </div>
-          <div class="detail-row">
-            <span class="detail-label">Geographic Location Scope</span>
-            <span class="detail-val" id="dLoc">Facility &amp; Foundation Areas</span>
-          </div>
-        </div>
-
-        <div class="sla-metric-card">
-          <span style="font-size:0.74rem; font-family:var(--mono); color:#94a3b8; text-transform:uppercase;">Reviewer SLA Compliance</span>
-          <div class="sla-rate" id="dSla">94.2%</div>
-          <span style="font-size:0.75rem; color:#cbd5e1;" id="dSlaSub">Average Turnaround: 4.2 Days (Target: 7 Days)</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel" style="margin-bottom:22px;">
-      <span class="eyebrow" style="color:var(--flag); font-weight:700;">What the pre-flight check found in the live register</span>
-      <p style="font-size:0.95rem;">Before adding anything, every load reports — read-only — what is already wrong in the log. On the production file it surfaced problems that had been invisible for years:</p>
-      <ul class="tick-list pending">
-        <li><strong>8,632 numbers at risk of a silent mis-match</strong> — sequence numbers of 5 and 6 digits were being truncated to 4 by an earlier parser, and every one of those truncations collided with a different, real RFI.</li>
-        <li><strong>22 malformed RFI numbers</strong> counted in the totals but invisible to matching — each one a future duplicate row waiting to happen.</li>
-        <li><strong>53 same-sheet duplicate rows</strong>, 18 of which disagreed with each other about the status.</li>
-        <li><strong>342 rows spelled <span class="mono">B- Status</span></strong> instead of <span class="mono">B-Status</span> — counted as <em>pending</em> by the workbook's own summary formulas, understating decision activity by 341 events.</li>
-        <li><strong>A broken cross-sheet Total sheet</strong>: <span class="mono">#REF!</span> rows, one discipline pointing at another's sheet, and a "submitted" cell resolving to a date rather than a count.</li>
-        <li>Remaining append capacity on each sheet before its summary block — one sheet had only <strong>7 free rows</strong> left before a batch would have overwritten live formulas.</li>
-      </ul>
-    </div>
-
-    <div class="two-col" style="margin-bottom:22px;">
-      <div class="panel">
-        <span class="eyebrow" style="font-weight:700;">The management dashboard</span>
-        <ul class="tick-list">
-          <li><strong>Completion</strong> — by unique RFI number; an RFI counts as done only when its latest revision is accepted.</li>
-          <li><strong>Decision activity</strong> — by status event, so rework is visible: one RFI can contribute several rejections plus a final approval.</li>
-          <li><strong>Quality &amp; ageing</strong> — first-pass approval rate, undecided RFIs banded 0–3 / 4–7 / 8–14 / 15–30 / 30+ days, SLA breaches by discipline, the oldest undecided RFI, and a completion forecast projected from the recent approval run-rate.</li>
-          <li><strong>Repeated-approval flags</strong> carrying the full <span class="mono">Rev.0 rejected → Rev.1 code-B → Rev.2 accepted</span> trail behind each one.</li>
-          <li>Filter to a single package or view all four combined; weekly windows end on and include the data date.</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <span class="eyebrow" style="font-weight:700;">How it was verified</span>
-        <ul class="tick-list">
-          <li>End-to-end against the real production file — 13 sheets, 19,326 rows.</li>
-          <li><strong>63 unit tests</strong> covering date, time, status and RFI-number parsing.</li>
-          <li>Every dashboard figure independently recomputed from the raw workbook and compared against the tool's output.</li>
-          <li>Write tests: a batch overrunning a sheet's headroom, a mid-sheet revision insert, a status-only update, a full derived-column back-fill and a status normalisation.</li>
-          <li>An independent checker script diffs the loaded file against the saved file and reports anything that changed which should not have.</li>
-          <li>PDF field extraction verified on <strong>87 real PDFs</strong> across all four contractors' forms.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="teaser">
-      <p style="margin:0;"><strong>The same pattern applies to any recurring document.</strong> Engineering deliverable (MDR) submittals, material approval requests, transmittals, inspection and test reports, concrete pour cards, site instructions — anything that arrives as a PDF and has to end up in a register somebody else designed. If your team is re-typing it, it can be automated. <a href="mailto:support@schedulytics.app?subject=Document%20automation%20enquiry" style="font-weight:700; color:var(--accent);" data-track="service_enquiry" data-tool="service_docs">Describe your document flow →</a></p>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      WHAT YOU GET
