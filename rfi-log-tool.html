@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RFI Log Automation & Analytics Tool v8.0</title>
+<!-- Google Analytics 4 (active when online) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-45PFV7MNN1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-45PFV7MNN1');
+</script>
 <style>
   :root {
     color-scheme: light;
@@ -3171,6 +3179,15 @@ function downloadBlob(blob, filename) {
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 30000);
+  try {
+    if (typeof gtag === "function") {
+      gtag("event", "file_download", {
+        file_name: filename,
+        file_extension: filename.split(".").pop() || "xlsx",
+        tool_name: "rfi_log_automation_v8"
+      });
+    }
+  } catch(e) {}
   return filename;
 }
 window.downloadBlob = downloadBlob;

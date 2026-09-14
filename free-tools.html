@@ -754,16 +754,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   // GA4 Event Tracking for Free Tool Launch & Download
   (function() {
-    document.querySelectorAll('.rfi-download-btn, .rfi-launch-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const isDownload = btn.classList.contains('rfi-download-btn');
-        if (typeof gtag === 'function') {
-          gtag('event', isDownload ? 'file_download' : 'tool_launch', {
-            file_name: isDownload ? 'RFI_Log_Tool_v8.0.html' : undefined,
-            tool_name: 'rfi_log_automation_v8',
-            event_category: 'Free Tools',
-            event_label: isDownload ? 'Download Offline HTML' : 'Launch Web Tool'
-          });
+    document.querySelectorAll('.rfi-download-btn, .rfi-launch-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var isDownload = btn.classList.contains('rfi-download-btn');
+        var eventName = isDownload ? 'file_download' : 'tool_launch';
+        var eventParams = {
+          file_name: isDownload ? 'RFI_Log_Tool_v8.0.html' : 'rfi-log-tool.html',
+          file_extension: 'html',
+          tool_name: 'rfi_log_automation_v8',
+          link_text: btn.innerText ? btn.innerText.trim() : '',
+          event_category: 'Free Tools',
+          event_label: isDownload ? 'Download Offline HTML Tool' : 'Launch Live Web Tool'
+        };
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', eventName, eventParams);
+        }
+        if (window.dataLayer && Array.isArray(window.dataLayer)) {
+          window.dataLayer.push(Object.assign({ event: eventName }, eventParams));
         }
       });
     });
