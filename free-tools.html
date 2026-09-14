@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=20260914c">
+<link rel="stylesheet" href="assets/styles.css?v=20260914d">
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-45PFV7MNN1"></script>
@@ -59,6 +59,13 @@
 </script>
 
 <style>
+  /* Ensure NO section is hidden by scroll animation */
+  .section, #rfi-tool, #feedback, #case-study, .panel {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+  
   .star-rating {
     display: flex;
     gap: 8px;
@@ -197,6 +204,23 @@
       display: none;
     }
   }
+
+  .package-tab-btn {
+    padding: 8px 16px;
+    border: 1.5px solid var(--rule);
+    background: var(--paper-raised);
+    font-family: var(--mono);
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+  }
+  .package-tab-btn.active {
+    background: #000080;
+    color: #ffffff;
+    border-color: #000080;
+  }
 </style>
 </head>
 <body>
@@ -269,7 +293,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ═══════════════════════════════════════════════════════════════════════
      FEATURED FREE TOOL: RFI LOG AUTOMATION & REVIEWER KPI TOOL (v8.0)
      ═══════════════════════════════════════════════════════════════════ -->
-<section class="section reveal-on-scroll" id="rfi-tool" style="padding-top:20px; border-top:none;">
+<section class="section" id="rfi-tool" style="padding-top:20px; border-top:none; display:block;">
   <div class="wrap">
     
     <div style="border:2px solid #000080; border-radius:var(--radius); background:var(--paper-raised); padding:clamp(24px, 4vw, 38px); box-shadow:6px 6px 0 rgba(0,0,128,0.12); margin-bottom:40px;">
@@ -298,8 +322,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a class="btn btn-ghost rfi-download-btn" href="rfi-log-tool.html" download="RFI_Log_Tool_v8.0.html" style="border:1.5px solid var(--ink); padding:14px 20px; font-size:0.96rem; justify-content:center; text-align:center;">
             📥 Download Offline HTML Tool
           </a>
-          <a href="#feedback" style="font-family:var(--mono); font-size:0.82rem; font-weight:700; color:#000080; text-align:center; text-decoration:none; margin-top:2px;">
-            ⭐ See Reviews &amp; Leave Feedback Below &darr;
+          <a href="#feedback" style="font-family:var(--mono); font-size:0.84rem; font-weight:700; color:#000080; text-align:center; text-decoration:none; margin-top:4px;">
+            ⭐ See Reviews &amp; Give Feedback Below &darr;
           </a>
         </div>
       </div>
@@ -382,7 +406,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ═══════════════════════════════════════════════════════════════════════
      ON-PAGE COMMUNITY FEEDBACK & REVIEWS (DIRECTLY BELOW DOWNLOAD)
      ═══════════════════════════════════════════════════════════════════ -->
-<section class="section reveal-on-scroll" id="feedback" style="background:#f8fafc; border-top:1.5px solid var(--rule); padding:50px 0;">
+<section class="section" id="feedback" style="background:#f8fafc; border-top:1.5px solid var(--rule); padding:50px 0; display:block;">
   <div class="wrap">
     
     <div class="section-head" style="margin-bottom:24px;">
@@ -523,9 +547,87 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
+     CASE STUDY: RFI PDF EXTRACTION ACROSS FOUR PACKAGES (19,326 RFIs)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="case-study" style="padding:60px 0; border-top:1.5px solid var(--rule); display:block;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow" style="color:var(--accent); font-weight:700;">Real World Field Verification</span>
+        <h2 style="font-size:clamp(1.7rem, 3vw, 2.3rem); margin-bottom:10px;">Case Study: Multi-Package RFI PDF Extraction &amp; Log Automation</h2>
+        <p class="lede">Tested on a live multi-package infrastructure programme across four different contractors, four different Request-for-Inspection forms, and four Excel registers that had grown to <strong>19,326 RFI rows across 13 sheets</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Big Impact Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">19,326</div>
+        <div class="stat-label">Total RFIs Processed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">13</div>
+        <div class="stat-label">Live Excel Sheets Synced</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10,190</div>
+        <div class="stat-label">Formulas &amp; Rules Intact</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Offline Air-Gapped</div>
+      </div>
+    </div>
+
+    <div class="two-col" style="gap:24px; margin-top:28px;">
+      <div class="panel" style="background:#fff1f2; border:1px solid #fecdd3;">
+        <span style="font-weight:700; color:#9f1239; font-size:0.95rem; display:block; margin-bottom:10px;">❌ The Traditional Manual Nightmare</span>
+        <ul style="font-size:0.88rem; color:#881337; line-height:1.6; padding-left:18px; margin:0;">
+          <li><strong>Hand-Typing 500+ PDFs/Month:</strong> Engineers copying RFI numbers, chainages, and dates line-by-line.</li>
+          <li><strong>Fragile Formatting:</strong> One careless copy-paste broke conditional formatting across 15,000 rows.</li>
+          <li><strong>Blind Management:</strong> Zero visibility into reviewer turnaround times or overdue FIDIC SLAs.</li>
+          <li><strong>Duplicate Entries:</strong> Resubmissions created duplicate rows instead of tracking revisions.</li>
+        </ul>
+      </div>
+
+      <div class="panel" style="background:#f0fdf4; border:1px solid #bbf7d0;">
+        <span style="font-weight:700; color:#166534; font-size:0.95rem; display:block; margin-bottom:10px;">🚀 The Schedulytics Engine Solution</span>
+        <ul style="font-size:0.88rem; color:#14532d; line-height:1.6; padding-left:18px; margin:0;">
+          <li><strong>Batch Extraction in Seconds:</strong> Hundreds of PDFs classified and written automatically in one click.</li>
+          <li><strong>100% Archive Preservation:</strong> 10,190 formatting rules, dropdowns, and formulas left byte-intact.</li>
+          <li><strong>Instant Executive Dashboard:</strong> Reviewer turnaround times and SLA compliance % generated on the fly.</li>
+          <li><strong>Parent-Child Linking:</strong> Revisions automatically inserted directly under parent RFI numbers.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Interactive Contractor Matcher -->
+    <div class="panel" style="margin-top:28px; background:var(--paper-raised); border:2px solid #000080;">
+      <span class="eyebrow" style="color:#000080; font-weight:700;">Multi-Contractor Architecture</span>
+      <h3 style="font-size:1.15rem; margin:6px 0 14px;">Adapting to Four Different Contractors Without Hard-Coding</h3>
+      
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;">
+        <button class="package-tab-btn active" data-pkg="1">Package 1 (Civil Works)</button>
+        <button class="package-tab-btn" data-pkg="2">Package 2 (Structural &amp; Buildings)</button>
+        <button class="package-tab-btn" data-pkg="3">Package 3 (MEP &amp; Utilities)</button>
+        <button class="package-tab-btn" data-pkg="4">Package 4 (Process &amp; Commissioning)</button>
+      </div>
+
+      <div id="pkgDetailsBox" style="padding:16px; background:#f8fafc; border:1px solid var(--rule); border-radius:var(--radius); font-size:0.88rem; line-height:1.6;">
+        <strong>Package 1 (Civil Works) Profile:</strong><br>
+        • Number Format: 5 parts with sub-area code (e.g. <code>PKG1-SEC1-CIV-0042</code>)<br>
+        • Revision Separator: Space / Underscore format<br>
+        • SLA Compliance: <strong>94.2%</strong> (Avg Turnaround: 4.2 Days, Target: 7 Days)
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
      BESPOKE SOFTWARE & CUSTOM TOOL DEVELOPMENT BRIDGE
      ═══════════════════════════════════════════════════════════════════ -->
-<section class="section reveal-on-scroll" style="background:#0f172a; color:#f8fafc; padding:54px 0;">
+<section class="section" style="background:#0f172a; color:#f8fafc; padding:54px 0; display:block;">
   <div class="wrap">
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
       <div style="max-width:68ch;">
@@ -577,7 +679,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <h4>Services</h4>
         <ul class="footer-links">
-          <li><a href="services.html#services">Bespoke Excel &amp; RFI Tools</a></li>
+          <li><a href="services.html#services">Bespoke Excel Tools</a></li>
           <li><a href="services.html#services">PowerPoint Generator</a></li>
           <li><a href="services.html#services">P6 Audit Engines</a></li>
           <li><a href="services.html#services">AI Training Workshops</a></li>
@@ -587,7 +689,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>Resources &amp; Support</h4>
         <ul class="footer-links">
           <li><a href="guides.html">Guides &amp; Best Practices</a></li>
-          <li></li>
+          <li><a href="free-tools.html#feedback">User Reviews &amp; Feedback</a></li>
           <li><a href="contact.html">Contact Support</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
         </ul>
@@ -600,75 +702,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<!-- JAVASCRIPT: REVIEWS, DOWNLOAD TRACKING, AND CELEBRATION ANIMATION -->
+<script src="assets/script.js?v=20260914d"></script>
 <script>
-  // Mobile Nav Toggle
-  const navToggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('.nav');
-  if (navToggle && nav) {
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', !expanded);
-      nav.classList.toggle('nav-open');
-    });
-  }
-
-  // Celebration Fireworks Canvas
+  // Package Tab Switcher in Case Study
   (function() {
-    const canvas = document.getElementById('celebration-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const colors = ['#FF9933', '#FFFFFF', '#138808', '#FFD700'];
-
-    function resize() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    function createParticle() {
-      if (particles.length > 35) return;
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: canvas.height + 10,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: -(Math.random() * 2 + 1),
-        size: Math.random() * 2.5 + 1.5,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: 1,
-        life: Math.random() * 60 + 40
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (Math.random() < 0.25) createParticle();
-
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.alpha -= 0.015;
-        p.life--;
-
-        if (p.alpha <= 0 || p.life <= 0) {
-          particles.splice(i, 1);
-          continue;
-        }
-
-        ctx.save();
-        ctx.globalAlpha = p.alpha;
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
+    const pkgData = {
+      '1': {
+        name: 'Package 1 (Civil Works)',
+        fmt: '5 parts with sub-area code (e.g. PKG1-SEC1-CIV-0042)',
+        rev: 'Space / Underscore format',
+        sla: '94.2% (Avg Turnaround: 4.2 Days, Target: 7 Days)'
+      },
+      '2': {
+        name: 'Package 2 (Structural & Buildings)',
+        fmt: '4 parts with building block code (e.g. PKG2-STR-B04-0118)',
+        rev: 'Hyphen suffix (e.g. -R1)',
+        sla: '91.8% (Avg Turnaround: 4.8 Days, Target: 7 Days)'
+      },
+      '3': {
+        name: 'Package 3 (MEP & Utilities)',
+        fmt: '6 parts with system/subsystem tag (e.g. PKG3-MEP-HVAC-0230)',
+        rev: 'Letter revision (e.g. Rev A/B)',
+        sla: '89.5% (Avg Turnaround: 5.4 Days, Target: 7 Days)'
+      },
+      '4': {
+        name: 'Package 4 (Process & Commissioning)',
+        fmt: '5 parts with commissioning circuit (e.g. PKG4-PROC-CKT-0089)',
+        rev: 'Numeric dotted revision (e.g. .01)',
+        sla: '96.0% (Avg Turnaround: 3.8 Days, Target: 7 Days)'
       }
-      requestAnimationFrame(animate);
-    }
-    animate();
+    };
+
+    const box = document.getElementById('pkgDetailsBox');
+    document.querySelectorAll('.package-tab-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.package-tab-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const pkg = this.getAttribute('data-pkg');
+        const d = pkgData[pkg];
+        if (d && box) {
+          box.innerHTML = `
+            <strong>${d.name} Profile:</strong><br>
+            • Number Format: <code>${d.fmt}</code><br>
+            • Revision Separator: ${d.rev}<br>
+            • SLA Compliance: <strong>${d.sla}</strong>
+          `;
+        }
+      });
+    });
   })();
 
   // Download Counter Simulator
