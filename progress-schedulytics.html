@@ -353,12 +353,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- Video walkthrough -->
-    <div class="video-slot" style="border-style:solid; padding:0; margin-bottom:24px;">
-      <video controls style="width: 100%; display: block; border-radius: 4px;" preload="metadata">
-        <source src="assets/p6-progress-dashboard.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+    <!-- Desktop Video Showcase Window (Constrained & Interactive) -->
+    <div class="video-showcase-container">
+      <div class="window-titlebar">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+          <span class="window-title">Schedulytics &mdash; P6 Progress Dashboard Walkthrough</span>
+        </div>
+        <span class="window-badge">1080p HD &middot; 3:10 MIN</span>
+      </div>
+      <div class="video-body">
+        <video id="demoVideo" controls preload="metadata" poster="assets/screenshots/progress/html_dashboard.png">
+          <source src="assets/p6-progress-dashboard.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <div class="video-feature-pills">
+        <button type="button" class="time-pill" onclick="jumpTo(0)">
+          <strong>0:00</strong> Load P6 XML/XER
+        </button>
+        <button type="button" class="time-pill" onclick="jumpTo(14)">
+          <strong>0:14</strong> DCMA 14 Audit
+        </button>
+        <button type="button" class="time-pill" onclick="jumpTo(28)">
+          <strong>0:28</strong> Interactive S-Curve
+        </button>
+        <button type="button" class="time-pill" onclick="jumpTo(45)">
+          <strong>0:45</strong> 22-Sheet Excel
+        </button>
+      </div>
     </div>
 
     <!-- Real Desktop Screenshots Grid -->

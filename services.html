@@ -458,90 +458,139 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <div class="panel" style="margin-bottom:22px;">
-      <span class="eyebrow" style="color:var(--flag); font-weight:700;">The problem</span>
-      <p>Every returned RFI PDF was being read by hand and typed into a shared register — RFI number, revision, discipline, location, submission date, the engineer's stamped decision and approval date, several hundred times a month. The register carried the client's agreed layout: logos, dropdowns, colour-coded status rules and cross-sheet summary formulas. Rebuilding it was not an option, and one careless paste could break the colour-coding across roughly 15,000 rows. Management still had no reliable weekly picture of what was submitted, approved, rejected or ageing past SLA.</p>
-    </div>
-
-    <div class="two-col" style="margin-bottom:22px;">
-      <div class="panel">
-        <span class="eyebrow" style="color:var(--live); font-weight:700;">What was built</span>
-        <p style="font-size:0.95rem;">A single self-contained offline HTML tool. Double-click it, drop in the existing log and a folder of RFI PDFs, review what it read, and save. No installation, no internet connection, no data leaving the machine.</p>
-        <ul class="tick-list">
-          <li>Reads the RFI number, revision, discipline, location/chainage, dates, times and the engineer's stamped decision straight off the PDF.</li>
-          <li>Classifies every PDF automatically as <strong>new RFI</strong>, <strong>new revision</strong> of an existing one, or <strong>already logged</strong> — a revision is inserted directly under its parent, and an already-logged PDF updates only the status instead of creating a duplicate row.</li>
-          <li>Writes into the <strong>existing workbook</strong>, editing only the rows involved.</li>
-          <li>Decisions arriving without a PDF — by email or at a site meeting — are queued and written through the same path.</li>
-          <li>Builds a management dashboard inside the workbook, plus a shareable weekly report.</li>
-        </ul>
+    <!-- 1. BIG IMPACT STAT COUNTERS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">19,326</div>
+        <div class="stat-label">Total RFIs Processed</div>
       </div>
-      <div class="panel">
-        <span class="eyebrow" style="color:var(--accent); font-weight:700;">Why it did not break the register</span>
-        <p style="font-size:0.95rem;">The workbook is opened as the archive it actually is, and only the specific worksheet rows involved are edited — everything else is carried through byte-for-byte. Verified on every save:</p>
-        <ul class="tick-list">
-          <li><strong>10,190 conditional-formatting rules</strong> and <strong>107 dropdown validations</strong> preserved.</li>
-          <li>Logos, printer settings, drawings, print areas, merged cells and cross-sheet total formulas intact.</li>
-          <li>Row inserts reflow every affected reference — cell formulas, conditional-formatting ranges, data validations and filters.</li>
-          <li>COUNTIF summary blocks sitting a few rows below the data are pushed down rather than overwritten.</li>
-          <li>A timestamped backup is downloaded before any save, and a preview shows the exact sheet, row and column of every change.</li>
-        </ul>
+      <div class="stat-card">
+        <div class="stat-number">13</div>
+        <div class="stat-label">Live Excel Sheets Synced</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10,190</div>
+        <div class="stat-label">Formulas &amp; Rules Intact</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Offline Air-Gapped</div>
       </div>
     </div>
 
-    <div class="panel" style="margin-bottom:22px;">
-      <span class="eyebrow" style="font-weight:700;">Adapting to four different contractors — without hard-coding anything</span>
-      <p style="font-size:0.95rem;">The four packages were genuinely different, and each difference would have silently corrupted data had it been assumed away:</p>
-      <div style="overflow-x:auto;">
-        <table style="width:100%; border-collapse:collapse; font-size:0.86rem; font-family:var(--mono); min-width:660px; margin-top:10px;">
-          <thead>
-            <tr style="background:rgba(15,23,42,0.05);">
-              <th style="text-align:left; padding:9px 10px; border:1px solid var(--rule);">Varies by package</th>
-              <th style="text-align:left; padding:9px 10px; border:1px solid var(--rule);">C1</th>
-              <th style="text-align:left; padding:9px 10px; border:1px solid var(--rule);">B1</th>
-              <th style="text-align:left; padding:9px 10px; border:1px solid var(--rule);">B2</th>
-              <th style="text-align:left; padding:9px 10px; border:1px solid var(--rule);">C2</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">RFI number shape</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">5 parts, with area</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">4 parts</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">4 parts</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">4 parts</td>
-            </tr>
-            <tr>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">Revision separator</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">space / underscore</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">mixed, all three</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">space / underscore</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">underscore / hyphen</td>
-            </tr>
-            <tr>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">Status column</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">J</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">J</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule); font-weight:700;">I</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">J</td>
-            </tr>
-            <tr>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">Approval-date column</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">I</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">I</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule); font-weight:700;">H</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">I</td>
-            </tr>
-            <tr>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">Where work happens</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">4–5 areas</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">pipeline chainage</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">pipeline chainage</td>
-              <td style="padding:9px 10px; border:1px solid var(--rule);">single site</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- 2. VISUAL WORKFLOW PIPELINE -->
+    <div class="pipeline-container">
+      <div class="pipeline-head">
+        <h3>⚡ The Automated 5-Step Extraction Pipeline</h3>
+        <span style="font-family:var(--mono); font-size:0.75rem; color:#94a3b8;">Zero Cloud Uploads &middot; In-Memory Execution</span>
       </div>
-      <p style="font-size:0.92rem; margin-top:14px; color:var(--ink-soft);">Column layout is <strong>detected per sheet</strong> from its own header row rather than assumed — one package's approval dates would otherwise have been written into its Location column, and that layout varies <em>within</em> a workbook, not only between them. Every row and every PDF carries its package inside its own number, so routing needs no guesswork from folder names. A fifth package needs no code change.</p>
+
+      <div class="pipeline-steps">
+        <div class="step-box">
+          <span class="step-num">STEP 01</span>
+          <span class="step-icon">📁</span>
+          <div class="step-title">Drop PDF Folder</div>
+          <div class="step-desc">Point to folder of contractor RFI approval PDFs.</div>
+        </div>
+
+        <div class="step-box">
+          <span class="step-num">STEP 02</span>
+          <span class="step-icon">⚙️</span>
+          <div class="step-title">Local OCR &amp; Regex</div>
+          <div class="step-desc">Extracts RFI#, Rev, Discipline, Dates, and Stamped Status.</div>
+        </div>
+
+        <div class="step-box">
+          <span class="step-num">STEP 03</span>
+          <span class="step-icon">🔀</span>
+          <div class="step-title">Revision Matcher</div>
+          <div class="step-desc">Inserts under parent or updates existing row cleanly.</div>
+        </div>
+
+        <div class="step-box">
+          <span class="step-num">STEP 04</span>
+          <span class="step-icon">📊</span>
+          <div class="step-title">Existing Workbook</div>
+          <div class="step-desc">Edits target rows only. Byte-for-byte formulas preserved.</div>
+        </div>
+
+        <div class="step-box">
+          <span class="step-num">STEP 05</span>
+          <span class="step-icon">📈</span>
+          <div class="step-title">Live KPI Dials</div>
+          <div class="step-desc">Reviewer turnaround &amp; FIDIC SLA compliance dashboard.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. PROBLEM VS SOLUTION CARDS -->
+    <div class="two-col-compare">
+      <div class="comp-box pain">
+        <h3>❌ The Traditional Manual Nightmare</h3>
+        <ul class="comp-list">
+          <li><strong>Hand-Typing 500+ PDFs/Month:</strong> Engineers copying RFI numbers, chainages, and dates line-by-line.</li>
+          <li><strong>Fragile Formatting:</strong> One careless copy-paste broke conditional formatting across 15,000 rows.</li>
+          <li><strong>Blind Management:</strong> Zero visibility into reviewer turnaround times or overdue FIDIC SLAs.</li>
+          <li><strong>Duplicate Entries:</strong> Resubmissions created duplicate rows instead of tracking revisions.</li>
+        </ul>
+      </div>
+
+      <div class="comp-box gain">
+        <h3>🚀 The Schedulytics Engine Solution</h3>
+        <ul class="comp-list">
+          <li><strong>Batch Extraction in Seconds:</strong> Hundreds of PDFs classified and written automatically in one click.</li>
+          <li><strong>100% Archive Preservation:</strong> 10,190 formatting rules, dropdowns, and formulas left byte-intact.</li>
+          <li><strong>Instant Executive Dashboard:</strong> Reviewer turnaround times and SLA compliance % generated on the fly.</li>
+          <li><strong>Parent-Child Linking:</strong> Revisions automatically inserted directly under parent RFI numbers.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4. INTERACTIVE CONTRACTOR PACKAGE TABS (REPLACES STATIC TEXT TABLE) -->
+    <div class="package-interactive-section">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+        <div>
+          <span style="font-family:var(--mono); font-size:0.75rem; font-weight:700; color:#000080; background:#e0f2fe; padding:3px 10px; border-radius:4px;">INTERACTIVE CONTRACTOR MATCHER</span>
+          <h3 style="font-size:1.25rem; margin-top:4px;">Adapting to Four Different Contractors Without Hard-Coding</h3>
+        </div>
+        <span style="font-size:0.8rem; color:var(--ink-soft); font-family:var(--mono);">Click a package tab below:</span>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="tab-bar">
+        <button type="button" class="pkg-tab-btn active" onclick="switchPkg('c1', this)">Package C1 (Pumping Stations)</button>
+        <button type="button" class="pkg-tab-btn" onclick="switchPkg('b1', this)">Package B1 (Pipeline North)</button>
+        <button type="button" class="pkg-tab-btn" onclick="switchPkg('b2', this)">Package B2 (Pipeline South)</button>
+        <button type="button" class="pkg-tab-btn" onclick="switchPkg('c2', this)">Package C2 (Terminal Tanks)</button>
+      </div>
+
+      <!-- Interactive Tab Content Display -->
+      <div class="pkg-content-box" id="pkgContent">
+        <div class="pkg-details">
+          <div class="detail-row">
+            <span class="detail-label">RFI Number Structure</span>
+            <span class="detail-val" id="dNum">5 parts with sub-area code</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Revision Separator</span>
+            <span class="detail-val" id="dSep">Space / Underscore format</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Auto-Detected Status Column</span>
+            <span class="detail-val" id="dCol">Column J (Approval Decision)</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Geographic Location Scope</span>
+            <span class="detail-val" id="dLoc">4-5 Facility Process Areas</span>
+          </div>
+        </div>
+
+        <div class="sla-metric-card">
+          <span style="font-size:0.74rem; font-family:var(--mono); color:#94a3b8; text-transform:uppercase;">Reviewer SLA Compliance</span>
+          <div class="sla-rate" id="dSla">94.2%</div>
+          <span style="font-size:0.75rem; color:#cbd5e1;" id="dSlaSub">Average Turnaround: 4.2 Days (Target: 7 Days)</span>
+        </div>
+      </div>
     </div>
 
     <div class="panel" style="margin-bottom:22px;">

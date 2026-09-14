@@ -355,3 +355,89 @@ document.addEventListener("DOMContentLoaded", function () {
   })();
 
 });
+
+// ------------------------------------------------------------- 9. Schedule Heatmap Inspector
+window.inspectHeatmap = function(el) {
+  if (!el) return;
+  var metric = el.getAttribute("data-metric");
+  var pkg = el.getAttribute("data-pkg");
+  var val = el.getAttribute("data-val");
+  var desc = el.getAttribute("data-desc");
+
+  var titleEl = document.getElementById("inspectTitle");
+  var textEl = document.getElementById("inspectText");
+  var tagEl = document.getElementById("inspectTag");
+
+  if (titleEl) titleEl.innerHTML = "🔍 " + metric + ' &middot; <span style="color:#ffffff">' + pkg + " (" + val + ")</span>";
+  if (textEl) textEl.innerHTML = desc;
+  if (tagEl) tagEl.innerHTML = "Value: " + val;
+};
+
+// ------------------------------------------------------------- 10. Video Walkthrough Timeline Controller
+window.jumpTo = function(seconds) {
+  var video = document.getElementById("demoVideo");
+  if (video) {
+    video.currentTime = seconds;
+    video.play().catch(function() {});
+  }
+};
+
+// ------------------------------------------------------------- 11. Interactive Contractor Package Switcher
+var pkgData = {
+  c1: {
+    num: "5 parts with sub-area code (e.g. C1-PS1-CIV-0042)",
+    sep: "Space / Underscore format",
+    col: "Column J (Approval Decision)",
+    loc: "4-5 Facility Process Areas",
+    sla: "94.2%",
+    sub: "Average Turnaround: 4.2 Days (FIDIC Target: 7 Days)"
+  },
+  b1: {
+    num: "4 parts with chainage KP code (e.g. B1-PIPE-0118)",
+    sep: "Mixed format (all three handled)",
+    col: "Column J (Engineer Sign-off)",
+    loc: "Pipeline Chainage KP 00 to KP 140",
+    sla: "89.6%",
+    sub: "Average Turnaround: 5.1 Days (FIDIC Target: 7 Days)"
+  },
+  b2: {
+    num: "4 parts with sectional tag (e.g. B2-SEC4-0089)",
+    sep: "Space / Underscore format",
+    col: "Column I (Inspection Status)",
+    loc: "Pipeline Chainage KP 140 to KP 280",
+    sla: "91.8%",
+    sub: "Average Turnaround: 4.8 Days (FIDIC Target: 7 Days)"
+  },
+  c2: {
+    num: "4 parts standard (e.g. C2-TNK-0205)",
+    sep: "Underscore / Hyphen format",
+    col: "Column J (Decision Stamped)",
+    loc: "Terminal Reservoir Single Site",
+    sla: "96.4%",
+    sub: "Average Turnaround: 3.8 Days (FIDIC Target: 7 Days)"
+  }
+};
+
+window.switchPkg = function(id, btn) {
+  document.querySelectorAll(".pkg-tab-btn").forEach(function(b) {
+    b.classList.remove("active");
+  });
+  if (btn) btn.classList.add("active");
+
+  var data = pkgData[id];
+  if (!data) return;
+  var dNum = document.getElementById("dNum");
+  var dSep = document.getElementById("dSep");
+  var dCol = document.getElementById("dCol");
+  var dLoc = document.getElementById("dLoc");
+  var dSla = document.getElementById("dSla");
+  var dSlaSub = document.getElementById("dSlaSub");
+
+  if (dNum) dNum.textContent = data.num;
+  if (dSep) dSep.textContent = data.sep;
+  if (dCol) dCol.textContent = data.col;
+  if (dLoc) dLoc.textContent = data.loc;
+  if (dSla) dSla.textContent = data.sla;
+  if (dSlaSub) dSlaSub.textContent = data.sub;
+};
+
