@@ -4,6 +4,7 @@
 
 ## Software Products
 
+- [Free RFI Log Automation & Reviewer KPI Tool](https://schedulytics.app/rfi-log-tool.html): 100% free, browser-based offline document automation tool that parses Request-for-Inspection (RFI) PDFs, extracts tabular data into multi-package Excel logs, calculates reviewer turnaround duration and SLA compliance (FIDIC/CMAA), and generates interactive management dashboards with zero cloud uploads.
 - [Progress Schedulytics](https://schedulytics.app/progress-schedulytics.html): Automated Primavera P6 XML and XER reporting tool that produces a 22-sheet executive Excel analytics workbook, single-file interactive HTML dashboard with two-way cross-filtering, PowerPoint executive deck, and automated Word/PDF Delay Report. Includes dual-device activation (1 PC + 1 Android phone).
 - [Baseline Schedulytics](https://schedulytics.app/baseline-schedulytics.html): Comprehensive P6 baseline schedule audit tool that evaluates .xer submittals against 22-point DCMA 14-point quality standards, detects missing logic and constraints, runs Monte Carlo risk simulations (P10/P50/P90 confidence), and generates formal client submittal audit reports.
 - [Services & Bespoke Automation](https://schedulytics.app/services.html): Custom project controls automation, bespoke Excel/Power BI macros, RFI automation, and 1-on-1 advanced Primavera P6 training.

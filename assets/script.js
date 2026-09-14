@@ -225,4 +225,64 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+
+  // ------------------------------------------------------------- 7. RFI Tool Download / Launch Feedback Prompt Modal
+  function createFeedbackModal() {
+    if (document.getElementById("rfiFeedbackModal")) return;
+
+    var modal = document.createElement("div");
+    modal.id = "rfiFeedbackModal";
+    modal.style.cssText = "position:fixed; inset:0; background:rgba(15,23,42,0.7); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; z-index:99999; padding:20px;";
+    modal.innerHTML = `
+      <div style="background:#ffffff; border:2px solid #000080; border-radius:10px; max-width:500px; width:100%; padding:28px 24px; box-shadow:0 12px 36px rgba(0,0,0,0.25); text-align:center; position:relative; animation:modalPop 0.2s ease-out;">
+        <button id="closeRfiModalBtn" style="position:absolute; top:12px; right:14px; background:none; border:none; font-size:22px; cursor:pointer; color:#64748b; line-height:1;">&times;</button>
+        <div style="font-size:38px; margin-bottom:8px;">🎉</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-size:1.4rem; color:#000080; margin:0 0 10px;">Your Free Tool is Ready!</h3>
+        <p style="font-size:0.95rem; color:#334155; line-height:1.6; margin:0 0 20px;">
+          This tool is 100% free with no recurring subscriptions or cloud data uploads. 
+          <br><br>
+          <strong>After trying it on your project</strong>, please take 30 seconds to share your feedback or feature requests directly on our website directory!
+        </p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <a href="feedback.html?tool=rfi" class="btn btn-primary" style="background:#000080; border-color:#000080; padding:12px 20px; justify-content:center; text-align:center; text-decoration:none;">
+            ⭐ Give Feedback on Website Directory &rarr;
+          </a>
+          <button id="dismissRfiModalBtn" class="btn btn-ghost" style="padding:10px 20px; justify-content:center;">
+            I'll give feedback later
+          </button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    document.getElementById("closeRfiModalBtn").addEventListener("click", function() {
+      modal.style.display = "none";
+    });
+    document.getElementById("dismissRfiModalBtn").addEventListener("click", function() {
+      modal.style.display = "none";
+    });
+    modal.addEventListener("click", function(e) {
+      if (e.target === modal) modal.style.display = "none";
+    });
+  }
+
+  createFeedbackModal();
+
+  document.querySelectorAll(".rfi-download-btn, .rfi-launch-btn").forEach(function(el) {
+    el.addEventListener("click", function() {
+      var modal = document.getElementById("rfiFeedbackModal");
+      if (modal) {
+        setTimeout(function() {
+          modal.style.display = "flex";
+        }, 600);
+      }
+      if (typeof gtag === "function") {
+        gtag("event", "rfi_tool_interaction", {
+          event_category: "free_tool",
+          event_label: el.classList.contains("rfi-download-btn") ? "download" : "launch"
+        });
+      }
+    });
+  });
+
 });

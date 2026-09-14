@@ -2416,3 +2416,15 @@ button:focus-visible {
   background: #f0fdf4;
   font-weight: 600;
 }
+
+.nav a.nav-feedback {
+  color: #c026d3;
+  background: rgba(192, 38, 211, 0.08);
+  border: 1.5px solid #c026d3;
+}
+.nav a.nav-feedback:hover {
+  background: #c026d3;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(192, 38, 211, 0.35);
+}
