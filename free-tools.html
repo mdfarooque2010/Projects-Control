@@ -510,15 +510,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <input type="text" id="fbName" placeholder="e.g. Planning Engineer" style="width:100%; padding:10px 12px; border:1px solid var(--rule); border-radius:var(--radius); font-size:0.92rem;">
             </div>
             <div class="form-field">
-              <label for="fbRole" style="font-weight:600; font-size:0.86rem; display:block; margin-bottom:6px;">Your Role / Industry (Optional)</label>
-              <select id="fbRole" style="width:100%; padding:10px 12px; border:1px solid var(--rule); border-radius:var(--radius); font-size:0.92rem; background:var(--paper-raised);">
-                <option value="Planning & Scheduling Engineer">Planning &amp; Scheduling Engineer</option>
-                <option value="Project Controls / Cost Manager">Project Controls / Cost Manager</option>
-                <option value="Site / Field Civil Engineer">Site / Field Civil Engineer</option>
-                <option value="Quality / QA/QC Inspector">Quality / QA/QC Inspector</option>
-                <option value="Claims & Contracts Consultant">Claims &amp; Contracts Consultant</option>
-                <option value="PMO Director">PMO Director</option>
-              </select>
+              <label for="fbRole" style="font-weight:600; font-size:0.86rem; display:block; margin-bottom:6px;">Your Role / Job Title (Optional)</label>
+              <input type="text" id="fbRole" placeholder="e.g. Planning Engineer, QA/QC Inspector, Cost Manager" style="width:100%; padding:10px 12px; border:1px solid var(--rule); border-radius:var(--radius); font-size:0.92rem; background:var(--paper-raised);">
             </div>
           </div>
 
@@ -780,12 +773,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   (function() {
     const STORAGE_KEY = 'schedulytics_community_reviews';
 
+    // Verified reviews visible across all computers and visitors
+    const VERIFIED_REVIEWS = [
+      // Colleagues / real user reviews are permanently published here
+    ];
+
     function getAllReviews() {
-      let reviews = [];
+      let localReviews = [];
       try {
-        reviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        localReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
       } catch(e) {}
-      return reviews;
+
+      const all = [...localReviews];
+      VERIFIED_REVIEWS.forEach(vr => {
+        if (!all.some(r => r.id === vr.id || (r.name === vr.name && r.feedback === vr.feedback))) {
+          all.push(vr);
+        }
+      });
+      return all;
     }
 
     function renderReviews(filter = 'all') {
@@ -907,9 +912,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           tool: document.getElementById('fbTool').value,
           rating: parseInt(document.getElementById('fbRating').value, 10) || 5,
           category: document.getElementById('fbCategory').value,
-          feedback: document.getElementById('fbComments').value,
-          name: document.getElementById('fbName').value || 'Project Controls Engineer',
-          role: document.getElementById('fbRole').value
+          feedback: (document.getElementById('fbComments').value || '').trim(),
+          name: (document.getElementById('fbName').value || '').trim() || 'Anonymous Engineer',
+          role: (document.getElementById('fbRole').value || '').trim() || 'Project Controls'
         };
 
         let current = [];

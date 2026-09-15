@@ -300,18 +300,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label for="fbName" style="font-weight:600; font-size:0.86rem; display:block; margin-bottom:6px;">Your Name / Initial (Optional)</label>
             <input type="text" id="fbName" placeholder="e.g. Planning Engineer" style="width:100%; padding:10px 12px; border:1px solid var(--rule); border-radius:var(--radius); font-size:0.92rem;">
           </div>
-          <div class="form-field">
-            <label for="fbRole" style="font-weight:600; font-size:0.86rem; display:block; margin-bottom:6px;">Your Role / Industry (Optional)</label>
-            <select id="fbRole" style="width:100%; padding:10px 12px; border:1px solid var(--rule); border-radius:var(--radius); font-size:0.92rem; background:var(--paper-raised);">
-              <option value="Planning & Scheduling Engineer">Planning &amp; Scheduling Engineer</option>
-              <option value="Project Controls / Cost Manager">Project Controls / Cost Manager</option>
-              <option value="Site / Field Civil Engineer">Site / Field Civil Engineer</option>
-              <option value="Claims & Contracts Consultant">Claims &amp; Contracts Consultant</option>
-              <option value="EPC Contractor Lead">EPC Contractor Lead</option>
-              <option value="PMO Director">PMO Director</option>
-            </select>
+            <div class="form-field">
+              <label for="fbRole" style="font-weight:600; font-size:0.86rem; display:block; margin-bottom:6px;">Your Role / Job Title (Optional)</label>
+              <input type="text" id="fbRole" placeholder="e.g. Planning Engineer, QA/QC Inspector, Cost Manager" style="width:100%; padding:10px 12px; border:1px solid var(--rule); border-radius:var(--radius); font-size:0.92rem; background:var(--paper-raised);">
+            </div>
           </div>
-        </div>
 
         <div style="margin-top: 18px;">
           <button type="submit" class="btn btn-primary" style="background:#000080; border-color:#000080; padding:12px 24px; width:100%; justify-content:center;">
@@ -379,12 +372,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   (function() {
     const STORAGE_KEY = "schedulytics_feedback_log";
 
+    // Verified reviews visible across all computers and visitors
+    const VERIFIED_REVIEWS = [];
+
     function getAllReviews() {
       let userReviews = [];
       try {
         userReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
       } catch(e) {}
-      return userReviews;
+
+      const all = [...userReviews];
+      VERIFIED_REVIEWS.forEach(vr => {
+        if (!all.some(r => r.id === vr.id || (r.name === vr.name && r.feedback === vr.feedback))) {
+          all.push(vr);
+        }
+      });
+      return all;
     }
 
     function renderReviews(filter = "all") {
@@ -514,9 +517,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           tool: document.getElementById("fbTool").value,
           rating: parseInt(document.getElementById("fbRating").value) || 5,
           category: document.getElementById("fbCategory").value,
-          feedback: document.getElementById("fbComments").value,
-          name: document.getElementById("fbName").value || "Project Engineer",
-          role: document.getElementById("fbRole").value
+          feedback: (document.getElementById("fbComments").value || "").trim(),
+          name: (document.getElementById("fbName").value || "").trim() || "Anonymous Engineer",
+          role: (document.getElementById("fbRole").value || "").trim() || "Project Controls"
         };
 
         let current = [];
