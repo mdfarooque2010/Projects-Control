@@ -769,14 +769,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   })();
 
-  // On-Page Reviews Management & Dynamic Rendering
+  // On-Page Reviews Management & Supabase Cloud Sync
   (function() {
     const STORAGE_KEY = 'schedulytics_community_reviews';
+    const SUPABASE_URL = 'https://lsxtplmpdpiuieuvlvle.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxzeHRwbG1wZHBpdWlldXZsdmxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk0NTEyMjUsImV4cCI6MjEwNTAyNzIyNX0.d8THFef_21rVCREQWz96aeyJy5OgBG3z-ozj8IZQWcU';
 
-    // Verified reviews visible across all computers and visitors
-    const VERIFIED_REVIEWS = [
-      // Colleagues / real user reviews are permanently published here
-    ];
+    let currentFilter = 'all';
+
+    // Verified reviews fallback
+    const VERIFIED_REVIEWS = [];
 
     function getAllReviews() {
       let localReviews = [];
@@ -794,6 +796,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     function renderReviews(filter = 'all') {
+      currentFilter = filter;
       const container = document.getElementById('publicReviewsContainer');
       if (!container) return;
 
@@ -867,6 +870,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }).join('');
     }
 
+    // Live Sync with Supabase Cloud Database
+    async function syncFromCloud() {
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/reviews?select=*&order=created_at.desc`, {
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`
+          }
+        });
+        if (res.ok) {
+          const cloudData = await res.json();
+          if (Array.isArray(cloudData)) {
+            const normalized = cloudData.map(r => ({
+              id: 'SB-' + r.id,
+              timestamp: r.created_at,
+              tool: r.tool,
+              rating: r.rating,
+              category: r.category,
+              feedback: r.feedback,
+              name: r.name,
+              role: r.role
+            }));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
+            renderReviews(currentFilter);
+          }
+        }
+      } catch (err) {
+        console.warn('Could not sync with Supabase cloud database:', err);
+      }
+    }
+
     // Filter Buttons
     document.querySelectorAll('.filter-review-btn').forEach(btn => {
       btn.addEventListener('click', function() {
@@ -906,9 +940,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (form) {
       form.addEventListener('submit', function(e) {
         e.preventDefault();
-        const record = {
-          id: 'USR-' + Date.now(),
-          timestamp: new Date().toISOString(),
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Publishing Review...';
+        }
+
+        const payload = {
           tool: document.getElementById('fbTool').value,
           rating: parseInt(document.getElementById('fbRating').value, 10) || 5,
           category: document.getElementById('fbCategory').value,
@@ -917,25 +955,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           role: (document.getElementById('fbRole').value || '').trim() || 'Project Controls'
         };
 
+        const localRecord = {
+          id: 'USR-' + Date.now(),
+          timestamp: new Date().toISOString(),
+          ...payload
+        };
+
         let current = [];
         try {
           current = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
         } catch(e) {}
-        current.unshift(record);
+        current.unshift(localRecord);
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(current));
         } catch(e) {}
 
         if (typeof gtag === 'function') {
           gtag('event', 'feedback_submitted', {
-            tool: record.tool,
-            rating: record.rating
+            tool: payload.tool,
+            rating: payload.rating
           });
         }
 
         document.getElementById('feedbackFormPanel').style.display = 'none';
         document.getElementById('feedbackSuccessBox').style.display = 'block';
-        renderReviews();
+        renderReviews(currentFilter);
+
+        // Save to Supabase Cloud Database (global sync across all users)
+        fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=representation'
+          },
+          body: JSON.stringify(payload)
+        }).then(res => res.json()).then(data => {
+          syncFromCloud();
+        }).catch(err => {
+          console.warn('Could not post review to cloud:', err);
+        }).finally(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Post Review Instantly &rarr;';
+          }
+        });
       });
     }
 
@@ -948,7 +1013,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     }
 
+    // Initial render from local cache, then sync live from Supabase
     renderReviews();
+    syncFromCloud();
   })();
 </script>
 </body>
