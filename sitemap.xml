@@ -139,12 +139,6 @@
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://schedulytics.app/rfi-log-tool.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
     <loc>https://schedulytics.app/feedback.html</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>

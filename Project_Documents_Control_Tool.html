@@ -1600,6 +1600,52 @@
     border-top: 1px solid #1f2d52 !important;
   }
 
+  /* Google Gemini Vision AI Setup Modal Styles */
+  #geminiApiKeyModal .gemini-modal-dialog {
+    max-width: 580px;
+    width: 92%;
+    border-radius: 12px;
+    padding: 24px;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.22) !important;
+    color: #0f172a !important;
+  }
+  body.theme-executive #geminiApiKeyModal .gemini-modal-dialog,
+  :root[data-theme="dark"] #geminiApiKeyModal .gemini-modal-dialog {
+    background: #111c38 !important;
+    border: 1px solid #283a66 !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+    color: #f8fafc !important;
+  }
+  .gemini-info-box {
+    background: #f0f9ff !important;
+    border: 1px solid #bae6fd !important;
+    color: #0369a1 !important;
+  }
+  body.theme-executive .gemini-info-box,
+  :root[data-theme="dark"] .gemini-info-box {
+    background: rgba(14, 165, 233, 0.12) !important;
+    border: 1px solid rgba(14, 165, 233, 0.35) !important;
+    color: #7dd3fc !important;
+  }
+  .gemini-action-box {
+    background: #f8fafc !important;
+    border: 1.5px dashed #3b82f6 !important;
+  }
+  body.theme-executive .gemini-action-box,
+  :root[data-theme="dark"] .gemini-action-box {
+    background: rgba(30, 41, 59, 0.7) !important;
+    border: 1.5px dashed #60a5fa !important;
+    color: #f1f5f9 !important;
+  }
+  body.theme-executive #geminiApiKeyInput,
+  :root[data-theme="dark"] #geminiApiKeyInput {
+    background: #0d1527 !important;
+    color: #f8fafc !important;
+    border-color: #2b3d68 !important;
+  }
+
   .timeline-month-pill {
     padding: 3px 10px;
     border-radius: 12px;
@@ -2130,6 +2176,9 @@
       </button>
       <button type="button" id="btnOpenChartColors" class="exec-btn exec-btn-secondary" title="Customize Chart Colors" style="padding:4px 10px;font-size:11px">
         🎨 Chart Colors
+      </button>
+      <button type="button" id="btnOpenGeminiModal" class="exec-btn exec-btn-secondary" title="Google Gemini Vision AI Setup" style="padding:4px 10px;font-size:11px">
+        🤖 Gemini AI Key
       </button>
       <div id="adminLockBadge" class="admin-lock-badge locked">
         <span>🔒</span> <span>Setup Locked</span>
@@ -3393,11 +3442,11 @@
       </div>
     </div>
 
-    <!-- Chart 5: Type Performance (Stacked Bar) -->
+    <!-- Chart 5: Type Performance (Grouped Status Bars) -->
     <div class="exec-chart-card">
       <div class="exec-chart-title">
         <span>Type Performance</span>
-        <span style="font-size:11px;color:#f59e0b">Approved / Rework Share</span>
+        <span style="font-size:11px;color:#f59e0b">Status Breakdown</span>
       </div>
       <div class="exec-chart-box">
         <canvas id="chartTypePerformance"></canvas>
@@ -3935,8 +3984,8 @@
 
     <h2>Protecting the summary blocks</h2>
     <p>Several sheets keep a small COUNTIF status summary a few blank rows below the data - Civil has only 10 free rows before it, Mechanical 7, ICT 16. If a batch is bigger than that gap, the tool pushes the summary block down by exactly the shortfall and reflows every reference to it, rather than writing RFI data over live formulas (which would also break the Total sheet, since that reads those exact cells).</p>
-        <h2>Version 8.0 — Inbuilt Standard Template &amp; Reviewer KPIs</h2>
-    <p>v8.0 introduces an inbuilt option to download the official <strong>Standard RFI Log Template (.xlsx)</strong> directly from Step 1. Any user can download this template, populate their project data, and immediately generate the full dashboard, analytics, and management workbooks.</p>
+        <h2>Standard Templates &amp; Reviewer KPIs</h2>
+    <p>The application features an inbuilt option to download the official <strong>Standard RFI Log Template (.xlsx)</strong> directly from Step 1 or the Templates tab. Any user can download this template, populate their project data, and immediately generate the full dashboard, analytics, and management workbooks.</p>
     <p>A new <strong>Signed / Reviewed By</strong> column is included in Column K (and detected anywhere by header name). When filled, it unlocks international standard Reviewer / Signatory KPIs (FIDIC / CMAA / AIA): total reviews completed, average turnaround time (days), SLA compliance %, approval vs rejection rates, and active review backlog.</p>
     <p>The parser features full <strong>fault tolerance</strong>: rows with missing reviewer names, missing inspection times, or non-standard RFI numbering formats are processed safely without dropping data.</p>
 
@@ -13800,43 +13849,122 @@ async function init() {
     sInput.addEventListener("change", e => handleSignedFiles(e.target.files));
   }
 
-  const btnAiKey = $("#btnConfigureAiVision");
-  if (btnAiKey) {
-    const existingKey = localStorage.getItem("PDCS_GEMINI_API_KEY");
-    if (existingKey) {
+  // Google Gemini Vision AI Modal & Status Controller
+  function updateAiVisionUiStatus() {
+    const existingKey = localStorage.getItem("PDCS_GEMINI_API_KEY") || "";
+    const lbl = $("#aiVisionStatusLabel");
+    const btnTab3 = $("#btnConfigureAiVision");
+    const btnHdr = $("#btnOpenGeminiModal");
+    const statusNote = $("#geminiKeyStatusNote");
+    
+    if (existingKey.trim()) {
       window.PDCS_AI_CONFIG = window.PDCS_AI_CONFIG || {};
-      window.PDCS_AI_CONFIG.geminiApiKey = existingKey;
-      const lbl = $("#aiVisionStatusLabel");
+      window.PDCS_AI_CONFIG.geminiApiKey = existingKey.trim();
       if (lbl) lbl.textContent = "AI Vision Engine: Gemini Multimodal Vision Connected & Autonomous Fallback Active";
+      if (btnTab3) {
+        btnTab3.textContent = "⚙️ Gemini AI (Connected)";
+        btnTab3.style.color = "#059669";
+        btnTab3.style.borderColor = "#059669";
+      }
+      if (btnHdr) {
+        btnHdr.innerHTML = "<span>🤖</span> Gemini AI (Active)";
+        btnHdr.style.borderColor = "#10b981";
+      }
+      if (statusNote) {
+        const masked = existingKey.length > 8 ? (existingKey.substring(0, 6) + "..." + existingKey.substring(existingKey.length - 4)) : "Saved";
+        statusNote.innerHTML = `<span style="color:#059669;font-weight:700">✅ Active Key:</span> ${masked} &mdash; Cloud Gemini Vision active with autonomous offline fallback.`;
+      }
+    } else {
+      if (window.PDCS_AI_CONFIG) delete window.PDCS_AI_CONFIG.geminiApiKey;
+      if (lbl) lbl.textContent = "AI Vision Engine: Autonomous Multi-Spectrum Visual AI Active (Scanned & Handwritten Returns)";
+      if (btnTab3) {
+        btnTab3.textContent = "⚙️ Configure Gemini Vision Key";
+        btnTab3.style.color = "";
+        btnTab3.style.borderColor = "";
+      }
+      if (btnHdr) {
+        btnHdr.innerHTML = "<span>🤖</span> Gemini AI Key";
+        btnHdr.style.borderColor = "";
+      }
+      if (statusNote) {
+        statusNote.innerHTML = `<span>🔒 Stored locally in your browser. Currently using <strong>Autonomous Client-Side Visual AI (100% Offline)</strong>.</span>`;
+      }
     }
-    btnAiKey.addEventListener("click", () => {
-      const cur = localStorage.getItem("PDCS_GEMINI_API_KEY") || "";
-      const promptVal = prompt(
-        "🤖 AI Vision Engine Configuration:\n\n" +
-        "• Default: Autonomous Client-Side Visual AI (Active, 100% offline, multi-spectrum ink & stamp detection).\n" +
-        "• Optional: Google Gemini Multimodal Vision API key for cloud-assisted OCR.\n\n" +
-        "Enter your Gemini API key (or leave blank to use Autonomous Client-Side Visual AI):",
-        cur
-      );
-      if (promptVal !== null) {
-        const trimmed = promptVal.trim();
-        if (trimmed) {
-          localStorage.setItem("PDCS_GEMINI_API_KEY", trimmed);
-          window.PDCS_AI_CONFIG = window.PDCS_AI_CONFIG || {};
-          window.PDCS_AI_CONFIG.geminiApiKey = trimmed;
-          const lbl = $("#aiVisionStatusLabel");
-          if (lbl) lbl.textContent = "AI Vision Engine: Gemini Multimodal Vision Connected & Autonomous Fallback Active";
-          alert("✅ Gemini Vision API Key saved! Scanned returns will utilize Gemini Multimodal Vision.");
-        } else {
-          localStorage.removeItem("PDCS_GEMINI_API_KEY");
-          if (window.PDCS_AI_CONFIG) delete window.PDCS_AI_CONFIG.geminiApiKey;
-          const lbl = $("#aiVisionStatusLabel");
-          if (lbl) lbl.textContent = "AI Vision Engine: Autonomous Multi-Spectrum Visual AI Active (Scanned & Handwritten Returns)";
-          alert("ℹ️ Using Autonomous Client-Side Visual AI (100% offline).");
-        }
+  }
+
+  function openGeminiModal() {
+    const modal = $("#geminiApiKeyModal");
+    const input = $("#geminiApiKeyInput");
+    if (!modal) return;
+    const curKey = localStorage.getItem("PDCS_GEMINI_API_KEY") || "";
+    if (input) input.value = curKey;
+    updateAiVisionUiStatus();
+    modal.style.display = "flex";
+  }
+
+  function closeGeminiModal() {
+    const modal = $("#geminiApiKeyModal");
+    if (modal) modal.style.display = "none";
+  }
+
+  // Wire buttons and modal listeners
+  const btnAiKeyTab3 = $("#btnConfigureAiVision");
+  if (btnAiKeyTab3) btnAiKeyTab3.addEventListener("click", openGeminiModal);
+
+  const btnAiKeyHdr = $("#btnOpenGeminiModal");
+  if (btnAiKeyHdr) btnAiKeyHdr.addEventListener("click", openGeminiModal);
+
+  const btnCloseGem = $("#btnCloseGeminiModal");
+  if (btnCloseGem) btnCloseGem.addEventListener("click", closeGeminiModal);
+
+  const gemModal = $("#geminiApiKeyModal");
+  if (gemModal) {
+    gemModal.addEventListener("click", e => {
+      if (e.target === gemModal) closeGeminiModal();
+    });
+  }
+
+  const btnToggleVis = $("#btnToggleGeminiKeyVisibility");
+  if (btnToggleVis) {
+    btnToggleVis.addEventListener("click", () => {
+      const inp = $("#geminiApiKeyInput");
+      if (inp) {
+        inp.type = inp.type === "password" ? "text" : "password";
+        btnToggleVis.textContent = inp.type === "password" ? "👁️" : "🙈";
       }
     });
   }
+
+  const btnSaveGem = $("#btnSaveGeminiKey");
+  if (btnSaveGem) {
+    btnSaveGem.addEventListener("click", () => {
+      const inp = $("#geminiApiKeyInput");
+      const val = (inp && inp.value || "").trim();
+      if (!val) {
+        alert("Please paste your Gemini API key or click 'Use Offline Visual AI' to remove.");
+        return;
+      }
+      localStorage.setItem("PDCS_GEMINI_API_KEY", val);
+      updateAiVisionUiStatus();
+      closeGeminiModal();
+      alert("✅ Google Gemini Vision AI Activated! Scanned returns will now utilize Gemini Multimodal Vision with offline fallback.");
+    });
+  }
+
+  const btnClearGem = $("#btnClearGeminiKey");
+  if (btnClearGem) {
+    btnClearGem.addEventListener("click", () => {
+      localStorage.removeItem("PDCS_GEMINI_API_KEY");
+      const inp = $("#geminiApiKeyInput");
+      if (inp) inp.value = "";
+      updateAiVisionUiStatus();
+      closeGeminiModal();
+      alert("ℹ️ Gemini API key removed. Autonomous Multi-Spectrum Visual AI (100% offline) is active.");
+    });
+  }
+
+  // Initial call on page load
+  updateAiVisionUiStatus();
 
   const manualSearch = $("#manualSearch");
   if (manualSearch) {
@@ -14224,6 +14352,57 @@ document.addEventListener("DOMContentLoaded", init);
     </div>
     <div id="transmittalPrintArea" style="padding:28px 32px;font-family:Arial, sans-serif;font-size:11px;color:#000000;background:#ffffff">
       <!-- Populated dynamically by controller -->
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: GOOGLE GEMINI VISION AI SETUP -->
+<div id="geminiApiKeyModal" class="edms-modal" style="display:none;align-items:center;justify-content:center;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.65);z-index:9999">
+  <div class="edms-modal-dialog gemini-modal-dialog">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid #e2e8f0;padding-bottom:12px">
+      <h3 style="margin:0;font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px">
+        <span>🤖</span> Google Gemini Vision AI Setup
+      </h3>
+      <button type="button" id="btnCloseGeminiModal" style="background:none;border:none;color:#94a3b8;font-size:22px;cursor:pointer;line-height:1">&times;</button>
+    </div>
+
+    <!-- Friendly Educational Introduction -->
+    <div class="gemini-info-box" style="margin-bottom:14px;padding:12px 14px;border-radius:8px;font-size:12.5px;line-height:1.55">
+      <strong style="display:block;margin-bottom:4px;font-size:13px">💡 How it works (100% Free with your standard Google / Gmail login):</strong>
+      Google Gemini Vision gives this tool cloud-level intelligence to read handwritten engineer checkmarks, signatures, stamps, and handwritten inspection dates from scanned RFI PDF returns. You do <strong>not</strong> need a paid account &mdash; Google provides a <strong>free tier</strong> for every personal Google / Gmail account with no credit card required.
+    </div>
+
+    <!-- Direct 1-Click Action Link to Google AI Studio -->
+    <div class="gemini-action-box" style="text-align:center;margin:16px 0;padding:16px 14px;border-radius:8px">
+      <div style="font-size:13px;font-weight:700;margin-bottom:6px">Step 1: Get your free API key from Google</div>
+      <div style="font-size:12px;margin-bottom:12px;opacity:0.85">Click below to open Google AI Studio in a new tab, sign in with your Gmail, and click <strong>&ldquo;Create API Key&rdquo;</strong></div>
+      <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:#1a73e8;color:#ffffff;padding:10px 22px;border-radius:6px;font-weight:700;font-size:13px;text-decoration:none;box-shadow:0 3px 8px rgba(26,115,232,0.35);transition:background .2s">
+        <span>🔑</span> Open Google AI Studio (Get Free Key) ↗
+      </a>
+    </div>
+
+    <!-- Step 2: Paste the Key -->
+    <div style="margin-top:14px">
+      <label for="geminiApiKeyInput" style="display:block;font-size:12px;font-weight:700;margin-bottom:6px">
+        Step 2: Paste your Gemini API Key here:
+      </label>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input type="password" id="geminiApiKeyInput" placeholder="Paste your API key (starts with AIzaSy...)" style="flex:1;padding:9px 12px;border:1.5px solid #cbd5e1;border-radius:6px;font-family:monospace;font-size:13px">
+        <button type="button" id="btnToggleGeminiKeyVisibility" title="Show/Hide Key" style="padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;background:rgba(100,116,139,0.1);cursor:pointer;font-size:12px">👁️</button>
+      </div>
+      <div id="geminiKeyStatusNote" style="font-size:11.5px;margin-top:6px;opacity:0.75">
+        🔒 Stored locally in your browser. Never shared or uploaded to any third-party server.
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div style="display:flex;gap:10px;justify-content:flex-end;align-items:center;margin-top:20px;border-top:1px solid #e2e8f0;padding-top:14px;flex-wrap:wrap">
+      <button type="button" id="btnClearGeminiKey" class="secondary" style="font-size:12px;padding:8px 14px;border:1px solid #cbd5e1;border-radius:6px;cursor:pointer">
+        Use Offline Visual AI (Remove Key)
+      </button>
+      <button type="button" id="btnSaveGeminiKey" style="font-size:12px;font-weight:700;padding:8px 18px;border:none;border-radius:6px;cursor:pointer;background:#059669;color:#ffffff;box-shadow:0 2px 6px rgba(5,150,105,0.25)">
+        Save &amp; Activate Gemini AI
+      </button>
     </div>
   </div>
 </div>
@@ -16440,10 +16619,10 @@ Respond strictly in valid JSON format with keys:
         }
 
         // Classification
-        const isApp = status.includes("accept") && !status.includes("comment") && !status.includes("b");
-        const isAppComm = status.includes("b-status") || status.includes("comment") || status.includes("code b");
+        const isApp = (status.includes("accept") || status.includes("approv") || status === "a" || status === "code a") && !status.includes("comment") && !status.includes("b");
+        const isAppComm = status.includes("b-status") || status.includes("comment") || status.includes("code b") || status === "b";
         const isRevise = status.includes("revise") || status.includes("resubmit");
-        const isRej = status.includes("reject") || status.includes("code c");
+        const isRej = status.includes("reject") || status.includes("code c") || status === "c";
         const isOpen = status.includes("open") || status.includes("review") || status.includes("pending");
         const isClosed = status.includes("close");
 
@@ -16525,10 +16704,15 @@ Respond strictly in valid JSON format with keys:
         const idx = topTypes.indexOf(t);
         if (idx !== -1) {
           const st = (d.status || "").toLowerCase();
-          if (st.includes("accept") && !st.includes("comment") && !st.includes("b")) typeApproved[idx]++;
-          else if (st.includes("b-status") || st.includes("comment") || st.includes("code b")) typeComments[idx]++;
-          else if (st.includes("revise") || st.includes("resubmit")) typeRevise[idx]++;
-          else if (st.includes("reject") || st.includes("code c")) typeRejected[idx]++;
+          const isDocApp = (st.includes("accept") || st.includes("approv") || st === "a" || st === "code a") && !st.includes("comment") && !st.includes("b");
+          const isDocComm = st.includes("b-status") || st.includes("comment") || st.includes("code b") || st === "b";
+          const isDocRev = st.includes("revise") || st.includes("resubmit");
+          const isDocRej = st.includes("reject") || st.includes("code c") || st === "c";
+
+          if (isDocApp) typeApproved[idx]++;
+          else if (isDocComm) typeComments[idx]++;
+          else if (isDocRev) typeRevise[idx]++;
+          else if (isDocRej) typeRejected[idx]++;
         }
       });
 
@@ -21010,7 +21194,7 @@ Respond strictly in valid JSON format with keys:
         }
       });
 
-      // Chart 5: Type Performance (Stacked Bar)
+      // Chart 5: Type Performance (Grouped Status Bars - each status has its own bar)
       createOrUpdateChart("chartTypePerformance", {
         type: "bar",
         data: {
@@ -21045,8 +21229,8 @@ Respond strictly in valid JSON format with keys:
             legend: { position: "top", labels: { color: theme.textColor, font: { size: 10 } } }
           },
           scales: {
-            x: { stacked: true, ticks: { color: theme.textColor }, grid: { display: false } },
-            y: { stacked: true, ticks: { color: theme.textColor }, grid: { color: theme.gridColor }, beginAtZero: true }
+            x: { stacked: false, ticks: { color: theme.textColor }, grid: { display: false } },
+            y: { stacked: false, ticks: { color: theme.textColor }, grid: { color: theme.gridColor }, beginAtZero: true }
           }
         }
       });
