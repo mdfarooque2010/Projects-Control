@@ -37,24 +37,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ------------------------------------------------------------- 3. Champagne Sparkles / Particle Fountain
+  // ------------------------------------------------------------- 3. Celebration Sparkles / Particle Fountain
   var canvas = document.getElementById("celebration-canvas");
   if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var ctx = canvas.getContext("2d");
     var particles = [];
-    var maxParticles = 55;
+    var maxParticles = 45;
     var colors = [
-      "rgba(255, 215, 0, ",   // Royal Gold
-      "rgba(0, 108, 53, ",    // Saudi Green
-      "rgba(16, 185, 129, ",  // Emerald Sparkle
-      "rgba(255, 255, 255, ", // Sparkle White
-      "rgba(245, 158, 11, "   // Amber Gold
+      "rgba(255, 255, 255, ", // Brilliant Sparkle White
+      "rgba(255, 255, 255, ", // Brilliant Sparkle White
+      "rgba(255, 223, 0, ",   // Royal Gold Sparkle
+      "rgba(52, 211, 153, ",  // Mint Sparkle
+      "rgba(167, 243, 208, "  // Soft White-Green Glow
     ];
 
     function resizeCanvas() {
       if (canvas.parentElement) {
-        canvas.width = canvas.parentElement.offsetWidth;
-        canvas.height = canvas.parentElement.offsetHeight;
+        var pHeight = canvas.parentElement.offsetHeight;
+        if (!pHeight || pHeight > 140) {
+          pHeight = 96;
+        }
+        canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
+        canvas.height = pHeight;
+        canvas.style.height = pHeight + "px";
+        canvas.style.maxHeight = pHeight + "px";
       }
     }
     resizeCanvas();
@@ -64,16 +70,16 @@ document.addEventListener("DOMContentLoaded", function () {
       var colorBase = colors[Math.floor(Math.random() * colors.length)];
       return {
         x: Math.random() * canvas.width,
-        y: canvas.height + Math.random() * 20,
-        radius: Math.random() * 2.8 + 1.2,
+        y: canvas.height + Math.random() * 15,
+        radius: Math.random() * 2.2 + 1.0,
         colorBase: colorBase,
-        alpha: Math.random() * 0.7 + 0.3,
-        speedY: Math.random() * 1.2 + 0.6,
-        speedX: (Math.random() - 0.5) * 0.8,
+        alpha: Math.random() * 0.6 + 0.35,
+        speedY: Math.random() * 0.9 + 0.4,
+        speedX: (Math.random() - 0.5) * 0.6,
         swayAngle: Math.random() * Math.PI * 2,
-        swaySpeed: Math.random() * 0.04 + 0.02,
-        twinkleSpeed: Math.random() * 0.05 + 0.02,
-        isStar: Math.random() > 0.65
+        swaySpeed: Math.random() * 0.03 + 0.015,
+        twinkleSpeed: Math.random() * 0.04 + 0.02,
+        isStar: Math.random() > 0.6
       };
     }
 
@@ -115,22 +121,19 @@ document.addEventListener("DOMContentLoaded", function () {
         var p = particles[j];
         p.y -= p.speedY;
         p.swayAngle += p.swaySpeed;
-        p.x += Math.sin(p.swayAngle) * 0.5 + p.speedX;
+        p.x += Math.sin(p.swayAngle) * 0.4 + p.speedX;
         p.alpha += Math.sin(p.swayAngle * 2) * p.twinkleSpeed;
-        var currentAlpha = Math.max(0.1, Math.min(0.95, p.alpha));
+        var currentAlpha = Math.max(0.15, Math.min(0.95, p.alpha));
 
         var fillColor = p.colorBase + currentAlpha + ")";
 
         if (p.isStar) {
-          drawStar(ctx, p.x, p.y, 4, p.radius * 2, p.radius * 0.8, fillColor);
+          drawStar(ctx, p.x, p.y, 4, p.radius * 2.0, p.radius * 0.75, fillColor);
         } else {
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
           ctx.fillStyle = fillColor;
-          ctx.shadowBlur = p.radius * 3;
-          ctx.shadowColor = fillColor;
           ctx.fill();
-          ctx.shadowBlur = 0;
         }
 
         // Reset if float out of top or bounds
