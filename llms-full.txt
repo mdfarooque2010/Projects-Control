@@ -59,6 +59,44 @@
 - Forensic delay analysis software conforming to AACE International Recommended Practice 29R-03, SCL Delay Protocol, and FIDIC.
 - Implements four standard forensic delay methodologies: Impacted As-Planned (IAP), Time Impact Analysis (TIA), As-Planned vs As-Built, and Window Analysis.
 
+### Product 5: Project Document Control & Submittal Management System (PDCS v1.0.0 Enterprise)
+- Platform: 100% Client-Side Web Application (Offline HTML5 / Zero Dependencies)
+- Live Tool URL: https://schedulytics.app/Project_Documents_Control_Tool.html
+- Free Tools Hub: https://schedulytics.app/free-tools.html
+- Pricing: 100% Free Community Edition ($0 perpetual, no subscription, no credit card required)
+- Target Audience: Document controllers, site engineers, package managers, planning engineers, resident engineers, and supervising consultants.
+- Primary Function: Unified generator, parser, anti-duplication register, and reviewer SLA analytics engine for construction submittals and site documentation.
+- Supported Submittal Disciplines (15+ Formats):
+  1. RFI — Request for Information
+  2. WIR — Work Inspection Request (Civil, Structural, Architectural, MEP, HVAC, Fire Protection)
+  3. SD — Shop Drawing Submittal
+  4. MAT — Material Submittal / Sample Approval
+  5. MIR — Material Inspection Request
+  6. NCR — Non-Conformance Report
+  7. MS — Method Statement
+  8. TRN — Document Transmittal / Design Deliverable
+  9. Additional custom disciplines and multi-package infrastructure forms.
+- Key Capabilities & Technical Architecture:
+  1. Dual-Engine Document Processing:
+     - Engine 1 (Digital Vector PDFs): Instant client-side Regex extraction parsing submittal IDs, discipline codes, revision indices, chainage/grid locations, and formal engineer decisions.
+     - Engine 2 (Autonomous Multi-Spectrum Visual AI): Integrated vision AI (Google Gemini 1.5/2.0 API via user's private key) that reads low-contrast scans, rotated mobile captures, handwritten notes, reviewer signatures, and physical ink stamps (Approved, Approved with Comments, Revise & Resubmit, Rejected) with zero third-party cloud data persistence.
+  2. Anti-Duplication Master Register:
+     - Automated sequential numbering system with discipline-specific prefixes and multi-package segmentation.
+     - Real-time duplicate reference detection preventing overlapping submittals or conflicting revision numbers.
+  3. Reviewer Turnaround & SLA Compliance Tracking:
+     - Turnaround duration calculation (Submission Date to Closure/Return Date).
+     - Automated SLA benchmarking against international standard contracts (FIDIC 14-calendar-day clause, CMAA 7-day standard, or project-specific SLAs).
+     - Overdue status alerting and reviewer workload distribution analysis.
+  4. Interactive Executive KPI Analytics:
+     - Submittal Status Breakdown (Approved, Comments, Revise, Rejected, Pending).
+     - Discipline Distribution and Submittal vs. Closure Velocity Trends.
+     - Cumulative S-Curves tracking submission run-rates against baseline targets.
+     - Grouped Type Performance status bar charts.
+     - Interactive two-way filtering and drilldown modal inspecting individual submittal records.
+  5. Bidirectional Excel Synchronization:
+     - Download pre-configured, formula-ready master register templates (.xlsx).
+     - 1-click export of synchronized registers, audit logs, and reviewer scorecards.
+
 ---
 
 ## 3. Step-by-Step Engineering Guides
