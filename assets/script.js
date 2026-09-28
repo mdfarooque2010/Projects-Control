@@ -44,11 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var particles = [];
     var maxParticles = 55;
     var colors = [
-      "rgba(255, 215, 0, ",   // Gold
-      "rgba(255, 153, 51, ",  // Saffron
-      "rgba(19, 136, 8, ",    // India Green
+      "rgba(255, 215, 0, ",   // Royal Gold
+      "rgba(0, 108, 53, ",    // Saudi Green
+      "rgba(16, 185, 129, ",  // Emerald Sparkle
       "rgba(255, 255, 255, ", // Sparkle White
-      "rgba(0, 0, 128, "      // Royal Navy
+      "rgba(245, 158, 11, "   // Amber Gold
     ];
 
     function resizeCanvas() {
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ------------------------------------------------------------- 5. Offer Countdown Timer
   var timerEl = document.getElementById("offer-countdown");
   if (timerEl) {
-    var end = new Date(timerEl.getAttribute("data-deadline") || "2026-09-20T23:59:59+03:00");
+    var end = new Date(timerEl.getAttribute("data-deadline") || "2026-10-30T23:59:59+03:00");
     if (!isNaN(end)) {
       var written = end.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
       function tick() {
