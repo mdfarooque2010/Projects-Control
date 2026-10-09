@@ -15669,7 +15669,7 @@ Respond strictly in valid JSON format with keys:
     slaTargetDaysSubmittal: 14,
     defaultTemplate: "template2", // template1 (Universal) or template2 (Water Sector)
     docTypeDisplayStyle: "both", // code_only | name_only | both
-    formLanguage: "bilingual",       // bilingual | en | ar
+    formLanguage: "en",              // en | bilingual | ar | fr | es | combinations
     decisionCodeStyle: "alpha",      // alpha (A-D) | numeric (1-4) | none
     revisionStyle: "numeric",        // numeric (0,1,2) | alpha (A,B,C)
     inspectionNoticeHours: 24,
@@ -23345,14 +23345,22 @@ const familyOf = type => TYPE_FAMILY[String(type || "RFI").toUpperCase()] || "su
    cell = { v, kind: "label"|"value"|"title"|"section"|"note"|"box"|"head"|"center", span, lines }
    -------------------------------------------------------------------------- */
 const FORM_LANGUAGES = {
-  "bilingual": "English + Arabic", "en": "English", "ar": "Arabic (right-to-left)", "fr": "French", "es": "Spanish",
+  "en": "English", "bilingual": "English + Arabic", "ar": "Arabic (right-to-left)", "fr": "French", "es": "Spanish",
   "en+fr": "English + French", "en+es": "English + Spanish", "fr+ar": "French + Arabic", "en+ar+fr": "English + Arabic + French"
 };
-function langsOf(settings) {
-  const v = String(settings.formLanguage || "bilingual");
+// Language of a form: the document's own choice (Generator dropdown), else the
+// project default (Setup > Form Standards), else English.
+// "bilingual" was the built-in default in early test builds and got stored with
+// the settings; it only counts when someone chose it in Form Standards.
+function projectLang(settings) {
+  const v = (settings && settings.formLanguage) || "en";
+  return v === "bilingual" && !settings.formLanguageChosen ? "en" : v;
+}
+function langsOf(settings, doc) {
+  const v = String((doc && doc.formLanguage) || projectLang(settings));
   if (v === "bilingual") return ["en", "ar"];
   const l = v.split("+").map(s => s.trim()).filter(s => ["en", "ar", "fr", "es"].includes(s));
-  return l.length ? l : ["en", "ar"];
+  return l.length ? l : ["en"];
 }
 function word(pair, l) {
   if (!pair) return "";
@@ -23360,8 +23368,8 @@ function word(pair, l) {
   if (l === "ar") return pair[1];
   return (LANG_DICT[l] && LANG_DICT[l][pair[0]]) || pair[0];
 }
-function ctxFor(settings) {
-  const langs = langsOf(settings);
+function ctxFor(settings, doc) {
+  const langs = langsOf(settings, doc);
   const t = pair => !pair ? "" : Array.from(new Set(langs.map(l => word(pair, l)))).join("\n");
   return { lang: langs.length > 1 ? "multi" : langs[0], langs, rtl: langs[0] === "ar", t, settings };
 }
@@ -23388,7 +23396,7 @@ function optText(doc, key, options, c) {
 }
 
 function buildLayout(doc, settings) {
-  const c = ctxFor(settings);
+  const c = ctxFor(settings, doc);
   const type = String(doc.docType || "RFI").toUpperCase();
   const fam = familyOf(type);
   const rows = [];
@@ -23988,10 +23996,10 @@ function renderTypeFields(type, doc) {
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px">` +
     inputs.map(inp => {
       const id = "gx_" + inp.key;
-      const label = `<label for="${id}">${esc(inp.label[0])} <span style="color:#94a3b8;font-weight:500" dir="rtl">${esc(inp.label[1])}</span></label>`;
+      const label = `<label for="${id}">${esc(inp.label[0])}</label>`;
       const wide = inp.type === "textarea" || inp.type === "table";
       let ctl;
-      if (inp.type === "select") ctl = `<select id="${id}" class="edms-select gx" data-key="${inp.key}"><option value=""></option>${inp.options.map((o, i) => `<option value="${i}"${String(v(inp.key)) === String(i) ? " selected" : ""}>${esc(o[0])} – ${esc(o[1])}</option>`).join("")}</select>`;
+      if (inp.type === "select") ctl = `<select id="${id}" class="edms-select gx" data-key="${inp.key}"><option value=""></option>${inp.options.map((o, i) => `<option value="${i}"${String(v(inp.key)) === String(i) ? " selected" : ""}>${esc(o[0])}</option>`).join("")}</select>`;
       else if (inp.type === "textarea") ctl = `<textarea id="${id}" class="edms-input gx" data-key="${inp.key}" rows="2">${esc(v(inp.key))}</textarea>`;
       else if (inp.type === "table") ctl = tableEditor(inp, doc && doc[inp.key]);
       else ctl = `<input type="${inp.type}" id="${id}" class="edms-input gx" data-key="${inp.key}" value="${esc(v(inp.key))}"${inp.hint ? ` placeholder="${esc(inp.hint)}"` : ""}>`;
@@ -24027,6 +24035,8 @@ function renderTypeFields(type, doc) {
 
 function collectInputs(type) {
   const out = {};
+  const langSel = document.getElementById("genFormLang");
+  if (langSel && langSel.value) out.formLanguage = langSel.value;
   const host = document.getElementById("genTypeFields");
   const fam = familyOf(type);
   if (host) {
@@ -24044,6 +24054,8 @@ function collectInputs(type) {
 }
 
 function fillInputs(doc) {
+  const langSel = document.getElementById("genFormLang");
+  if (langSel) langSel.value = (doc && doc.formLanguage) || projectLang(E.Settings.get());
   const sel = document.getElementById("genDocType");
   renderTypeFields((sel && sel.value) || doc.docType || "RFI", doc);
 }
@@ -24110,8 +24122,8 @@ function renderSettingsCard() {
   card.innerHTML = `<h3 style="margin:0 0 4px;font-size:15px">📄 Form Standards (all document types)</h3>
     <p style="margin:0 0 12px;font-size:12.5px;color:#64748b">Set once per project, as required by the project's document control procedure. Applies to print/PDF and Excel forms.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px">
-      <div class="edms-form-group"><label>Form language</label><select id="fsLang" class="edms-select">
-        ${Object.keys(FORM_LANGUAGES).map(k => opt(k, s.formLanguage || "bilingual", FORM_LANGUAGES[k])).join("")}</select></div>
+      <div class="edms-form-group"><label>Default form language (project)</label><select id="fsLang" class="edms-select">
+        ${Object.keys(FORM_LANGUAGES).map(k => opt(k, projectLang(s), FORM_LANGUAGES[k])).join("")}</select></div>
       <div class="edms-form-group"><label>Review / decision codes</label><select id="fsCodes" class="edms-select">
         ${opt("alpha", s.decisionCodeStyle || "alpha", "Alphabetic – A Approved, B Approved as Noted, C Revise &amp; Resubmit, D Rejected")}
         ${opt("numeric", s.decisionCodeStyle, "Numeric – 1 Approved, 2 Approved as Noted, 3 Revise &amp; Resubmit, 4 Rejected")}
@@ -24134,6 +24146,7 @@ function renderSettingsCard() {
     if (!(await E.Crypto.verifyAdminPin(pin))) { alert("Admin PIN not accepted."); return; }
     E.Settings.save({
       formLanguage: card.querySelector("#fsLang").value,
+      formLanguageChosen: true,
       decisionCodeStyle: card.querySelector("#fsCodes").value,
       revisionStyle: card.querySelector("#fsRev").value,
       inspectionNoticeHours: Math.max(0, +card.querySelector("#fsNotice").value || 0),
@@ -24145,6 +24158,8 @@ function renderSettingsCard() {
     });
     E.DB.logAudit("FORM_STANDARDS_UPDATED", "Form language / decision codes / revision style updated");
     applyRevisionStyle();
+    const gl = document.getElementById("genFormLang");
+    if (gl) gl.value = card.querySelector("#fsLang").value;
     card.querySelector("#fsMsg").textContent = "Saved ✓";
     setTimeout(() => { card.querySelector("#fsMsg").textContent = ""; }, 2500);
   });
@@ -24196,6 +24211,39 @@ function init() {
   if (rev) rev.addEventListener("input", () => { rev.dataset.touched = "1"; });
   applyRevisionStyle();
   renderSettingsCard();
+  renderLangPicker();
+}
+
+// Form language picker beside "Preview Printable Form" / "Generate Excel".
+// Any user can choose; the choice is saved with the document.
+function renderLangPicker() {
+  const prev = document.getElementById("btnPreviewForm");
+  if (!prev || document.getElementById("genFormLang")) return;
+  const wrap = document.createElement("label");
+  wrap.style.cssText = "display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;white-space:nowrap";
+  wrap.title = "Language printed on this form. The project default is set in Setup > Form Standards.";
+  wrap.innerHTML = `🌐 Form language <select id="genFormLang" class="edms-select" style="width:auto;min-width:150px;padding:6px 8px;font-size:12px">
+    ${Object.keys(FORM_LANGUAGES).map(k => `<option value="${k}">${FORM_LANGUAGES[k]}</option>`).join("")}</select>`;
+  prev.parentElement.insertBefore(wrap, prev);
+  // same choice for the blank-form downloader (Scanner & Import > Downloader Suite)
+  const tSel = document.getElementById("selDocTypeTemplate");
+  if (tSel && !document.getElementById("selFormLangTemplate")) {
+    const l2 = document.createElement("label");
+    l2.style.cssText = "display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700";
+    l2.innerHTML = `Language: <select id="selFormLangTemplate" style="padding:7px 10px;border:1px solid #cbd5e1;border-radius:6px;font-size:12.5px">
+      ${Object.keys(FORM_LANGUAGES).map(k => `<option value="${k}">${FORM_LANGUAGES[k]}</option>`).join("")}</select>`;
+    tSel.insertAdjacentElement("afterend", l2);
+    l2.querySelector("select").value = projectLang(E.Settings.get());
+  }
+  prev.parentElement.style.flexWrap = "wrap";
+  prev.parentElement.style.alignItems = "center";
+  wrap.querySelector("select").value = projectLang(E.Settings.get());
+  document.getElementById("globalProjectSelect")?.addEventListener("change", () => setTimeout(() => {
+    const v = projectLang(E.Settings.get());
+    wrap.querySelector("select").value = v;
+    const t = document.getElementById("selFormLangTemplate");
+    if (t) t.value = v;
+  }, 0));
 }
 
 E.FORMS = {
@@ -24206,8 +24254,9 @@ E.FORMS = {
 // Every path that produced a form now goes through the engine.
 E.Excel.generateFormExcel = doc => downloadXlsx(doc);
 if (window.RFITool) {
-  window.RFITool.downloadTemplate1Form = type => downloadXlsx(blankDoc(type || "RFI"), "template1");
-  window.RFITool.downloadTemplate2Form = type => downloadXlsx(blankDoc(type || "RFI"), "template2");
+  const blankIn = type => Object.assign(blankDoc(type || "RFI"), { formLanguage: (document.getElementById("selFormLangTemplate") || {}).value || undefined });
+  window.RFITool.downloadTemplate1Form = type => downloadXlsx(blankIn(type), "template1");
+  window.RFITool.downloadTemplate2Form = type => downloadXlsx(blankIn(type), "template2");
 }
 
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => setTimeout(init, 0));
