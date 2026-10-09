@@ -23505,7 +23505,7 @@ function buildLayout(doc, settings) {
     table([L.docNo, L.rev, L.title, L.sheets], [3, 1, 6, 2], doc.docList, 4);
     if (type === "ITP") {
       section(L.itpPoints);
-      table([L.activity, L.criteria, L.frequency, L.ctrPoint, L.engPoint], [3, 4, 1, 2, 2], doc.itpPoints, 5);
+      table([L.activity, L.criteria, L.frequency, L.ctrPoint, L.engPoint], [3, 3, 2, 2, 2], doc.itpPoints, 5);
     }
     rows.push([lab(L.compliance, 3), val(optText(doc, "compliance", OPTS.compliance, c), 9)]);
     box(doc.deviations, 2, L.deviations);
@@ -23569,7 +23569,7 @@ function buildLayout(doc, settings) {
     rows.push([lab(L.apologies, 3), val(doc.apologies, 9)]);
     box(doc.agenda, 3, L.agenda);
     section(L.items);
-    table([L.itemNo, L.discussion, L.actionBy, L.dueDate, L.status], [1, 6, 2, 2, 1], doc.items, 6);
+    table([L.itemNo, L.discussion, L.actionBy, L.dueDate, L.status], [1, 5, 2, 2, 2], doc.items, 6);
     rows.push([lab(L.nextMeeting, 3), val(doc.nextMeeting, 9)]);
     note(L.momNote);
     sign([[L.preparedBy, doc.preparedBy], [L.approvedBy, ""]]);
@@ -23578,7 +23578,7 @@ function buildLayout(doc, settings) {
     rows.push([lab(L.from), val(doc.sender || contractorName(settings), 4), lab(L.discipline), val(disc, 4)]);
     rows.push([lab(L.purpose), val(optText(doc, "purpose", OPTS.purpose, c), 2), lab(L.format), val(optText(doc, "trmFormat", OPTS.trmFormat, c), 2), lab(L.responseDue), val(fmtDate(doc.responseDue), 2)]);
     section(L.docList);
-    table([L.docNo, L.rev, L.title, L.copies], [3, 1, 7, 1], doc.trmDocs, 10);
+    table([L.docNo, L.rev, L.title, L.copies], [3, 1, 6, 2], doc.trmDocs, 10);
     box(doc.description, 2, L.remarks);
     sign([[L.sentBy, doc.sentBy || doc.contractorContact, fmtDate(doc.submittalDate)]]);
     section(L.ack);
@@ -23751,10 +23751,18 @@ function stylesXml(styleKey) {
 </styleSheet>`;
 }
 
-// Conservative: Excel wraps bold Arial / Arabic sooner than the column width suggests.
+// Conservative: Excel wraps bold Arial / Arabic sooner than the column width
+// suggests, and only between words - so wrap word by word, as Excel does.
 function estLines(text, span, bold) {
-  const per = Math.max(4, Math.floor(span * COLW * (bold ? 1.0 : 1.2)));
-  return String(text || "").split("\n").reduce((n, p) => n + Math.max(1, Math.ceil(p.length / per)), 0);
+  const per = Math.max(4, Math.floor(span * COLW * (bold ? 0.9 : 1.0)));
+  return String(text || "").split("\n").reduce((n, p) => {
+    let lines = 1, len = 0;
+    p.split(/\s+/).filter(Boolean).forEach(w => {
+      if (w.length > per) { lines += Math.ceil(w.length / per) - (len ? 0 : 1); len = w.length % per; return; }
+      if (len && len + 1 + w.length > per) { lines++; len = w.length; } else len += (len ? 1 : 0) + w.length;
+    });
+    return n + lines;
+  }, 0);
 }
 
 function dataUrlBytes(url) {
@@ -23859,14 +23867,19 @@ async function renderXlsx(doc, styleKey, settingsIn) {
       if (cell.kind === "tickbox") h = Math.max(h, 24);
       return { v, s, span: cell.span };
     });
-    put(cells, h, row.keep);
+    // a section heading never ends a page: keep it with the row below it
+    put(cells, h, row.keep || (k0 === "section" ? 1 : 0));
   }
 
   // Multi-page forms: move a signature block to the next page rather than
   // splitting it (Excel would otherwise strand it, or its header, alone).
   const breaks = [];
-  if (!ONE_PAGE[lay.family]) {
-    const CAP = 760;
+  // A form that overflows one page by only a few lines is scaled onto one
+  // page rather than stranding its last line(s) on a second sheet.
+  const CAP = 760;
+  const total = heights.reduce((a, x) => a + x.h, 0);
+  const onePage = !!ONE_PAGE[lay.family] || total <= CAP * 1.15;
+  if (!onePage) {
     let used = 0;
     heights.forEach((row, i) => {
       if (row.keep) {
@@ -23888,7 +23901,7 @@ async function renderXlsx(doc, styleKey, settingsIn) {
 ${merges.length ? `<mergeCells count="${merges.length}">${merges.map(m => `<mergeCell ref="${m}"/>`).join("")}</mergeCells>` : ""}
 <printOptions horizontalCentered="1"/>
 <pageMargins left="0.4" right="0.4" top="0.4" bottom="0.4" header="0.2" footer="0.2"/>
-<pageSetup paperSize="9" orientation="portrait" fitToWidth="1" fitToHeight="${ONE_PAGE[lay.family] ? 1 : 0}"/>
+<pageSetup paperSize="9" orientation="portrait" fitToWidth="1" fitToHeight="${onePage ? 1 : 0}"/>
 ${breaks.length ? `<rowBreaks count="${breaks.length}" manualBreakCount="${breaks.length}">${breaks.map(b => `<brk id="${b}" max="16383" man="1"/>`).join("")}</rowBreaks>` : ""}
 ${images.length ? '<drawing r:id="rId1"/>' : ""}
 </worksheet>`;
