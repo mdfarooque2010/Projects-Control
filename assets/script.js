@@ -4,13 +4,41 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // ------------------------------------------------------------- 1. Navigation Toggle
+  // ------------------------------------------------------------- 1. Left-Side Dropdown Navigation Toggle
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".nav");
   if (toggle && nav) {
-    toggle.addEventListener("click", function () {
+    function closeNavDropdown() {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
       var isOpen = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (e) {
+      if (nav.classList.contains("open") && !nav.contains(e.target) && !toggle.contains(e.target)) {
+        closeNavDropdown();
+      }
+    });
+
+    // Close dropdown on Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && nav.classList.contains("open")) {
+        closeNavDropdown();
+        toggle.focus();
+      }
+    });
+
+    // Close dropdown when a navigation link is clicked
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        closeNavDropdown();
+      });
     });
   }
 
