@@ -65,7 +65,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ------------------------------------------------------------- 3. Celebration Sparkles / Particle Fountain
+  // ------------------------------------------------------------- 3. Sticky Top Banner Offset & Celebration Sparkles
+  var promoBanner = document.querySelector(".promo-banner");
+  function updateStickyBannerOffset() {
+    if (promoBanner) {
+      document.documentElement.style.setProperty("--promo-banner-h", promoBanner.offsetHeight + "px");
+    }
+  }
+  updateStickyBannerOffset();
+  window.addEventListener("resize", updateStickyBannerOffset);
+
   var canvas = document.getElementById("celebration-canvas");
   if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var ctx = canvas.getContext("2d");
@@ -80,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     function resizeCanvas() {
+      updateStickyBannerOffset();
       if (canvas.parentElement) {
         var pHeight = canvas.parentElement.offsetHeight;
         if (!pHeight || pHeight > 140) {
